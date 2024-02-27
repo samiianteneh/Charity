@@ -4,21 +4,19 @@ import ImageSlider from "./ImageSlider";
 
 function HomePage() {
   return (
-    <div className="w-full mx-4">
-      <div className="">
-        {/* <img src={BackGroungIMG} alt="img" className="w-full max-h-96" /> */}
-      </div>
-      <div className="flex justify-between  ">
-        <div className=" w-3/5">
-          {" "}
+    <div className="py-10 mx-4">
+      {/* <div className="">
+        <img src={BackGroungIMG} alt="img" className="w-full max-h-96" />
+      </div> */}
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="w-full md:w-3/5 mb-4 md:mb-0">
           <ImageSlider />
         </div>
-        <div className=" w-2/5">
-          <div>
-            <div className="font-bold text-center"> Latest Charity Events</div>
-            <></>
+        <div className="w-full md:w-2/5">
+          <div className="text-center font-bold mb-4">
+            Latest Charity Events
           </div>
-          <div></div>
+          {/* Add your latest charity events content here */}
         </div>
       </div>
     </div>

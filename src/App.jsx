@@ -8,10 +8,13 @@ import Navigation from "./NavLink/Navigation";
 import Footer from "./Footer/Footer";
 import WhatWeDo from "./whatWeDo/WhatWeDo";
 import WhoWeAre from "./WhoWeAre/WhoWeAre";
+import Header from "./NavLink/header";
+import Testimonials from "./WhoWeAre/testimonials/Testimonials";
 
 function App() {
   return (
     <div>
+      {/* <Header /> */}
       <Navigation />
       <main>
         <section id="home">
@@ -23,6 +26,9 @@ function App() {
         <section id="WhatWeDo">
           <WhatWeDo />
         </section>
+        <section id="testimonials">
+          <Testimonials />
+        </section>
         <section id="about">
           <Detail />
         </section>
@@ -31,6 +37,7 @@ function App() {
           <Detail />
         </section>
       </main>
+      <Footer />
     </div>
 
     // <BrowserRouter>
