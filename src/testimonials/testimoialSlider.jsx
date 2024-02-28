@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Testimonials } from "../../Constant/testimonial";
+// import { Testimonials } from "../Constant/testimonial";
+import { Testimonials } from "../Constant/testimonial";
 
 function TestimonialSlider() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);

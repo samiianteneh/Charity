@@ -23,18 +23,24 @@ function WhoWeAre() {
             </div>
           </div>
           <div className="text-center md:text-end my-5">
-            <div className="inline-block relative">
+            <div className="inline-block relative text-justify md:text-end">
+              <span className="text-gray-800 text-xl ">
+                Welcome to Noah Giving Hands. The situation in Ethiopia,
+                particularly concerning the internal displacement of millions of
+                people due to various challenges such as violence, conflict, and
+                environmental disasters, is profoundly troubling. It's
+                heart-wrenching to witness families compelled to abandon their
+                homes in pursuit of safety, often lacking access to fundamental
+                necessities.
+              </span>
+              <br />
               <span className="text-gray-800 text-xl">
-                As a non-profit charity and NGO organization, we focus on aiding
-                internally displaced persons (IDPs) without political
-                affiliations. Our mission addresses the challenges faced by IDPs
-                due to conflict, natural disasters, or persecution. Despite the
-                substantial numbers of IDPs, they often lack sufficient support
-                from governmental sources. Private donors play a crucial role in
-                bridging this gap and ensuring these vulnerable populations
-                receive necessary aid. We emphasize the importance of private
-                contributions to alleviate IDP suffering and foster resilience
-                within affected communities.
+                Noah Giving Hands assumes a pivotal role in extending aid to
+                those impacted by these adversities. Our initiatives encompass
+                providing shelter, sustenance, healthcare, and assistance to
+                internally displaced persons (IDPs), aiming to significantly
+                mitigate their distress and provide avenues for a brighter
+                future.
               </span>
             </div>
           </div>

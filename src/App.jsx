@@ -9,7 +9,8 @@ import Footer from "./Footer/Footer";
 import WhatWeDo from "./whatWeDo/WhatWeDo";
 import WhoWeAre from "./WhoWeAre/WhoWeAre";
 import Header from "./NavLink/header";
-import Testimonials from "./WhoWeAre/testimonials/Testimonials";
+import Testimonials from "./testimonials/Testimonials";
+import BeMember from "./beMember/BeMember";
 
 function App() {
   return (
@@ -29,11 +30,10 @@ function App() {
         <section id="testimonials">
           <Testimonials />
         </section>
-        <section id="about">
-          <Detail />
-        </section>
-
         <section id="member">
+          <BeMember />
+        </section>
+        <section id="about">
           <Detail />
         </section>
       </main>
