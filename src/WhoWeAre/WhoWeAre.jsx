@@ -24,23 +24,23 @@ function WhoWeAre() {
           </div>
           <div className="text-center md:text-end my-5">
             <div className="inline-block relative text-justify md:text-end">
+              <span className="text-gray-800 text-3xl pr-10">
+                Welcome to Noah Giving Hands.
+              </span>
+              <br />
               <span className="text-gray-800 text-xl ">
-                Welcome to Noah Giving Hands. The situation in Ethiopia,
-                particularly concerning the internal displacement of millions of
-                people due to various challenges such as violence, conflict, and
-                environmental disasters, is profoundly troubling. It's
-                heart-wrenching to witness families compelled to abandon their
-                homes in pursuit of safety, often lacking access to fundamental
-                necessities.
+                The situation in Ethiopia, marked by internal displacement of
+                millions due to violence, conflict, and environmental disasters,
+                is deeply concerning. Families forced to flee their homes lack
+                access to basic necessities, highlighting the urgent need for
+                assistance.
               </span>
               <br />
               <span className="text-gray-800 text-xl">
-                Noah Giving Hands assumes a pivotal role in extending aid to
-                those impacted by these adversities. Our initiatives encompass
-                providing shelter, sustenance, healthcare, and assistance to
-                internally displaced persons (IDPs), aiming to significantly
-                mitigate their distress and provide avenues for a brighter
-                future.
+                Noah Giving Hands plays a crucial role in providing aid to those
+                affected. We offer shelter, sustenance, healthcare, and support
+                to internally displaced persons (IDPs), aiming to alleviate
+                their suffering and pave the way for a better future.{" "}
               </span>
             </div>
           </div>

@@ -9,7 +9,10 @@ function Footer() {
     <footer className="bg-gray-800 text-white py-4">
       <div className="container mx-auto flex justify-center items-center">
         <div className="mr-4">
-          <a href="#" className="text-white hover:text-gray-400">
+          <a
+            href="https://www.facebook.com/profile.php?id=61553704089800"
+            className="text-white hover:text-gray-400"
+          >
             <FaFacebook />{" "}
           </a>
         </div>

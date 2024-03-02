@@ -36,7 +36,7 @@ function BeMember() {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto my-20">
       <div className="text-center md:text-end my-5">
         <div className="inline-block relative">
           <span className="text-green-600 text-3xl font-bold">
