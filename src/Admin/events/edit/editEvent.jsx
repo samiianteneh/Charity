@@ -1,8 +1,16 @@
 import React from "react";
-import Sidebar from "../Sidebar";
-import MemberList from "./MemberList";
+import EditDisplay from "./editDisplay";
+import Sidebar from "../../Sidebar";
+import { charity } from "../../../Constant/charity";
+import { useParams } from "react-router";
 
-function Member() {
+function EditEvent({}) {
+  const { id } = useParams();
+
+  const filterdCharity = charity?.filter((event) => {
+    return event?.eventId == id;
+  });
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Media query for mobile devices */}
@@ -12,7 +20,7 @@ function Member() {
         </header>
         <main className="flex-grow">
           <div className="text-center my-5">
-            <MemberList />
+            <EditDisplay />
           </div>
         </main>
       </div>
@@ -20,8 +28,9 @@ function Member() {
       <div className="hidden md:flex flex-grow">
         <Sidebar />
         <main className="flex-grow">
+          {/* {props} */}
           <div className="text-center my-5 mx-5">
-            <MemberList />
+            <EditDisplay data={filterdCharity} />
           </div>
         </main>
       </div>
@@ -29,4 +38,4 @@ function Member() {
   );
 }
 
-export default Member;
+export default EditEvent;

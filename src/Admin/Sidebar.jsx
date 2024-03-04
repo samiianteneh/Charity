@@ -3,6 +3,7 @@ import { FaHome, FaThList } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { NavLink } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
+import { MdEvent } from "react-icons/md";
 
 function Sidebar() {
   const Logout = () => {
@@ -37,6 +38,12 @@ function Sidebar() {
           </div>
         </NavLink>
 
+        <NavLink to="/events" activeClassName="active">
+          <div className="flex gap-10 py-2">
+            <MdEvent className="text-[#43a440]" />
+            <div className="text-2xl hidden md:block">Events</div>
+          </div>
+        </NavLink>
         <NavLink to="#" activeClassName="active">
           <div className="flex gap-10 py-2">
             <GrTransaction className="text-[#43a440]" />

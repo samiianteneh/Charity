@@ -1,8 +1,8 @@
 import React from "react";
 import Sidebar from "../Sidebar";
-import MemberList from "./MemberList";
+import EventList from "./EventList";
 
-function Member() {
+function Events() {
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Media query for mobile devices */}
@@ -12,7 +12,7 @@ function Member() {
         </header>
         <main className="flex-grow">
           <div className="text-center my-5">
-            <MemberList />
+            <EventList />
           </div>
         </main>
       </div>
@@ -21,7 +21,7 @@ function Member() {
         <Sidebar />
         <main className="flex-grow">
           <div className="text-center my-5 mx-5">
-            <MemberList />
+            <EventList />
           </div>
         </main>
       </div>
@@ -29,4 +29,4 @@ function Member() {
   );
 }
 
-export default Member;
+export default Events;
