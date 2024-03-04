@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import closeIcon from "../assets/icons/system-solid-29-cross.gif";
+import closeIcon from "../../assets/icons/system-solid-29-cross.gif";
 
 function DetailModal({ closeModal, data }) {
   useEffect(() => {
@@ -17,13 +17,13 @@ function DetailModal({ closeModal, data }) {
   }, [closeModal]);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+    <div className="font- poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg max-w-[75%] modal-content">
-        <div className="flex justify-between items-center mt-4 px-4 py-2">
-          <h2 className="text-lg font-bold ">{data?.title}</h2>
+        <div className="flex justify-between items-center mt-4 py-2">
+          <h2 className="text-lg font-semibold ">{data?.title}</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
-        <div className="max-h-80 overflow-auto text-justify">
+        <div className="max-h-80 overflow-auto text-justify font-light">
           <p>{data?.intro}</p>
           <br />
           <p>{data?.paragraph_1}</p>

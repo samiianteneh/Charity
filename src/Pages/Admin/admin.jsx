@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 
-function admin() {
+function Admin() {
   return (
     <div className="flex">
       <div className="w-30 text-center text-9xl bg-blue-500">
@@ -14,4 +14,4 @@ function admin() {
   );
 }
 
-export default admin;
+export default Admin;

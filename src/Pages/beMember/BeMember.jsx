@@ -36,8 +36,8 @@ function BeMember() {
   };
 
   return (
-    <div className="container mx-auto mt-8">
-      <div className="text-center md:text-end my-5">
+    <div className=" font-poppins container mx-auto mt-8">
+      <div className="text-center md:text-center my-5">
         <div className="inline-block relative">
           <span className="text-green-600 text-3xl font-bold">
             Registration Form
@@ -71,7 +71,7 @@ function BeMember() {
                   "Please enter your first and last name separated by a space.",
               },
             })}
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            className=" font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -92,7 +92,7 @@ function BeMember() {
                 message: "Please enter a valid phone number with country code.",
               },
             })}
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            className=" font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
           />
 
           {errors.phone && (
@@ -114,7 +114,7 @@ function BeMember() {
                 message: "Invalid email address",
               },
             })}
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            className=" font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -123,7 +123,7 @@ function BeMember() {
         <button
           id="submitBtn"
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+          className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-900"
         >
           Register
         </button>

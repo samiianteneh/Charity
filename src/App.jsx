@@ -1,15 +1,13 @@
 import { Route, Router, Routes } from "react-router";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import { LandingPage } from "./landinPage/LandingPage";
-import LoginPage from "./login/loginPage";
-import Admin from "./Admin/admin";
+import { LandingPage } from "./Pages/landinPage/LandingPage";
+import LoginPage from "./Pages/login/loginPage";
+import Admin from "./Pages/Admin/admin";
 
 function App() {
   return (
     <>
-      {/* <LandingPage /> */}
-
       <BrowserRouter>
         <div className="">
           <Routes>

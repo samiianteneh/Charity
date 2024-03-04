@@ -1,7 +1,7 @@
 import React from "react";
-import firstImg from "../assets/1st overflow.jpg";
-import secondImg from "../assets/2nd overflow.jpg";
-import thirdImg from "../assets/3rd overflow.jpg";
+import firstImg from "../../assets/1st overflow.jpg";
+import secondImg from "../../assets/2nd overflow.jpg";
+import thirdImg from "../../assets/3rd overflow.jpg";
 
 function ImageOverlay() {
   return (
