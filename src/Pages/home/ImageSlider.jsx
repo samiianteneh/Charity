@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import IMG1 from "../assets/pic 1.jpg";
-import IMG2 from "../assets/pic 2.jpg";
-import IMG3 from "../assets/pic 3.jpg";
+import IMG1 from "../../assets/pic 1.jpg";
+import IMG2 from "../../assets/pic 2.jpg";
+import IMG3 from "../../assets/pic 3.jpg";
 
 function ImageSlider() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -26,19 +26,22 @@ function ImageSlider() {
   };
 
   return (
-    <div className="relative image-slider">
+    <div className=" font-poppins relative image-slider">
       <img
         src={images[currentImageIndex]}
         alt={`Slide ${currentImageIndex}`}
         className="w-full h-auto md:max-h-96"
       />
-      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 text-white py-2 bg-black bg-opacity-50 px-4 md:px-8">
-        <div className="font-extrabold text-4xl md:text-5xl">
+      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 text-white py-4 bg-black bg-opacity-50 px-4 md:px-8">
+        <div className="font-extrabold text-4xl md:text-5xl ">
           Building a Brighter Future Together
         </div>
-        <div className="max-w-[90%] md:max-w-[50%] text-left hidden md:block">
+        <div className="max-w-[100%] md:max-w-[100%] text-left hidden md:block py-4 font-light">
           Building An Ethiopia where every man, woman, and child starts to live
           a healthy, fulfilling life of self-reliance and dignity.
+        </div>
+        <div className=" flex max-w-[100%] md:max-w-[75%] text-left  md:block border-green-600 border-[2px] rounded-md px-2 items-center justify-center w-[120px] text-green-600 font-medium py-4">
+          Donate
         </div>
       </div>
 
