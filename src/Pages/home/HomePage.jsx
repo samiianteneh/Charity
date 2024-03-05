@@ -1,6 +1,7 @@
 import React from "react";
 // import BackGroungIMG from "../assets/pic 1.jpg";
 import ImageSlider from "./ImageSlider";
+import CharityDisplay from "./charityDisplay";
 
 function HomePage() {
   return (
@@ -14,8 +15,9 @@ function HomePage() {
           <ImageSlider />
         </div>
         {/* <div className="w-full md:w-2/5">
+        <div className="w-full md:w-2/5 md:mx-4">
           <div className="text-center font-bold mb-4">
-            Latest Charity Events
+            <CharityDisplay />
           </div>
         </div> */}
       </div>

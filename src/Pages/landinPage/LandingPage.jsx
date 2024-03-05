@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "../../Components/NavLink/Navigation";
+import Navigation from "../../Pages/landinPage/LandingPage";
 import HomePage from "../home/HomePage";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import WhatWeDo from "../whatWeDo/WhatWeDo";
@@ -7,10 +7,8 @@ import Detail from "../Detail/Detail";
 import BeMember from "../beMember/BeMember";
 import Footer from "../../Components/Footer/Footer";
 import TestimonialSlider from "../testimonials/testimoialSlider";
-import Testimonials from "../testimonials/Testimonials";
-import ContactUs from "../contactUs/contactUs";
 
-export const LandingPage = () => {
+export default function LandingPage() {
   return (
     <>
       {/* <Header /> */}
@@ -19,20 +17,17 @@ export const LandingPage = () => {
         <section id={"home"}>
           <HomePage />
         </section>
-
         <section id={"WhoWeAre"}>
           <WhoWeAre />
         </section>
         <section id={"WhatWeDo"}>
           <WhatWeDo />
         </section>
-        <section id={"testimonials"} />
-        <Testimonials />
+        <section id={"testimonials"}>
+          <TestimonialSlider />
+        </section>
         <section id={"member"}>
           <BeMember />
-        </section>
-        <section id={"contactUs"}>
-          <ContactUs />
         </section>
         <section id={"about"}>
           <Detail />
@@ -41,4 +36,4 @@ export const LandingPage = () => {
       <Footer />
     </>
   );
-};
+}

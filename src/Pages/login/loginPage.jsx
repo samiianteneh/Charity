@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   const {
@@ -17,9 +18,13 @@ const LoginPage = () => {
       })
       .then((response) => {
         if (response.data) {
-          alert("Successfully registered");
+          console.log(response?.data, "@#$#@");
+          localStorage.setItem("token", "234567uhbvcfr567ujy6tfjiuyg-okjh");
+          localStorage.setItem("name", "Samii");
+          localStorage.setItem("role", "admin");
+          localStorage.setItem("userID", "1111-1111-1111-1111");
+          window.location.href = "/admin";
         }
-        console.log(response?.data, "@#$#@");
       })
       .catch((err) => {
         console.error("Error", err);
