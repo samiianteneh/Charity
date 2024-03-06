@@ -1,34 +1,54 @@
 import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
+import { loginUser, logoutUser } from "../../Store";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // const onSubmit = (data) => {
+  //   axios
+  //     .post("https://jsonplaceholder.typicode.com/users", {
+  //       email: data.email,
+  //       password: data.password,
+  //     })
+  //     .then((response) => {
+  //       if (response.data) {
+  //         console.log(response?.data, "@#$#@");
+  //         localStorage.setItem("token", "234567uhbvcfr567ujy6tfjiuyg-okjh");
+  //         localStorage.setItem("name", "Samii");
+  //         localStorage.setItem("role", "admin");
+  //         localStorage.setItem("userID", "1111-1111-1111-1111");
+  //         window.location.href = "/admin";
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error", err);
+  //     });
+  // };
   const onSubmit = (data) => {
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", {
-        email: data.email,
-        password: data.password,
-      })
-      .then((response) => {
-        if (response.data) {
-          console.log(response?.data, "@#$#@");
-          localStorage.setItem("token", "234567uhbvcfr567ujy6tfjiuyg-okjh");
-          localStorage.setItem("name", "Samii");
-          localStorage.setItem("role", "admin");
-          localStorage.setItem("userID", "1111-1111-1111-1111");
+    dispatch(
+      loginUser(data)
+        .then(() => {
           window.location.href = "/admin";
-        }
-      })
-      .catch((err) => {
-        console.error("Error", err);
-      });
+        })
+        .catch((error) => {
+          console.error("Login failed:", error);
+        })
+    );
+  };
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    window.location.href = "/login";
   };
 
   return (
