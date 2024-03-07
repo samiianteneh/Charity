@@ -19,11 +19,14 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {tokens && name && role == "admin"}
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/editEvent/:id" element={<EditEvent />} />
-            <Route path="/member" element={<Member />} />
+            {tokens && name && role === "admin" && (
+              <>
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/editEvent/:id" element={<EditEvent />} />
+                <Route path="/member" element={<Member />} />
+              </>
+            )}
           </Routes>
         </div>
       </BrowserRouter>

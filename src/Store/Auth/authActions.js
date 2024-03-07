@@ -1,3 +1,4 @@
+import axios from "axios";
 import { API_BASE_URL } from "../../Config/endpoint";
 import * as actionTypes from "./authActionTypes";
 
@@ -28,6 +29,8 @@ export const loginUser = (data) => {
       data,
     })
       .then((response) => {
+        console.log("firstresponse", response);
+
         const { token, userData } = response?.data;
         dispatch(loginSuccess(token, userData));
         localStorage.setItem("token", token);

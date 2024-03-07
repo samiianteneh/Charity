@@ -1,8 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { userRegistration } from "../../Store/Users/userActions";
+import { useDispatch } from "react-redux";
 
 function BeMember() {
+  const dispatch = useDispatch();
+  const role = "user";
+
   const {
     register,
     handleSubmit,
@@ -10,29 +15,9 @@ function BeMember() {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      // Prevent multiple submissions
-      const submitButton = document.getElementById("submitBtn");
-      submitButton.disabled = true;
-
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          name: data.name,
-          phone: data.phone,
-          email: data.email,
-        }
-      );
-
-      console.log(response.data);
-      alert("Registration successful!");
-      reset(); // Reset form fields
-      submitButton.disabled = false; // Re-enable submit button
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
-    }
+  const onSubmit = (data, role) => {
+    dispatch(userRegistration(data, role));
+    window.location.href = "/login";
   };
 
   return (
