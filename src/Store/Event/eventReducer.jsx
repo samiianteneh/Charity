@@ -1,8 +1,45 @@
-export const EVENT_START = "EVENT_START";
-export const EVENT_FAIL = "EVENT_FAIL";
+import * as actionTypes from "./loginActionTypes";
 
-export const CREATE_EVENT = "CREATE_EVENT";
-export const GET_EVENT = "GET_EVENT";
-export const GET_SINGLE_EVENT = "EVENT_FAIL";
-export const UPDATE_EVENT = "UPDATE_EVENT";
-export const DELETE_EVENT = "DELETE_EVENT";
+const initialState = {
+  loggedInUser: {},
+  loggedInUser_loading: false,
+  loggedInUser_error: null,
+};
+
+const userLogin = (state) => {
+  return {
+    ...state,
+    loggedInUser_loading: true,
+    loggedInUser_error: null,
+  };
+};
+
+const userLoggedInSuccess = (state, action) => {
+  return {
+    ...state,
+    loggedInUser: action.data,
+    loggedInUser_loading: false,
+    loggedInUser_error: null,
+  };
+};
+
+const userLoginFail = (state, action) => {
+  return {
+    ...state,
+    loggedInUser_loading: false,
+    loggedInUser_error: action.error,
+  };
+};
+
+export const loginReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.USER_LOGIN:
+      return userLogin(state, action);
+    case actionTypes.USER_LOGGED_IN_SUCCESS:
+      return userLoggedInSuccess(state, action);
+    case actionTypes.USER_LOGIN_FAIL:
+      return userLoginFail(state, action);
+    default:
+      return state;
+  }
+};

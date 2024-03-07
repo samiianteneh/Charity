@@ -15,9 +15,9 @@ function BeMember() {
     reset,
   } = useForm();
 
-  const onSubmit = (data, role) => {
+  const onSubmit = (data) => {
     dispatch(userRegistration(data, role));
-    window.location.href = "/login";
+    // window.location.href = "/login";
   };
 
   return (
@@ -48,7 +48,7 @@ function BeMember() {
             type="text"
             placeholder="Type here"
             id="name"
-            {...register("name", {
+            {...register("fullName", {
               required: "Full name is required",
               pattern: {
                 value: /^[A-Za-z]+ [A-Za-z]+$/,

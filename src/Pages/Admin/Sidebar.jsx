@@ -44,7 +44,7 @@ function Sidebar() {
             <div className="text-2xl hidden md:block">Events</div>
           </div>
         </NavLink>
-        <NavLink to="#" activeClassName="active">
+        <NavLink to="/transactions" activeClassName="active">
           <div className="flex gap-10 py-2">
             <GrTransaction className="text-[#43a440]" />
             <div className="text-2xl hidden md:block">Transaction</div>

@@ -8,6 +8,7 @@ export default {
           600: "#2F855A",
         },
         navGreen: "#43a440",
+        sidebar: "#f8f8f8",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
