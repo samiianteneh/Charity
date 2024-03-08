@@ -56,11 +56,11 @@ function WhatWeDo() {
 
                 <button
                   onClick={() => handleClick(work)}
-                  class="text-green-600 inline-flex items-center md:mb-2 lg:mb-0 mt-4"
+                  className="text-green-600 inline-flex items-center md:mb-2 lg:mb-0 mt-4"
                 >
                   Read More
                   <svg
-                    class="w-4 h-4 ml-2"
+                    className="w-4 h-4 ml-2"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     stroke-width="2"
