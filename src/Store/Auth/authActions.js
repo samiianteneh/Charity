@@ -5,9 +5,9 @@ import * as actionTypes from "./authActionTypes";
 const loginStart = () => ({
   type: actionTypes.START_LOGIN,
 });
-const loginSuccess = (token, userData) => ({
+const loginSuccess = (token, user) => ({
   type: actionTypes.LOGIN_SUCCESS,
-  data: { token, userData },
+  data: { token, user },
 });
 const loginFail = (error) => ({
   type: actionTypes.LOGIN_FAIL,
@@ -30,11 +30,14 @@ export const loginUser = (data) => {
     })
       .then((response) => {
         console.log("firstresponse", response);
+        const { token, user } = response?.data;
 
-        const { token, userData } = response?.data;
-        dispatch(loginSuccess(token, userData));
         localStorage.setItem("token", token);
-        localStorage.setItem("userData", JSON.stringify(userData));
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(loginSuccess(token, user));
+        // localStorage.setItem("token", token);
+        // localStorage.setItem("user", JSON.stringify(user));
+        // console.log("firstgtyh", dispatch(loginSuccess(token, user)));
       })
       .catch((error) => {
         dispatch(loginFail(error.message));
@@ -46,6 +49,6 @@ export const logoutUser = () => {
   return (dispatch) => {
     dispatch(logout());
     localStorage.removeItem("token");
-    localStorage.removeItem("userData");
+    localStorage.removeItem("user");
   };
 };

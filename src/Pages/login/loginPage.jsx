@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    window.location.href = "/admin";
+    // window.location.href = "/dashboard/adminNew";
   };
 
   return (
@@ -28,7 +28,6 @@ const LoginPage = () => {
             Sign in to your account
           </h2>
         </div>
-
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="max-w-[90%] md:max-w-md mx-auto"

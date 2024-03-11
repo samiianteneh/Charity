@@ -58,7 +58,7 @@ const EventNew = () => {
                       </td>
                       <td className="py-2 px-4 border border-gray-300">
                         {event.date}
-                      </td>{" "}
+                      </td>
                       <td className="py-2 px-4 border border-gray-300">
                         {event.location}
                       </td>
@@ -79,7 +79,6 @@ const EventNew = () => {
               </table>
             </div>
 
-            {/* Pagination */}
             <div className="flex justify-end mr-2 mt-4 space-x-2">
               {Array.from({ length: totalPages }, (_, index) => index + 1).map(
                 (pageNumber) => (
