@@ -15,40 +15,9 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   axios
-  //     .post("https://jsonplaceholder.typicode.com/users", {
-  //       email: data.email,
-  //       password: data.password,
-  //     })
-  //     .then((response) => {
-  //       if (response.data) {
-  //         console.log(response?.data, "@#$#@");
-  //         localStorage.setItem("token", "234567uhbvcfr567ujy6tfjiuyg-okjh");
-  //         localStorage.setItem("name", "Samii");
-  //         localStorage.setItem("role", "admin");
-  //         localStorage.setItem("userID", "1111-1111-1111-1111");
-  //         window.location.href = "/admin";
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error", err);
-  //     });
-  // };
   const onSubmit = (data) => {
-    dispatch(
-      loginUser(data)
-        .then(() => {
-          window.location.href = "/admin";
-        })
-        .catch((error) => {
-          console.error("Login failed:", error);
-        })
-    );
-  };
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    window.location.href = "/login";
+    dispatch(loginUser(data));
+    // window.location.href = "/dashboard/adminNew";
   };
 
   return (

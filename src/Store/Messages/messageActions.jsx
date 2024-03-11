@@ -1,4 +1,4 @@
-import * as types from "./messageTypes";
+import * as types from "./messageActionTypes";
 
 export const authErrorHandler = (msg, status = 0) => {
   return (dispatch) => {

@@ -14,20 +14,23 @@ const loginStart = (state) => ({
 });
 
 const loginSuccess = (state, action) => {
+  const { token, user } = action.payload;
+
   localStorage.setItem("token", token);
-  localStorage.setItem("userData", JSON.stringify(userData));
+  localStorage.setItem("user", JSON.stringify(user));
+
   return {
     ...state,
     loading: false,
-    token: action.data,
-    userData: action.data,
+    token: token,
+    userData: user,
     error: null,
   };
 };
 
-const loginFail = (state) => ({
+const loginFail = (state, action) => ({
   ...state,
-  error: action.payload.error,
+  error: action.error,
 });
 const logout = (state) => {
   localStorage.removeItem("token");
@@ -45,9 +48,9 @@ export const authReducer = (state = initialState, action) => {
     case actionTypes.START_LOGIN:
       return loginStart(state);
     case actionTypes.LOGIN_SUCCESS:
-      return loginSuccess(state);
+      return loginSuccess(state), action;
     case actionTypes.LOGIN_FAIL:
-      return loginFail(state);
+      return loginFail(state, action);
     case actionTypes.LOGOUT:
       return logout(state);
     default:

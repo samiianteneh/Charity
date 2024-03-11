@@ -174,12 +174,12 @@ function CreateEvent({ closeModal }) {
           </form>
         </div>
 
-        <button
+        {/* <button
           onClick={closeModal}
           className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md"
         >
           Close
-        </button>
+        </button> */}
       </div>
     </div>
   );

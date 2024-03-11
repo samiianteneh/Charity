@@ -1,12 +1,13 @@
+import axios from "axios";
 import { API_BASE_URL } from "../../Config/endpoint";
 import * as actionTypes from "./authActionTypes";
 
 const loginStart = () => ({
   type: actionTypes.START_LOGIN,
 });
-const loginSuccess = (token, userData) => ({
+const loginSuccess = (token, user) => ({
   type: actionTypes.LOGIN_SUCCESS,
-  data: { token, userData },
+  data: { token, user },
 });
 const loginFail = (error) => ({
   type: actionTypes.LOGIN_FAIL,
@@ -28,10 +29,18 @@ export const loginUser = (data) => {
       data,
     })
       .then((response) => {
-        const { token, userData } = response?.data;
-        dispatch(loginSuccess(token, userData));
-        localStorage.setItem("token", token);
-        localStorage.setItem("userData", JSON.stringify(userData));
+        // console.log("firstresponse", response);
+
+        const { token, user } = response?.data;
+
+        console.log(token, "token BeDis");
+        console.log(user, "user BeDis");
+
+        dispatch(loginSuccess(token, user));
+        console.log("token", token);
+        console.log("user", user);
+        // localStorage.setItem("token", token);
+        // localStorage.setItem("user", JSON.stringify(user));
       })
       .catch((error) => {
         dispatch(loginFail(error.message));

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 
-function EventTable({ charity }) {
+function EventTable({ charity, type }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
 
@@ -24,7 +24,8 @@ function EventTable({ charity }) {
     <div>
       <div className="container mx-auto mt-8">
         <h2 className="text-xl font-semibold mb-4 text-[#43a440]">
-          Active Event List
+          {type == "active" ? "Active" : type == "inActive" ? "inActive" : ""}{" "}
+          Event List
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300">
@@ -62,7 +63,7 @@ function EventTable({ charity }) {
                   </td>
                   <td className="py-2 px-4 border border-gray-300">
                     <Link
-                      to={`/editEvent/${event?.eventId}`}
+                      to={`/dashboard/editEvent/${event?.eventId}`}
                       className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded"
                     >
                       <FaEdit />

@@ -1,21 +1,30 @@
-import React, { useState } from "react";
-import { personalInfo } from "../../../Constant/personalInfo";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUser, getUsers } from "../../../Store";
 
 function MemberList() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.userReducer.users);
+  console.log(users, "userReducer");
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  const handleDelete = (userId) => {
+    dispatch(deleteUser(userId));
+  };
+
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
 
-  // Calculate total number of pages
-  const totalPages = Math.ceil(personalInfo.length / perPage);
+  const totalPages = Math.ceil(users.length / perPage);
 
-  // Calculate index of the first and last item to display on the current page
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
 
-  // Slice the data array to get the items for the current page
-  const currentItems = personalInfo.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Function to handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -30,6 +39,7 @@ function MemberList() {
               <th className="py-2 px-4 border border-gray-300">Name</th>
               <th className="py-2 px-4 border border-gray-300">Email</th>
               <th className="py-2 px-4 border border-gray-300">Phone</th>
+              <th className="py-2 px-4 border border-gray-300">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +53,9 @@ function MemberList() {
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
                   {member.phone}
+                </td>
+                <td className="py-2 px-4 border border-gray-300">
+                  <button onClick={() => handleDelete(user.id)}>Delete</button>
                 </td>
               </tr>
             ))}
