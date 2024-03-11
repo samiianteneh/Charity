@@ -21,13 +21,13 @@ function Navigation() {
   return (
     <>
       <header>
-        <div class="font-poppins container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
+        <div class="font-poppins container mx-auto flex justify-between flex-wrap  flex-row items-center">
           <div className="px-5 md:block">
             <a href="#home" className=" px-3 font-bold text-xl">
               <img src={logo} alt="logo" className="w-20 md:w-40" />
             </a>
           </div>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
             <a
               href="#home"
               className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
@@ -119,8 +119,8 @@ function Navigation() {
               <img src={DropDown} className="w-10 h-10" onClick={toggleNav} />
             )}
 
-            {showNav && (
-              <div>
+            {showNav ? (
+              <div className="pt-10 mt-2">
                 <ul className="absolute right-0 w-[50%] top-10 bg-green-500 p-4 z-10">
                   <li className="mb-2 text-left">
                     <a
@@ -151,15 +151,17 @@ function Navigation() {
                   </li>
                   <li className="mb-2 text-left">
                     <a
-                      href="#contact"
+                      href="#contactUs"
                       onClick={toggleNav}
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
-                      Contact
+                      Contact Us
                     </a>
                   </li>
                 </ul>
               </div>
+            ) : (
+              ""
             )}
 
             {subNav && (

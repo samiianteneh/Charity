@@ -2,8 +2,18 @@ import React, { useState, useEffect } from "react";
 import IMG1 from "../../assets/pic 1.jpg";
 import IMG2 from "../../assets/pic 2.jpg";
 import IMG3 from "../../assets/pic 3.jpg";
+import Donate from "./Donate";
 
 function ImageSlider() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  function handleClick() {
+    setIsOpen(true);
+  }
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [IMG1, IMG2, IMG3]; // Add more image URLs as needed
@@ -40,9 +50,12 @@ function ImageSlider() {
           Building An Ethiopia where every man, woman, and child starts to live
           a healthy, fulfilling life of self-reliance and dignity.
         </div>
-        <div className=" flex max-w-[100%] md:max-w-[75%] text-left  md:block border-green-600 border-[2px] rounded-md px-2 items-center justify-center w-[120px] text-green-600 font-medium py-4">
+        <button
+          onClick={() => handleClick()}
+          className=" flex max-w-[100%] md:max-w-[75%] text-left  md:block border-green-600 border-[2px] rounded-md px-2 items-center justify-center w-[120px] text-green-600 font-medium py-4"
+        >
           Donate
-        </div>
+        </button>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 text-center mt-2 ">
@@ -64,6 +77,7 @@ function ImageSlider() {
           </span>
         ))}
       </div>
+      {isOpen && <Donate closeModal={closeModal} />}
     </div>
   );
 }
