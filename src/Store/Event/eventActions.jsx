@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../config/endpoint";
+import { API_BASE_URL } from "../../Config/endpoint";
 import { errorMessage, successMessage } from "../Messages/messageActions";
 import * as actionTypes from "./eventActionTypes";
 

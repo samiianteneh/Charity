@@ -25,8 +25,7 @@ const loginSuccess = (state, action) => {
 
 const loginFail = (state, action) => ({
   ...state,
-  error: action.error,
-  loading: false,
+  error: action.payload.error,
 });
 const logout = (state) => {
   localStorage.removeItem("token");
@@ -46,6 +45,7 @@ export const authReducer = (state = initialState, action) => {
     case actionTypes.LOGIN_SUCCESS:
       return loginSuccess(state, action);
     case actionTypes.LOGIN_FAIL:
+      return loginFail(state, action);
       return loginFail(state, action);
     case actionTypes.LOGOUT:
       return logout(state);

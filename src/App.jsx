@@ -12,6 +12,7 @@ import MemberNew from "./Pages/Admin/Member/memberNew";
 import EventNew from "./Pages/Admin/events/eventNew";
 import Transaction from "./Pages/Admin/Transaction/transaction";
 import Settings from "./Pages/Admin/Settings/settings";
+import EditEventNew from "./Pages/Admin/events/edit/editEventNew";
 
 function App() {
   const tokens = localStorage.getItem("token");
@@ -31,6 +32,10 @@ function App() {
               <Route path="/dashboard/adminNew" element={<AdminNew />} />
               <Route path="/dashboard/members" element={<MemberNew />} />
               <Route path="/dashboard/events" element={<EventNew />} />
+              <Route
+                path="/dashboard/editEvent/:id"
+                element={<EditEventNew />}
+              />
               <Route path="/dashboard/transaction" element={<Transaction />} />
               <Route path="/dashboard/settings" element={<Settings />} />
 

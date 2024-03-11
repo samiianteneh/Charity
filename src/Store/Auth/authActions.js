@@ -29,15 +29,18 @@ export const loginUser = (data) => {
       data,
     })
       .then((response) => {
-        console.log("firstresponse", response);
+        // console.log("firstresponse", response);
+
         const { token, user } = response?.data;
 
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        console.log(token, "token BeDis");
+        console.log(user, "user BeDis");
+
         dispatch(loginSuccess(token, user));
+        console.log("token", token);
+        console.log("user", user);
         // localStorage.setItem("token", token);
         // localStorage.setItem("user", JSON.stringify(user));
-        // console.log("firstgtyh", dispatch(loginSuccess(token, user)));
       })
       .catch((error) => {
         dispatch(loginFail(error.message));

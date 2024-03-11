@@ -5,97 +5,74 @@ import { charity } from "../../../Constant/charity";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import add from "../../../assets/icons/wired-outline-49-plus-circle.png";
+import CreateEvent from "./CreateEvent";
+import EventTable from "./EventTable";
 const EventNew = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const perPage = 8;
-
-  // Calculate total number of pages
-  const totalPages = Math.ceil(charity.length / perPage);
-
-  // Calculate index of the first and last item to display on the current page
-  const indexOfLastItem = currentPage * perPage;
-  const indexOfFirstItem = indexOfLastItem - perPage;
-
-  // Slice the data array to get the items for the current page
-  const currentItems = charity.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Function to handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Tab 1");
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const activeEvents = charity.filter((items) => items?.is_active == 1);
+  const inActiveEvents = charity.filter((items) => items?.is_active == 0);
   return (
     <Layout>
       <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
         <div className="row-span-1 py-1 rounded-[20px] ">
           <DashboardHeader />
           <div className="container mx-auto mt-8">
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse border border-gray-300">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="py-2 px-4 border border-gray-300">Name</th>
-                    <th className="py-2 px-4 border border-gray-300">
-                      Event Address
-                    </th>{" "}
-                    <th className="py-2 px-4 border border-gray-300">Date</th>
-                    <th className="py-2 px-4 border border-gray-300">
-                      Address
-                    </th>
-                    <th className="py-2 px-4 border border-gray-300">
-                      Description
-                    </th>
-                    <th className="py-2 px-4 border border-gray-300">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((event) => (
-                    <tr key={event.id}>
-                      <td className="py-2 px-4 border border-gray-300">
-                        {event.charity}
-                      </td>
-                      <td className="py-2 px-4 border border-gray-300">
-                        {event.charityAddress}
-                      </td>
-                      <td className="py-2 px-4 border border-gray-300">
-                        {event.date}
-                      </td>
-                      <td className="py-2 px-4 border border-gray-300">
-                        {event.location}
-                      </td>
-                      <td className="py-2 px-4 border border-gray-300">
-                        {event.description}
-                      </td>
-                      <td className="py-2 px-4 border border-gray-300">
-                        <Link
-                          to={`/editEvent/${event?.eventId}`}
-                          className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded"
-                        >
-                          <FaEdit />
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <img
+              onClick={() => openModal()}
+              className="text-xl font-semibold mb-4 text-[#43a440] w-10"
+              src={add}
+            />
+            <div className="w-[95%]  mx-auto mt-8">
+              <div className="flex   items-center justify-center gap-10 ">
+                <button
+                  className={`${
+                    activeTab === "Tab 1"
+                      ? "border-2 rounded-2xl border-[#43a440] text-[#43a440]"
+                      : "text-gray-500  border-b-2"
+                  } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
+                  onClick={() => handleTabClick("Tab 1")}
+                >
+                  Active{" "}
+                </button>
+                <button
+                  className={`${
+                    activeTab === "Tab 2"
+                      ? "border-2 rounded-2xl border-[#43a440] text-[#43a440]"
+                      : "text-gray-500 border-b-2"
+                  } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
+                  onClick={() => handleTabClick("Tab 2")}
+                >
+                  InActive{" "}
+                </button>
+              </div>
+              <div className="mt-4">
+                {activeTab === "Tab 1" && (
+                  <div className="">
+                    {" "}
+                    <EventTable charity={activeEvents} type="active" />
+                  </div>
+                )}
+                {activeTab === "Tab 2" && (
+                  <div className="">
+                    {" "}
+                    <EventTable charity={inActiveEvents} type="inActive" />
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="flex justify-end mr-2 mt-4 space-x-2">
-              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-                (pageNumber) => (
-                  <button
-                    key={pageNumber}
-                    onClick={() => handlePageChange(pageNumber)}
-                    className={`px-3 py-1 text-sm rounded-md focus:outline-none ${
-                      currentPage === pageNumber
-                        ? "bg-[#43a440] text-white text-xl"
-                        : "text-[#43a440] hover:bg-[#358232] hover:text-white "
-                    }`}
-                  >
-                    {pageNumber}
-                  </button>
-                )
-              )}
-            </div>
+            {isOpen && <CreateEvent closeModal={closeModal} />}
           </div>
         </div>
       </div>
