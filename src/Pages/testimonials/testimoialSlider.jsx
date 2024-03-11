@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { Testimonials } from "../Constant/testimonial";
-import { Testimonials } from "../Constant/testimonial";
+import { Testimonials } from "../../Constant/testimonial";
 
 function TestimonialSlider() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -22,26 +21,28 @@ function TestimonialSlider() {
   };
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center pb-20">
-      <div className="w-full flex items-center justify-center md:w-1/2 mx-6 mb-4 md:mb-0">
+    <div class=" font-poppins container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center ">
         <img
           src={Testimonials[currentTestimonialIndex].image}
           alt={Testimonials[currentTestimonialIndex].name}
-          className="w-[80%] h-auto md:h-96 rounded-lg"
+          className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
         />
       </div>
-      <div className="w-full md:w-1/2 px-5">
+      <div class="text-center lg:w-2/3 w-full">
         <div className="testimonial-slide">
           <div className="testimonial-content">
-            <h2 className="font-bold text-xl mb-2">
+            <div class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               {Testimonials[currentTestimonialIndex].name}
-            </h2>
-            <p className="text-gray-600 hover:text-green-600 mb-4">
+            </div>
+            <p className="text-green-600 hover:text-green-600 mb-4 font-light">
               <a href={`mailto:${Testimonials[currentTestimonialIndex].Email}`}>
                 {Testimonials[currentTestimonialIndex].Email}
               </a>
             </p>
-            <p>{Testimonials[currentTestimonialIndex].Testimony}</p>
+            <p className="font-light mb-8 leading-relaxed ">
+              {Testimonials[currentTestimonialIndex].Testimony}
+            </p>
           </div>
         </div>
         <div className="testimonial-dots mt-4">

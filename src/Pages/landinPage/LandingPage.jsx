@@ -7,7 +7,6 @@ import Detail from "../Detail/Detail";
 import BeMember from "../beMember/BeMember";
 import Footer from "../Footer/Footer";
 import TestimonialSlider from "../testimonials/testimoialSlider";
-import Testimonials from "../testimonials/Testimonials";
 
 export const LandingPage = () => {
   return (
@@ -24,15 +23,15 @@ export const LandingPage = () => {
         <section id={"WhatWeDo"}>
           <WhatWeDo />
         </section>
-        <section id={"testimonials"}>
-          <Testimonials />
-        </section>
+        {/* <section id={"testimonials"}> */}
+        <TestimonialSlider />
+        {/* </section> */}
         <section id={"member"}>
           <BeMember />
         </section>
-        {/* <section id={"about"}>
+        <section id={"about"}>
           <Detail />
-        </section> */}
+        </section>
       </main>
       <Footer />
     </>

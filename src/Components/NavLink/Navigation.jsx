@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.jpg";
-import DropDown from "../assets/icons/system-solid-12-arrow-down.gif";
-import close from "../assets/icons/system-solid-29-cross.gif";
+import logo from "../../assets/logo.jpg";
+import DropDown from "../../assets/icons/system-solid-12-arrow-down.gif";
+import close from "../../assets/icons/system-solid-29-cross.gif";
 function Navigation() {
   const [showNav, setShowNav] = useState(false);
   const [dropDown, setDropDown] = useState(false);
@@ -20,18 +20,17 @@ function Navigation() {
   console.log(subNav, "toggleSubNav");
   return (
     <>
-      {" "}
-      <nav>
-        <div className="flex  justify-between  ">
-          <div className="px-5  md:block">
+      <header>
+        <div class="font-poppins container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
+          <div className="px-5 md:block">
             <a href="#home" className=" px-3 font-bold text-xl">
               <img src={logo} alt="logo" className="w-20 md:w-40" />
             </a>
           </div>
-          <div className=" h-10 hidden md:flex">
+          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a
               href="#home"
-              className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Home
             </a>
@@ -39,16 +38,35 @@ function Navigation() {
             <a
               href="#"
               onClick={dropNav}
-              className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               About us
             </a>
             <a
+              href="#contactUs"
+              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Contact Us
+            </a>
+
+            <a
               href="#member"
-              className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0"
             >
               Be a member
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
             </a>
+
             {dropDown && (
               <div className="absolute right-[10%] w-[25%] xl:w-[15%] top-10 bg-gray-100 p-4 z-10">
                 <ul className="">
@@ -56,7 +74,7 @@ function Navigation() {
                     <a
                       href="#WhoWeAre"
                       onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
                     >
                       Who We Are
                     </a>
@@ -65,7 +83,7 @@ function Navigation() {
                     <a
                       href="#WhatWeDo"
                       onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
                     >
                       What We Do
                     </a>
@@ -74,7 +92,7 @@ function Navigation() {
                     <a
                       href="#testimonials"
                       onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text-xl"
+                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
                     >
                       Testimonials
                     </a>
@@ -82,7 +100,7 @@ function Navigation() {
                 </ul>
               </div>
             )}
-          </div>
+          </nav>
           <div className="md:hidden">
             {showNav ? (
               <img
@@ -169,7 +187,6 @@ function Navigation() {
                       o
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
-                      {" "}
                       What We Do
                     </a>
                   </li>
@@ -190,7 +207,7 @@ function Navigation() {
             )}
           </div>
         </div>
-      </nav>
+      </header>
     </>
   );
 }

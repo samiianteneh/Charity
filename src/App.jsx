@@ -1,21 +1,18 @@
 import { Route, Router, Routes } from "react-router";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import { LandingPage } from "./landinPage/LandingPage";
-import LoginPage from "./login/loginPage";
-import Admin from "./Admin/AdminHome/admin";
 import Member from "./Admin/Member/Member";
 import Events from "./Admin/events/Events";
 import EditEvent from "./Admin/events/edit/editEvent";
-
+import { LandingPage } from "./Pages/landinPage/LandingPage";
+import LoginPage from "./Pages/login/loginPage";
+import Admin from "./Pages/Admin/admin";
 function App() {
   const tokens = localStorage.getItem("token");
   const name = localStorage.getItem("name");
   const role = localStorage.getItem("role");
   return (
     <>
-      {/* <LandingPage /> */}
-
       <BrowserRouter>
         <div className="">
           <Routes>
