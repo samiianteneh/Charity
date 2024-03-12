@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   error: null,
   token: localStorage.getItem("token") || null,
-  user: JSON.parse(localStorage.getItem("user")) || null,
+  // user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
 const loginStart = (state) => ({
@@ -25,7 +25,7 @@ const loginSuccess = (state, action) => {
 
 const loginFail = (state, action) => ({
   ...state,
-  error: action.payload.error,
+  error: action.error,
 });
 const logout = (state) => {
   localStorage.removeItem("token");

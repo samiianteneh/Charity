@@ -39,8 +39,8 @@ export const loginUser = (data) => {
         dispatch(loginSuccess(token, user));
         console.log("token", token);
         console.log("user", user);
-        // localStorage.setItem("token", token);
-        // localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
       })
       .catch((error) => {
         dispatch(loginFail(error.message));

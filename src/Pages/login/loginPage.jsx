@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
@@ -8,6 +8,13 @@ import { loginUser, logoutUser } from "../../Store";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.authReducer.loading);
+  // const selectToken = createSelector(
+  //   (state) => state.authReducer.token,
+  //   (token) => token
+  // );
+  const token = useSelector((state) => state.authReducer.token);
 
   const {
     register,
