@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <div className="hidden sm:flex flex-col col-span-1 md:col-span-2 md:px-4 font-poppins overflow-hidden scrollbar-hide">
       <Link
-        to="/main"
+        to="/dashboard/adminHome"
         className="flex flex-col justify-center items-center gap-2 py-3 pb-10"
       >
         <img src={LOGO} alt="Noah Giving Hands" className=" pb-2" />
@@ -48,8 +48,8 @@ function SidebarLink({ item }) {
         pathname.includes(item.path)
           ? "bg-white px-4 text-gray-700 font-bold rounded-[10px]"
           : isSettings
-            ? "border-t-[1px] border-gray-400 text-gray-500 mt-6"
-            : "text-gray-500 px-4 h-10",
+          ? "border-t-[1px] border-gray-400 text-gray-500 mt-6"
+          : "text-gray-500 px-4 h-10",
         linkClasses
       )}
     >

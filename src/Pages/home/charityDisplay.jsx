@@ -5,7 +5,6 @@ function CharityDisplay() {
   const filerdCharity = charity?.filter((item) => {
     return item?.is_active == 1;
   });
-  console.log(filerdCharity, "filerdCharity");
 
   return (
     <div className="container mx-auto">

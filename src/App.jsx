@@ -29,7 +29,7 @@ function App() {
             <>
               <Route path="/admin" element={<Admin />} />
               {/* <Route path="/adminNew" element={<AdminNew />} /> */}
-              <Route path="/dashboard/adminNew" element={<AdminNew />} />
+              <Route path="/dashboard/adminHome" element={<AdminNew />} />
               <Route path="/dashboard/members" element={<MemberNew />} />
               <Route path="/dashboard/events" element={<EventNew />} />
               <Route

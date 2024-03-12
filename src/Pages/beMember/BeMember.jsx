@@ -3,7 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { userRegistration } from "../../Store/Users/userActions";
 import { useDispatch } from "react-redux";
-
+import { country } from "../../Constant/country";
 function BeMember() {
   const dispatch = useDispatch();
   const role = "user";
@@ -12,7 +12,6 @@ function BeMember() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -24,9 +23,7 @@ function BeMember() {
     <div className=" font-poppins container mx-auto mt-8">
       <div className="text-center md:text-center my-5">
         <div className="inline-block relative">
-          <span className="text-green-600 text-3xl font-bold">
-            Registration Form
-          </span>
+          <span className="text-green-600 text-3xl font-bold">Be a Family</span>
           <span className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 transform translate-y-full"></span>
         </div>
         <div className="text-start my-5 px-5 md:px-36 ">
@@ -103,6 +100,26 @@ function BeMember() {
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="country" className="block text-sm font-medium">
+            Country
+          </label>
+          <select
+            id="country"
+            {...register("country", { required: "Country is required" })} // Add validation for required field
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+          >
+            <option value="">Select a country</option>
+            {country.map((country) => (
+              <option key={country.name} value={country.name}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+          {errors.country && (
+            <p className="text-red-500 text-sm">{errors.country.message}</p>
           )}
         </div>
         <button

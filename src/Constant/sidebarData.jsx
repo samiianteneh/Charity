@@ -8,7 +8,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
   {
     key: "dashboard",
     label: "Dashboard",
-    path: "adminNew",
+    path: "adminHome",
     icon: <LuLayoutDashboard />,
   },
   {
