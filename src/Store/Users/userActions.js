@@ -39,6 +39,7 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
+  console.log(data, role, "datarole");
   return (dispatch) => {
     dispatch(registerStart());
     axios({
@@ -73,10 +74,24 @@ export const userRegistration = (data, role) => {
 export const getUsers = () => {
   return (dispatch) => {
     dispatch(registerStart());
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      dispatch(userFail("Token not found"));
+      dispatch(errorMessage("Token not found."));
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
     axios
-      .get(`${API_BASE_URL}/users`)
+      .get(`${API_BASE_URL}/users`, config)
       .then((response) => {
         dispatch(getUsersSuccess(response?.data));
+        console.log(response, "responsettt");
       })
       .catch((error) => {
         dispatch(userFail(error));

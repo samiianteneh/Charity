@@ -1,10 +1,15 @@
 import * as actionTypes from "./authActionTypes";
 
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
+
 const initialState = {
   loading: false,
   error: null,
-  token: localStorage.getItem("token") || null,
-  userData: JSON.parse(localStorage.getItem("userData")) || null,
+  // token: token ? JSON.parse(token) : null,
+  // user: user ? JSON.parse(user) : null,
+  token: token ? token : null,
+  user: user ? user : null,
 };
 
 const loginStart = (state) => ({
@@ -14,16 +19,11 @@ const loginStart = (state) => ({
 });
 
 const loginSuccess = (state, action) => {
-  const { token, user } = action.payload;
-
-  localStorage.setItem("token", token);
-  localStorage.setItem("user", JSON.stringify(user));
-
   return {
     ...state,
     loading: false,
-    token: token,
-    userData: user,
+    token: action.data.token,
+    user: action.data.user,
     error: null,
   };
 };
@@ -34,11 +34,11 @@ const loginFail = (state, action) => ({
 });
 const logout = (state) => {
   localStorage.removeItem("token");
-  localStorage.removeItem("userData");
+  localStorage.removeItem("user");
   return {
     ...state,
     token: null,
-    userData: null,
+    user: null,
     error: null,
   };
 };
@@ -48,8 +48,9 @@ export const authReducer = (state = initialState, action) => {
     case actionTypes.START_LOGIN:
       return loginStart(state);
     case actionTypes.LOGIN_SUCCESS:
-      return loginSuccess(state), action;
+      return loginSuccess(state, action);
     case actionTypes.LOGIN_FAIL:
+      return loginFail(state, action);
       return loginFail(state, action);
     case actionTypes.LOGOUT:
       return logout(state);

@@ -16,7 +16,6 @@ function BeMember() {
 
   const onSubmit = (data) => {
     dispatch(userRegistration(data, role));
-    // window.location.href = "/login";
   };
 
   return (
@@ -38,7 +37,7 @@ function BeMember() {
         className="max-w-[90%] md:max-w-md mx-auto"
       >
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium">
+          <label htmlFor="name" className="block text-sm font-light">
             Full Name
           </label>
           <input

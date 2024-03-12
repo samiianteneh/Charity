@@ -1,6 +1,6 @@
 import axios from "axios";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
@@ -8,6 +8,14 @@ import { loginUser, logoutUser } from "../../Store";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.authReducer.loading);
+  // const selectToken = createSelector(
+  //   (state) => state.authReducer.token,
+  //   (token) => token
+  // );
+  const token = useSelector((state) => state.authReducer.token);
+  console.log(token, "tokenenewf");
 
   const {
     register,
@@ -17,9 +25,12 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    // window.location.href = "/dashboard/adminNew";
   };
-
+  useEffect(() => {
+    if (token) {
+      window.location.href = "/dashboard/adminNew";
+    }
+  }, [token]);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -28,7 +39,6 @@ const LoginPage = () => {
             Sign in to your account
           </h2>
         </div>
-
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="max-w-[90%] md:max-w-md mx-auto"

@@ -36,8 +36,12 @@ export const loginUser = (data) => {
         dispatch(loginSuccess(token, user));
         console.log("token", token);
         console.log("user", user);
-        // localStorage.setItem("token", token);
-        // localStorage.setItem("user", JSON.stringify(user));
+        // When setting the items in localStorage
+        // localStorage.setItem("token", JSON.stringify(tokenObject));
+        // localStorage.setItem("user", JSON.stringify(userObject));
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
       })
       .catch((error) => {
         dispatch(loginFail(error.message));
@@ -49,6 +53,6 @@ export const logoutUser = () => {
   return (dispatch) => {
     dispatch(logout());
     localStorage.removeItem("token");
-    localStorage.removeItem("userData");
+    localStorage.removeItem("user");
   };
 };
