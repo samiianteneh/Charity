@@ -1,10 +1,15 @@
 import * as actionTypes from "./authActionTypes";
 
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
+
 const initialState = {
   loading: false,
   error: null,
-  token: localStorage.getItem("token") || null,
-  // user: JSON.parse(localStorage.getItem("user")) || null,
+  // token: token ? JSON.parse(token) : null,
+  // user: user ? JSON.parse(user) : null,
+  token: token ? token : null,
+  user: user ? user : null,
 };
 
 const loginStart = (state) => ({
@@ -17,8 +22,8 @@ const loginSuccess = (state, action) => {
   return {
     ...state,
     loading: false,
-    token: action.token,
-    user: action.user,
+    token: action.data.token,
+    user: action.data.user,
     error: null,
   };
 };

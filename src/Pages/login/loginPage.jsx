@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "react-hook-form";
@@ -15,6 +15,7 @@ const LoginPage = () => {
   //   (token) => token
   // );
   const token = useSelector((state) => state.authReducer.token);
+  console.log(token, "tokenenewf");
 
   const {
     register,
@@ -24,9 +25,12 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    // window.location.href = "/dashboard/adminNew";
   };
-
+  useEffect(() => {
+    if (token) {
+      window.location.href = "/dashboard/adminNew";
+    }
+  }, [token]);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">

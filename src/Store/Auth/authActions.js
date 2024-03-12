@@ -39,6 +39,10 @@ export const loginUser = (data) => {
         dispatch(loginSuccess(token, user));
         console.log("token", token);
         console.log("user", user);
+        // When setting the items in localStorage
+        // localStorage.setItem("token", JSON.stringify(tokenObject));
+        // localStorage.setItem("user", JSON.stringify(userObject));
+
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
       })

@@ -2,10 +2,14 @@ import DashboardHeader from "../../../Layout/dashboardHeader";
 import Layout from "../../../Layout/layout";
 import { Table } from "antd";
 import { personalInfo } from "../../../Constant/personalInfo";
+import { getUsers } from "../../../Store";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
 const columns = [
   {
     title: "Name",
-    dataIndex: "name",
+    dataIndex: "fullName",
   },
   {
     title: "Email",
@@ -20,7 +24,15 @@ const columns = [
     dataIndex: "country",
   },
 ];
+
 const MemberNew = () => {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.userReducer.users);
+  console.log(users, "userssss");
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
   return (
     <Layout>
       <div className="font-poppins grid  gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
@@ -28,9 +40,8 @@ const MemberNew = () => {
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%] m-3">
-              <Table columns={columns} dataSource={personalInfo} />
+              <Table columns={columns} dataSource={users} />
             </div>
-            {/* <Newttt /> */}
           </div>
         </div>
       </div>
