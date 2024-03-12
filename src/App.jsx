@@ -36,12 +36,12 @@ function App() {
                 path="/dashboard/editEvent/:id"
                 element={<EditEventNew />}
               />
-              <Route path="/dashboard/transaction" element={<Transaction />} />
+              {/* <Route path="/dashboard/transaction" element={<Transaction />} /> */}
               <Route path="/dashboard/settings" element={<Settings />} />
 
-              <Route path="/events" element={<Events />} />
+              {/* <Route path="/events" element={<Events />} />
               <Route path="/editEvent/:id" element={<EditEvent />} />
-              <Route path="/member" element={<Member />} />
+              <Route path="/member" element={<Member />} /> */}
             </>
             {/* ):""} */}
           </Routes>

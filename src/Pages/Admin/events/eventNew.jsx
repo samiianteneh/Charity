@@ -28,11 +28,12 @@ const EventNew = () => {
         <div className="row-span-1 py-1 rounded-[20px] ">
           <DashboardHeader />
           <div className="container mx-auto mt-8">
-            <img
+            <button
               onClick={() => openModal()}
-              className="text-xl font-semibold mb-4 text-[#43a440] w-10"
-              src={add}
-            />
+              className="font-semibold mb-4 text-[#43a440] flex items-center "
+            >
+              <img className="text-xl  w-10" src={add} /> Add Event
+            </button>
             <div className="w-[95%]  mx-auto mt-8">
               <div className="flex   items-center justify-center gap-10 ">
                 <button
@@ -71,7 +72,6 @@ const EventNew = () => {
                 )}
               </div>
             </div>
-
             {isOpen && <CreateEvent closeModal={closeModal} />}
           </div>
         </div>

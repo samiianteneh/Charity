@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
 import { CiLogout } from "react-icons/ci";
 import { LogOut } from "lucide-react";
+import Sidebar from "../Pages/Admin/Sidebar";
 
 export default function DashboardHeader() {
   const [selectedSidebarKey, setSelectedSidebarKey] = useState("dashboard");
@@ -19,10 +20,13 @@ export default function DashboardHeader() {
   const handleButtonClick = () => {};
 
   return (
-    <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between">
+    <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between items-center">
       <div className="font-poppins font-normal text-gray-800  p-4 justify-center ">
         <div className="flex justify-center items-center  font-normal text-gray-500 gap-[10px]">
-          {selectedIcon} {selectedLabel}
+          <div className=" hidden md:block">
+            {selectedIcon} {selectedLabel}
+          </div>
+          <Sidebar />
         </div>
       </div>
       <div className="flex items-center justify-center gap-[20px] px-[20px]">

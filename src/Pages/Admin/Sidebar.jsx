@@ -2,61 +2,38 @@ import React from "react";
 import { FaHome, FaThList } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { NavLink } from "react-router-dom";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiSettings } from "react-icons/fi";
 import { MdEvent } from "react-icons/md";
+import { MdOutlineManageAccounts } from "react-icons/md";
+import { RiCalendarEventLine } from "react-icons/ri";
 
 function Sidebar() {
-  const Logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("role");
-    localStorage.removeItem("userID");
-
-    window.location.href = "/";
-  };
-
   return (
-    <div className="flex  md:flex-col md:h-screen">
-      <div className="flex items-center md:justify-start">
-        <div className="p-5 w-6/12 md:w-10/12 border rounded m-4 bg-gray-500">
-          Full Name
-        </div>
-      </div>
-
+    <div className="flex  md:hidden">
       <div className="pt-10 text-4xl gap-3 flex md:flex-col md:ml-5">
-        <NavLink to="/admin" activeClassName="active">
+        <NavLink to="/dashboard/adminHome" activeClassName="active">
           <div className="flex gap-10 py-2">
-            <FaHome className="text-[#43a440]" />
-            <div className="text-2xl hidden md:block">Home</div>
+            <FaHome className="" />
+            <div className="text-2xl hidden md:block">Homes</div>
           </div>
         </NavLink>
 
-        <NavLink to="/member" activeClassName="active">
+        <NavLink to="/dashboard/members" activeClassName="active">
           <div className="flex gap-10 py-2">
-            <FaThList className="text-[#43a440]" />
-            <div className="text-2xl hidden md:block">Member List</div>
+            <MdOutlineManageAccounts className="" />
           </div>
         </NavLink>
 
-        <NavLink to="/events" activeClassName="active">
+        <NavLink to="/dashboard/events" activeClassName="active">
           <div className="flex gap-10 py-2">
-            <MdEvent className="text-[#43a440]" />
-            <div className="text-2xl hidden md:block">Events</div>
+            <RiCalendarEventLine className="" />
           </div>
         </NavLink>
-        <NavLink to="/transactions" activeClassName="active">
+        <NavLink to="/dashboard/settings" activeClassName="active">
           <div className="flex gap-10 py-2">
-            <GrTransaction className="text-[#43a440]" />
-            <div className="text-2xl hidden md:block">Transaction</div>
+            <FiSettings className="" />
           </div>
         </NavLink>
-
-        <div className="md:flex gap-10 py-2">
-          <button className="" onClick={Logout}>
-            <FiLogOut className="text-[#43a440]" />
-            <div className="text-2xl hidden md:block">Logout</div>
-          </button>
-        </div>
       </div>
     </div>
   );
