@@ -1,9 +1,7 @@
 import React from "react";
-import { FaHome, FaThList } from "react-icons/fa";
-import { GrTransaction } from "react-icons/gr";
+import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { FiLogOut, FiSettings } from "react-icons/fi";
-import { MdEvent } from "react-icons/md";
+import { FiSettings } from "react-icons/fi";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { RiCalendarEventLine } from "react-icons/ri";
 
@@ -14,7 +12,6 @@ function Sidebar() {
         <NavLink to="/dashboard/adminHome" activeClassName="active">
           <div className="flex gap-10 py-2">
             <FaHome className="" />
-            <div className="text-2xl hidden md:block">Homes</div>
           </div>
         </NavLink>
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import closeIcon from "../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/endpoint";
 
 function Donate({ closeModal }) {
   useEffect(() => {
@@ -25,13 +26,14 @@ function Donate({ closeModal }) {
 
   const onSubmit = (e) => {
     axios
-      .post("https://jsonplaceholder.typicode.com/users", {
+      .post(`${API_BASE_URL}/payment/process`, {
         donation_ammount: e.donation_ammount,
       })
       .then((response) => {
         console.log(response);
-        if (response?.success === true) {
-          alert("Hello");
+        if (response?.data?.success === true) {
+          // alert(response?.data?.clientSecret?.session?.url);
+          window.location.href = response?.data?.clientSecret?.session?.url;
         }
       })
       .catch((err) => {
@@ -40,10 +42,10 @@ function Donate({ closeModal }) {
   };
 
   return (
-    <div className="font- poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+    <div className="font-poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg max-w-[75%] min-w-[25%] modal-content">
         <div className="flex justify-between items-center mt-4 py-2">
-          <h2 className="text-lg font-semibold ">Donateion</h2>
+          <h2 className="text-lg font-semibold ">Donation</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
         <div className="max-h-80  overflow-auto text-justify font-light">
