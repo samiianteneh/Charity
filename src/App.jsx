@@ -25,28 +25,25 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {tokens && (
-              <>
-                <Route path="/admin" element={<Admin />} />
-                {/* <Route path="/adminNew" element={<AdminNew />} /> */}
-                <Route path="/dashboard/adminNew" element={<AdminNew />} />
-                <Route path="/dashboard/members" element={<MemberNew />} />
-                <Route path="/dashboard/events" element={<EventNew />} />
-                <Route
-                  path="/dashboard/editEvent/:id"
-                  element={<EditEventNew />}
-                />
-                <Route
-                  path="/dashboard/transaction"
-                  element={<Transaction />}
-                />
-                <Route path="/dashboard/settings" element={<Settings />} />
+            {/* {tokens  ? ( */}
+            <>
+              <Route path="/admin" element={<Admin />} />
+              {/* <Route path="/adminNew" element={<AdminNew />} /> */}
+              <Route path="/dashboard/adminHome" element={<AdminNew />} />
+              <Route path="/dashboard/members" element={<MemberNew />} />
+              <Route path="/dashboard/events" element={<EventNew />} />
+              <Route
+                path="/dashboard/editEvent/:id"
+                element={<EditEventNew />}
+              />
+              {/* <Route path="/dashboard/transaction" element={<Transaction />} /> */}
+              <Route path="/dashboard/settings" element={<Settings />} />
 
-                <Route path="/events" element={<Events />} />
-                <Route path="/editEvent/:id" element={<EditEvent />} />
-                <Route path="/member" element={<Member />} />
-              </>
-            )}
+              {/* <Route path="/events" element={<Events />} />
+              <Route path="/editEvent/:id" element={<EditEvent />} />
+              <Route path="/member" element={<Member />} /> */}
+            </>
+            {/* ):""} */}
           </Routes>
         </div>
       </BrowserRouter>

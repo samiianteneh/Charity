@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 import DropDown from "../../assets/icons/system-solid-12-arrow-down.gif";
 import close from "../../assets/icons/system-solid-29-cross.gif";
+import Donate from "../../Pages/home/Donate";
 function Navigation() {
   const [showNav, setShowNav] = useState(false);
   const [dropDown, setDropDown] = useState(false);
@@ -16,8 +17,21 @@ function Navigation() {
   };
   const dropNav = () => {
     setDropDown(!dropDown);
+    subNav(false);
   };
-  console.log(subNav, "toggleSubNav");
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  function handleClick() {
+    setIsOpen(true);
+  }
+  function newFunction() {
+    setIsOpen(true);
+  }
   return (
     <>
       <header>
@@ -48,7 +62,18 @@ function Navigation() {
             >
               Contact Us
             </a>
-
+            <button
+              onClick={() => handleClick()}
+              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Donate
+            </button>
+            <a
+              href="/login"
+              className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Login
+            </a>
             <a
               href="#member"
               className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0"
@@ -125,7 +150,14 @@ function Navigation() {
                   <li className="mb-2 text-left">
                     <a
                       href="#home"
-                      onClick={toggleNav}
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
                       Home
@@ -143,16 +175,49 @@ function Navigation() {
                   <li className="mb-2 text-left">
                     <a
                       href="#member"
-                      onClick={toggleNav}
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
                       Membership
                     </a>
                   </li>
                   <li className="mb-2 text-left">
+                    <div
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                              newFunction();
+                            }
+                          : () => {
+                              toggleNav();
+                              newFunction();
+                            }
+                      }
+                      className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                    >
+                      Donate
+                    </div>
+                  </li>
+                  <li className="mb-2 text-left">
                     <a
                       href="#contactUs"
-                      onClick={toggleNav}
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
                       Contact Us
@@ -209,6 +274,7 @@ function Navigation() {
             )}
           </div>
         </div>
+        {isOpen && <Donate closeModal={closeModal} />}
       </header>
     </>
   );

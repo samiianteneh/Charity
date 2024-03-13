@@ -33,9 +33,6 @@ export const loginUser = (data) => {
 
         const { token, user } = response?.data;
 
-        console.log(token, "token BeDis");
-        console.log(user, "user BeDis");
-
         dispatch(loginSuccess(token, user));
         console.log("token", token);
         console.log("user", user);

@@ -48,7 +48,7 @@ function WhatWeDo() {
               <img
                 src={work?.image}
                 alt="Support A Family"
-                className="h-40 w-full object-cover rounded-md"
+                className="h-60 w-full object-cover rounded-md"
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-2">{work?.title}</h3>

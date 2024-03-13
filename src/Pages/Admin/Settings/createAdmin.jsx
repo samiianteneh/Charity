@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { userRegistration } from "../../../Store";
+import { Button, Form, Input, Modal, Upload } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 function CreateAdmin({ closeModal }) {
   const dispatch = useDispatch();
-  const role = "admin";
+  const role = useRef("admin");
 
   const {
     register,
@@ -16,7 +18,7 @@ function CreateAdmin({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(userRegistration(data, role));
+    dispatch(userRegistration(data, role.current));
     closeModal();
   };
 
@@ -36,9 +38,9 @@ function CreateAdmin({ closeModal }) {
 
   return (
     <div className="font-poppins font-normal fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-4 rounded-lg min-w-[75%] md:min-w-[50%] modal-content">
+      <div className="bg-white p-4 rounded-lg min-w-[40%] md:min-w-[30%] modal-content">
         <div className="flex justify-between items-center mt-4 py-2">
-          <h2 className="text-lg font-semibold text-gray-500 ">Add Admin</h2>
+          <h2 className="text-lg font-semibold text-gray-500">Add Admin</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
         <div className="max-h-[90%] overflow-auto text-justify font-light">
@@ -112,6 +114,43 @@ function CreateAdmin({ closeModal }) {
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
               )}
             </div>
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-[13px] font-medium">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="Type your password"
+                id="password"
+                {...register("password", {
+                  required: "Password is required",
+                  pattern: {
+                    value:
+                      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:,<.>]).{8,}$/,
+                    message:
+                      "Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long",
+                  },
+                })}
+                className=" font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label htmlFor="password" className="block text-sm font-medium">
+                Upload Image
+              </label>
+              <Form>
+                <Form.Item label="Profile Picture">
+                  <Upload>
+                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                  </Upload>
+                </Form.Item>
+              </Form>
+            </div>
             <button
               id="submitBtn"
               type="submit"
@@ -121,13 +160,6 @@ function CreateAdmin({ closeModal }) {
             </button>
           </form>
         </div>
-
-        {/* <button
-          onClick={closeModal}
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md"
-        >
-          Close
-        </button> */}
       </div>
     </div>
   );
