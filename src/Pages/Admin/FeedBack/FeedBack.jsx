@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import DashboardHeader from "../../../Layout/dashboardHeader";
-import Layout from "../../../Layout/layout";
-import { charity } from "../../../Constant/charity";
-import { Link } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
-import add from "../../../assets/icons/wired-outline-49-plus-circle.png";
-import CreateEvent from "./CreateEvent";
-import EventTable from "./EventTable";
-import { IoMdAddCircle } from "react-icons/io";
+import { useState } from "react";
 
-const EventNew = () => {
+import { IoMdAddCircle } from "react-icons/io";
+import { Comments } from "../../../Constant/Comments";
+import Layout from "../../../Layout/layout";
+import DashboardHeader from "../../../Layout/dashboardHeader";
+import CreateEvent from "../events/CreateEvent";
+import FeedBackTable from "./FeedBackTable";
+
+const Feedback = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
   const handleTabClick = (tab) => {
@@ -22,23 +20,17 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = charity.filter((items) => items?.is_active == 1);
-  const inActiveEvents = charity.filter((items) => items?.is_active == 0);
+  const activeComments = Comments.filter((items) => items?.is_seen == 1);
+  const inActiveComments = Comments.filter((items) => items?.is_seen == 0);
+  console.log(Comments, "CommentsComments");
+  console.log(activeComments, "activeComments");
+  console.log(inActiveComments, "inActiveComments");
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
         <div className="py-1 rounded-[20px] ">
           <DashboardHeader />
           <div className="container mx-auto mt-8">
-            <div className="px-5 py-4 m-2 ">
-              <button
-                className="flex bg-green-600 items-center justify-center gap-2 rounded-[5px] border-[1px] py-2 px-3"
-                onClick={() => openModal()}
-              >
-                <IoMdAddCircle className="fill-white " size={20} />
-                <p className="font-normal text-[14px] text-white"> Add Event</p>
-              </button>
-            </div>
             <div className="w-[95%]  mx-auto mt-8">
               <div className="flex   items-center justify-center gap-10 ">
                 <button
@@ -49,7 +41,7 @@ const EventNew = () => {
                   } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
                   onClick={() => handleTabClick("Tab 1")}
                 >
-                  Active{" "}
+                  Seen{" "}
                 </button>
                 <button
                   className={`${
@@ -59,20 +51,23 @@ const EventNew = () => {
                   } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
                   onClick={() => handleTabClick("Tab 2")}
                 >
-                  InActive{" "}
+                  Un Seen{" "}
                 </button>
               </div>
               <div className="mt-4">
                 {activeTab === "Tab 1" && (
                   <div className="">
                     {" "}
-                    <EventTable charity={activeEvents} type="active" />
+                    <FeedBackTable Comments={activeComments} type="active" />
                   </div>
                 )}
                 {activeTab === "Tab 2" && (
                   <div className="">
                     {" "}
-                    <EventTable charity={inActiveEvents} type="inActive" />
+                    <FeedBackTable
+                      Comments={inActiveComments}
+                      type="inActive"
+                    />
                   </div>
                 )}
               </div>
@@ -85,4 +80,4 @@ const EventNew = () => {
   );
 };
 
-export default EventNew;
+export default Feedback;

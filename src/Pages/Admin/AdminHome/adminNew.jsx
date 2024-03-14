@@ -4,6 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import { personalInfo } from "../../../Constant/personalInfo";
 import { charity } from "../../../Constant/charity";
+import { moneyCollected } from "../../../Constant/moneyCollected";
 
 function AdminNew() {
   const [counts, setCounts] = useState({});
@@ -19,10 +20,19 @@ function AdminNew() {
   ChartJS.register(ArcElement, Tooltip, Legend);
   const activeCharity = charity?.filter((charity) => charity?.is_active == 1);
   const inActiveCharity = charity?.filter((charity) => charity?.is_active == 0);
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    window.location.href = "/login";
+
+  // Function to calculate total amount collected for each year
+  const calculateYearlyTotal = (data) => {
+    const yearlyTotal = {};
+    data.forEach(({ date, amount }) => {
+      const year = new Date(date).getFullYear();
+      yearlyTotal[year] = (yearlyTotal[year] || 0) + amount;
+    });
+    return yearlyTotal;
   };
+
+  // Calculate total amount collected for each year
+  const yearlyTotal = calculateYearlyTotal(moneyCollected);
   return (
     <Layout>
       <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
@@ -53,13 +63,44 @@ function AdminNew() {
                 </h2>
               </div>
               <div className=" ml-2">
-                <div>No of Active Charity event {activeCharity?.length}</div>
+                <table>
+                  <thead>
+                    <tr>
+                      <td className="px-3"> No of Active Charity event :</td>
+                      <td className="px-3">{activeCharity?.length}</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3"> No of InActive Charity event :</td>
+                      <td className="px-3">
+                        {" "}
+                        {"  "}
+                        {inActiveCharity?.length}
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+                {/* <div>No of Active Charity event : {activeCharity?.length}</div>
                 <div>
-                  No of InActive Charity event {inActiveCharity?.length}
-                </div>
+                  No of InActive Charity event : {inActiveCharity?.length}
+                </div> */}
               </div>
             </div>
-            <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]"></div>
+            <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">
+              <div className="container mx-auto mt-8 ml-10">
+                <h2 className="text-xl font-semibold mb-4 text-[#43a440]">
+                  Chash Collected
+                </h2>
+              </div>
+              <div className=" ml-2">
+                <ul>
+                  {Object.entries(yearlyTotal).map(([year, total]) => (
+                    <li key={year}>
+                      {year}: {total}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         {/* <div className="row-span-2">

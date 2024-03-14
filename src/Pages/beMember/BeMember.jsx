@@ -37,7 +37,7 @@ function BeMember() {
         className="max-w-[90%] md:max-w-md mx-auto"
       >
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-light">
+          <label htmlFor="name" className="block text-sm font-medium">
             Full Name
           </label>
           <input
@@ -108,7 +108,7 @@ function BeMember() {
           <select
             id="country"
             {...register("country", { required: "Country is required" })} // Add validation for required field
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 text-sm font-light rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
           >
             <option value="">Select a country</option>
             {country.map((country) => (

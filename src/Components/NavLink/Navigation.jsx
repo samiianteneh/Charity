@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import DropDown from "../../assets/icons/system-solid-12-arrow-down.gif";
 import close from "../../assets/icons/system-solid-29-cross.gif";
 import Donate from "../../Pages/home/Donate";
@@ -32,6 +32,7 @@ function Navigation() {
   function newFunction() {
     setIsOpen(true);
   }
+  const tokens = localStorage.getItem("token");
   return (
     <>
       <header>
@@ -68,6 +69,16 @@ function Navigation() {
             >
               Donate
             </button>
+            {tokens ? (
+              <a
+                href="/adminHome"
+                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              >
+                Admin Page
+              </a>
+            ) : (
+              ""
+            )}
 
             <a
               href="#member"
@@ -218,6 +229,26 @@ function Navigation() {
                       Contact Us
                     </a>
                   </li>
+                  {tokens ? (
+                    <li className="mb-2 text-left">
+                      <a
+                        href="/adminHome"
+                        onClick={
+                          subNav
+                            ? () => {
+                                toggleNav();
+                                toggleSubNav();
+                              }
+                            : toggleNav
+                        }
+                        className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                      >
+                        Admin Page
+                      </a>
+                    </li>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </div>
             ) : (

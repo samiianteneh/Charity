@@ -55,7 +55,7 @@ function Donate({ closeModal }) {
           >
             <div className="py-2 flex items-center">
               <label htmlFor="donation_ammount" className="mr-2 w-[30%]">
-                Money :
+                amount :
               </label>
               <input
                 className="w-[70%] h-10 pl-2 border-[1px] border-black rounded bg-white dark:text-black"
@@ -64,11 +64,11 @@ function Donate({ closeModal }) {
                 id="donation_ammount"
                 {...register("donation_ammount", {
                   required:
-                    "Please enter the amount of money before submitting",
+                    "Please enter the amount of amount before submitting",
                   pattern: {
                     value: /^[0-9]+$/,
                     message:
-                      "Please enter a valid amount of money (only digits)..",
+                      "Please enter a valid amount of amount (only digits)..",
                   },
                 })}
               />

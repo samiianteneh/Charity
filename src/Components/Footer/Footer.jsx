@@ -3,7 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FiInstagram, FiTwitter } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandLinkedin } from "react-icons/tb";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 
 function Footer() {
   const currentDate = new Date().getFullYear();

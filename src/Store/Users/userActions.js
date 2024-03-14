@@ -116,6 +116,8 @@ export const getUserById = (userId) => {
 };
 
 export const updateUser = (userId, newData) => {
+  console.log("firstfirstfirst", userId, newData);
+
   return (dispatch) => {
     dispatch(registerStart());
     axios
@@ -123,6 +125,7 @@ export const updateUser = (userId, newData) => {
       .then((response) => {
         dispatch(updateUserSuccess(response?.data));
         dispatch(successMessage("User updated successfully!"));
+        console.log("firresponsest", response);
       })
       .catch((error) => {
         dispatch(userFail(error));
@@ -132,6 +135,8 @@ export const updateUser = (userId, newData) => {
 };
 
 export const deleteUser = (userId, data) => {
+  console.log(userId, "userId");
+
   return (dispatch) => {
     dispatch(registerStart());
     axios

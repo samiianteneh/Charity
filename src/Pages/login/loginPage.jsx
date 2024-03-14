@@ -28,7 +28,7 @@ const LoginPage = () => {
   };
   useEffect(() => {
     if (token) {
-      window.location.href = "/dashboard/adminNew";
+      window.location.href = "/adminHome";
     }
   }, [token]);
   return (

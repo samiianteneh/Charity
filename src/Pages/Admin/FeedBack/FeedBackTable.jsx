@@ -2,35 +2,33 @@ import { Space, Table } from "antd";
 import { Link } from "lucide-react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import CreateEvent from "./CreateEvent";
-import EventEdit from "./EditEvent";
+import EventEdit from "../events/EditEvent";
+import FeedBackModal from "./FeedBackModal";
 
-function EventTable({ charity, type }) {
+function FeedBackTable({ Comments, type }) {
   const columns = [
     {
       title: "Name",
-      dataIndex: "charity",
+      dataIndex: "name",
       className: " font-poppins font-normal text-[13px]",
     },
     {
-      title: "Event Address	",
-      dataIndex: "charityAddress",
+      title: "email	",
+      dataIndex: "email",
       className: " font-poppins font-normal text-[13px]",
     },
     {
-      title: "Date",
-      dataIndex: "date",
+      title: "message",
       className: " font-poppins font-normal text-[13px]",
-    },
-    {
-      title: "Address",
-      dataIndex: "location",
-      className: " font-poppins font-normal text-[13px]",
-    },
-    {
-      title: "Description",
-      dataIndex: "description",
-      className: " font-poppins font-normal text-[13px]",
+      render: (_, record) => (
+        <Space size="middle">
+          <div className="  font-normal py-2 px-4 rounded   ">
+            {record.message?.length < 50
+              ? record.message
+              : record.message?.slice(0, 50) + "..."}
+          </div>
+        </Space>
+      ),
     },
 
     {
@@ -41,14 +39,8 @@ function EventTable({ charity, type }) {
       render: (_, record) => (
         <Space size="middle">
           <a
-            href={`./editEvent/${record?.eventId}`}
-            className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded hidden md:block"
-          >
-            <FaEdit />
-          </a>
-          <a
             onClick={() => openModal(record)}
-            className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded  md:hidden "
+            className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded   "
           >
             <FaEdit />
           </a>
@@ -72,23 +64,22 @@ function EventTable({ charity, type }) {
   const closeModal = () => {
     setIsOpen(false);
   };
-  console.log(data, "dataxdata");
   return (
     <div>
       <div className="container mx-auto mt-8">
         <h2 className="text-lg font-medium mb-4 text-[#43a440] border-b-[1px]">
-          {type == "active" ? "Active" : type === "inActive" ? "Inactive" : ""}{" "}
-          Event List
+          {type == "active" ? "Seen" : type === "inActive" ? "UnSeen" : ""}{" "}
+          FeedBacks{" "}
         </h2>{" "}
         <Table
           columns={columns}
-          dataSource={charity}
+          dataSource={Comments}
           pagination={customPagination}
         />
       </div>
-      {isOpen && <EventEdit closeModal={closeModal} data={data} />}
+      {isOpen && <FeedBackModal closeModal={closeModal} data={data} />}
     </div>
   );
 }
 
-export default EventTable;
+export default FeedBackTable;
