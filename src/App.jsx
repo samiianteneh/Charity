@@ -29,15 +29,13 @@ function App() {
             <>
               <Route path="/admin" element={<Admin />} />
               {/* <Route path="/adminNew" element={<AdminNew />} /> */}
-              <Route path="/dashboard/adminHome" element={<AdminNew />} />
-              <Route path="/dashboard/members" element={<MemberNew />} />
-              <Route path="/dashboard/events" element={<EventNew />} />
-              <Route
-                path="/dashboard/editEvent/:id"
-                element={<EditEventNew />}
-              />
+              <Route path="/adminHome" element={<AdminNew />} />
+              <Route path="/members" element={<MemberNew />} />
+              <Route path="/events" element={<EventNew />} />
+              <Route path="/editEvent/:id" element={<EditEventNew />} />
               {/* <Route path="/dashboard/transaction" element={<Transaction />} /> */}
-              <Route path="/dashboard/settings" element={<Settings />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/home" element={<LandingPage />} />
 
               {/* <Route path="/events" element={<Events />} />
               <Route path="/editEvent/:id" element={<EditEvent />} />

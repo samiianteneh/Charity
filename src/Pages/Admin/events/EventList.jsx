@@ -5,12 +5,22 @@ import add from "../../../assets/icons/wired-outline-49-plus-circle.png";
 import CreateEvent from "./CreateEvent";
 import { charity } from "../../../Constant/charity";
 import EventTable from "./EventTable";
+import { useDispatch, useSelector } from "react-redux";
 
 function EventList() {
   const activeEvents = charity.filter((items) => items?.is_active == 1);
   const inActiveEvents = charity.filter((items) => items?.is_active == 0);
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
+  const events = useSelector((state) =>
+    console.log("sdbfjsbf", state.eventReducer.events)
+  );
+
+  console.log("firstevents", events);
+  useEffect(() => {
+    dispatch(getEvent());
+  }, [dispatch]);
   const openModal = () => {
     setIsOpen(true);
   };

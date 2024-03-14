@@ -56,7 +56,7 @@ function SidebarLink({ item }) {
 
   return (
     <Link
-      to={`/dashboard/${item.path}`}
+      to={`/${item.path}`}
       className={classNames(
         pathname.includes(item.path)
           ? "bg-white px-4 text-gray-700 font-bold rounded-[10px]"

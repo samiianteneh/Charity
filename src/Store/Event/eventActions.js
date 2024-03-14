@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "../../Config/endpoint";
 import { errorMessage, successMessage } from "../Messages/messageActions";
 import * as actionTypes from "./eventActionTypes";
+import axios from "axios";
 
 const eventStart = () => {
   return {
@@ -10,7 +11,7 @@ const eventStart = () => {
 
 const eventCreateSuccess = (data) => {
   return {
-    type: actionTypes.EVENT_START,
+    type: actionTypes.CREATE_EVENT,
     data,
   };
 };
@@ -49,11 +50,13 @@ const eventFail = (error) => {
 // ================> EVENT CRUD <================
 
 export const createEvent = (data) => {
+  console.log("firdatadatast", data);
+
   return (dispatch) => {
     dispatch(eventStart());
     axios({
       method: "post",
-      url: `${API_BASE_URL}/`,
+      url: `${API_BASE_URL}/event`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -62,6 +65,7 @@ export const createEvent = (data) => {
       .then((response) => {
         dispatch(eventCreateSuccess(response?.data));
         dispatch(successMessage("Event Created Successfully!"));
+        console.log("firjkfdghdjvst", response);
       })
       .catch((error) => {
         dispatch(dispatch(eventFail(error)));
@@ -77,18 +81,42 @@ export const createEvent = (data) => {
       });
   };
 };
-export const getEvent = (event_id) => {
+export const getEvent = () => {
   return (dispatch) => {
     dispatch(eventStart());
     axios({
       method: "get",
-      url: `${API_BASE_URL}/.../${event_id}`,
+      url: `${API_BASE_URL}/event`,
     })
       .then((response) => {
         dispatch(eventGetSuccess(response?.data));
       })
       .catch((error) => {
-        dispatch(dispatch(eventFail(error)));
+        dispatch(eventFail(error));
+        let errors;
+        if (error?.response) {
+          errors = error?.message + " " + error?.response?.data;
+        }
+        if (error?.request) {
+          errors = error?.message + "Failed request, Try Again!";
+        }
+
+        dispatch(errorMessage(errors));
+      });
+  };
+};
+export const getSingleEvent = (event_id) => {
+  return (dispatch) => {
+    dispatch(eventStart());
+    axios({
+      method: "get",
+      url: `${API_BASE_URL}/event/${event_id}`,
+    })
+      .then((response) => {
+        dispatch(singleEventGetSuccess(response?.data));
+      })
+      .catch((error) => {
+        dispatch(eventFail(error));
         let errors;
         if (error?.response) {
           errors = error?.message + " " + error?.response?.data;
@@ -102,7 +130,7 @@ export const getEvent = (event_id) => {
   };
 };
 
-export const updateStakeholder = (id, data) => {
+export const updateEvent = (id, data) => {
   return (dispatch) => {
     dispatch(eventStart());
     axios({
@@ -112,10 +140,10 @@ export const updateStakeholder = (id, data) => {
     })
       .then((response) => {
         dispatch(updateEventSuccess(response?.data));
-        dispatch(successMessage("Stakeholder Updated Successfully!"));
+        dispatch(successMessage("Event Updated Successfully!"));
       })
       .catch((error) => {
-        dispatch(stakeholderFail(error));
+        dispatch(eventFail(error));
         let errors;
         if (error.response) {
           errors = error.message + " " + error.response.data;
@@ -125,6 +153,25 @@ export const updateStakeholder = (id, data) => {
         }
 
         dispatch(errorMessage(errors));
+      });
+  };
+};
+export const deleteUser = (userId, data) => {
+  console.log(userId, "userId");
+
+  return (dispatch) => {
+    dispatch(eventStart());
+    axios
+      .delete(`${API_BASE_URL}/event/${userId}`)
+      .then(() => {
+        dispatch(
+          eventDeleteSuccess(data?.filter((item) => item.id !== userId))
+        );
+        dispatch(successMessage("Event deleted successfully!"));
+      })
+      .catch((error) => {
+        dispatch(eventFail(error));
+        dispatch(errorMessage("Failed to delete event."));
       });
   };
 };

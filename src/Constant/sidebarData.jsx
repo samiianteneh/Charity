@@ -6,6 +6,12 @@ import { LuLayoutDashboard } from "react-icons/lu";
 
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
+    key: "home",
+    label: "Home",
+    path: "home",
+    // icon: <LuLayoutDashboard />,
+  },
+  {
     key: "dashboard",
     label: "Dashboard",
     path: "adminHome",

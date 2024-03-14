@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUsers } from "../../../Store";
+import { userDelete, getUsers } from "../../../Store";
 
 function MemberList() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function MemberList() {
   }, [dispatch]);
 
   const handleDelete = (userId) => {
-    dispatch(deleteUser(userId));
+    dispatch(userDelete(userId));
   };
 
   const [currentPage, setCurrentPage] = useState(1);
