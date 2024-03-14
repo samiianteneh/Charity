@@ -1,14 +1,15 @@
 import React from "react";
-import Navigation from "../NavLink/Navigation";
+import Navigation from "../../Components/NavLink/Navigation";
 import HomePage from "../home/HomePage";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import WhatWeDo from "../whatWeDo/WhatWeDo";
 import Detail from "../Detail/Detail";
 import BeMember from "../beMember/BeMember";
-import Footer from "../Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 import TestimonialSlider from "../testimonials/testimoialSlider";
 import ContactUs from "../contactus/ContactUs";
-export default function LandingPage() {
+
+function LandingPage() {
   return (
     <>
       {/* <Header /> */}
@@ -29,11 +30,13 @@ export default function LandingPage() {
         <section id={"member"}>
           <BeMember />
         </section>
-        <section id={"about"}>
-          <Detail />
+
+        <section id={"contactUs"}>
+          <ContactUs />
         </section>
       </main>
       <Footer />
     </>
   );
 }
+export default LandingPage;
