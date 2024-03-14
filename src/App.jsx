@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import LoginPage from "./Pages/login/loginPage";
@@ -12,8 +12,8 @@ import Feedback from "./Pages/Admin/FeedBack/FeedBack";
 
 function App() {
   const tokens = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
-  console.log(user?.Admin, "useruser");
+  const name = localStorage.getItem("name");
+  const role = localStorage.getItem("role");
   return (
     <>
       <BrowserRouter>
@@ -21,19 +21,23 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {tokens ? (
-              <>
-                <Route path="/home" element={<LandingPage />} />
-                <Route path="/adminHome" element={<AdminNew />} />
-                <Route path="/members" element={<MemberNew />} />
-                <Route path="/events" element={<EventNew />} />
-                <Route path="/feedBack" element={<Feedback />} />
-                <Route path="/editEvent/:id" element={<EditEventNew />} />
-                <Route path="/settings" element={<Settings />} />
-              </>
-            ) : (
-              ""
-            )}
+            {/* {tokens  ? ( */}
+            <>
+              {/* <Route path="/admin" element={<Admin />} /> */}
+              {/* <Route path="/adminNew" element={<AdminNew />} /> */}
+              <Route path="/adminHome" element={<AdminNew />} />
+              <Route path="/members" element={<MemberNew />} />
+              <Route path="/events" element={<EventNew />} />
+              <Route path="/editEvent/:id" element={<EditEventNew />} />
+              {/* <Route path="/dashboard/transaction" element={<Transaction />} /> */}
+              <Route path="/settings" element={<Settings />} />{" "}
+              <Route path="/feedBack" element={<Feedback />} />
+              <Route path="/home" element={<LandingPage />} />
+              {/* <Route path="/events" element={<Events />} />
+              <Route path="/editEvent/:id" element={<EditEvent />} />
+              <Route path="/member" element={<Member />} /> */}
+            </>
+            {/* ):""} */}
           </Routes>
         </div>
       </BrowserRouter>
