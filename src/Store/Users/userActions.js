@@ -134,7 +134,7 @@ export const updateUser = (userId, newData) => {
   };
 };
 
-export const deleteUser = (userId, data) => {
+export const userDelete = (userId, data) => {
   console.log(userId, "userId");
 
   return (dispatch) => {

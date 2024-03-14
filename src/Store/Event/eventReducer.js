@@ -1,44 +1,88 @@
-import * as actionTypes from "./loginActionTypes";
+import * as actionTypes from "./eventActionTypes";
 
 const initialState = {
-  loggedInUser: {},
-  loggedInUser_loading: false,
-  loggedInUser_error: null,
+  events: [],
+  single_event: {},
+  loading: false,
+  error: null,
 };
 
-const userLogin = (state) => {
+const eventStart = (state) => {
   return {
     ...state,
-    loggedInUser_loading: true,
-    loggedInUser_error: null,
+    loading: true,
+    error: null,
   };
 };
 
-const userLoggedInSuccess = (state, action) => {
+const eventCreateSuccess = (state, action) => {
   return {
     ...state,
-    loggedInUser: action.data,
-    loggedInUser_loading: false,
-    loggedInUser_error: null,
+    events: [...state.events, action.data],
+    loading: false,
+    error: null,
+  };
+};
+const eventGetSuccess = (state, action) => {
+  return {
+    ...state,
+    events: action.data,
+    loading: false,
+    error: null,
+  };
+};
+const singleEventGetSuccess = (state, action) => {
+  return {
+    ...state,
+    single_event: action.data,
+    loading: false,
+    error: null,
+  };
+};
+const updateEventSuccess = (state, action) => {
+  return {
+    ...state,
+    events: state.events.map((event) =>
+      event.id === action.data.id ? action.data : event
+    ),
+    loading: false,
+    error: null,
+  };
+};
+const eventDeleteSuccess = (state, action) => {
+  return {
+    ...state,
+    events: action.data,
+    loading: false,
+    error: null,
   };
 };
 
-const userLoginFail = (state, action) => {
+const eventFail = (state, action) => {
   return {
     ...state,
-    loggedInUser_loading: false,
-    loggedInUser_error: action.error,
+    loading: false,
+    error: action.error,
   };
 };
 
-export const loginReducer = (state = initialState, action) => {
+export const eventReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.USER_LOGIN:
-      return userLogin(state, action);
-    case actionTypes.USER_LOGGED_IN_SUCCESS:
-      return userLoggedInSuccess(state, action);
-    case actionTypes.USER_LOGIN_FAIL:
-      return userLoginFail(state, action);
+    case actionTypes.EVENT_START:
+      return eventStart(state, action);
+    case actionTypes.CREATE_EVENT:
+      return eventCreateSuccess(state, action);
+    case actionTypes.GET_EVENT:
+      return eventGetSuccess(state, action);
+    case actionTypes.GET_SINGLE_EVENT:
+      return singleEventGetSuccess(state, action);
+    case actionTypes.UPDATE_EVENT:
+      return updateEventSuccess(state, action);
+    case actionTypes.DELETE_EVENT:
+      return eventDeleteSuccess(state, action);
+    case actionTypes.EVENT_FAIL:
+      return eventFail(state, action);
+
     default:
       return state;
   }

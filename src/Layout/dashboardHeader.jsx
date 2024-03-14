@@ -4,9 +4,9 @@ import { useState } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
 import { CiLogout } from "react-icons/ci";
 import { LogOut } from "lucide-react";
-import Sidebar from "../Pages/Admin/Sidebar";
 import { logoutUser } from "../Store";
 import { useDispatch } from "react-redux";
+import Sidebar from "../Pages/Admin/Sidebar";
 
 export default function DashboardHeader() {
   const dispatch = useDispatch();
