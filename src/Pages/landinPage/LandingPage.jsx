@@ -1,11 +1,11 @@
 import React from "react";
-import Navigation from "../../Components/NavLink/Navigation";
+import Navigation from "../NavLink/Navigation";
 import HomePage from "../home/HomePage";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import WhatWeDo from "../whatWeDo/WhatWeDo";
 import Detail from "../Detail/Detail";
 import BeMember from "../beMember/BeMember";
-import Footer from "../../Components/Footer/Footer";
+import Footer from "../Footer/Footer";
 import TestimonialSlider from "../testimonials/testimoialSlider";
 import ContactUs from "../contactus/ContactUs";
 export default function LandingPage() {
@@ -28,9 +28,6 @@ export default function LandingPage() {
         </section>
         <section id={"member"}>
           <BeMember />
-        </section>
-        <section id={"contactUs"}>
-          <ContactUs />
         </section>
         <section id={"about"}>
           <Detail />

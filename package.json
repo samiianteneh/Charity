@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
-    "@reduxjs/toolkit": "^1.9.7",
-    "antd": "^5.14.2",
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "lucide-react": "^0.350.0",

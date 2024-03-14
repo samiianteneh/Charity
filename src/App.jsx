@@ -1,19 +1,12 @@
 import { Route, Router, Routes } from "react-router";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
+import Member from "./Admin/Member/Member";
+import Events from "./Admin/events/Events";
+import EditEvent from "./Admin/events/edit/editEvent";
+import { LandingPage } from "./Pages/landinPage/LandingPage";
 import LoginPage from "./Pages/login/loginPage";
-import Admin from "./Pages/Admin/AdminHome/admin";
-import Member from "./Pages/Admin/Member/Member";
-import Events from "./Pages/Admin/events/Events";
-import EditEvent from "./Pages/Admin/events/edit/editEvent";
-import LandingPage from "./Pages/landinPage/LandingPage";
-import AdminNew from "./Pages/Admin/AdminHome/adminNew";
-import MemberNew from "./Pages/Admin/Member/memberNew";
-import EventNew from "./Pages/Admin/events/eventNew";
-import Transaction from "./Pages/Admin/Transaction/transaction";
-import Settings from "./Pages/Admin/Settings/settings";
-import EditEventNew from "./Pages/Admin/events/edit/editEventNew";
-
+import Admin from "./Pages/Admin/admin";
 function App() {
   const tokens = localStorage.getItem("token");
   const name = localStorage.getItem("name");
