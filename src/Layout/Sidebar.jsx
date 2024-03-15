@@ -4,20 +4,16 @@ import classNames from "classnames";
 import LOGO from "../assets/logo.png";
 import avatar from "../assets/woman.png";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const linkClasses =
   "flex items-center gap-2 px-3 font-medium hover:no-underline h-12";
 
-const Sidebar = () => {
-  const dispatch = useDispatch();
+const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);
   const userArray = [];
   userArray.push(JSON.parse(localUser));
-  console.log("localUser", userArray);
 
-  useEffect(() => {}, []);
   return (
     <div className="hidden sm:flex flex-col col-span-1 md:col-span-2 md:px-4 font-poppins overflow-hidden scrollbar-hide">
       <Link
@@ -28,7 +24,12 @@ const Sidebar = () => {
       </Link>
       <div className="flex-1 flex-col text-sm">
         {DASHBOARD_SIDEBAR_LINKS.map((item) => (
-          <SidebarLink key={item.key} item={item} />
+          <SidebarLink
+            key={item.key}
+            item={item}
+            selected={item.key === selectedSidebarKey}
+            handleSidebarItemClick={handleSidebarItemClick}
+          />
         ))}
       </div>
       <div className="flex flex-col col-span-2 justify-start items-center mt-auto border-gray-300 bg-white p-3 my-3 rounded-[5px] border-[1px]">
