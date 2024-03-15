@@ -21,21 +21,22 @@ export default function DashboardHeader() {
   );
   const selectedLabel = selectedItem?.label;
   const selectedIcon = selectedItem?.icon;
-
   const handleLogout = () => {
     dispatch(logoutUser());
     window.location.href = "/login";
   };
+
+  console.log("first", selectedItem);
 
   return (
     <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between items-center">
       <div className="font-poppins font-normal text-gray-800  p-4 justify-center ">
         <div className=" hidden md:block">
           <div className="flex justify-center items-center  font-normal text-gray-500 gap-[10px]">
-            <Sidebar onSidebarItemClick={handleSidebarItemClick} />
+            {selectedIcon} {selectedLabel}
           </div>
         </div>
-        {/* <Sidebar /> */}
+        <Sidebar />
       </div>
       <div className="flex items-center justify-center gap-[20px] px-[20px]">
         <button

@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
-import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { createEvent, getEvent } from "../../../Store/Event/eventActions.js";
-import { API_BASE_URL } from "../../../Config/endpoint.js";
+import { useDispatch } from "react-redux";
+import { createEvent } from "../../../Store/Event/eventActions.js";
 
 function CreateEvent({ closeModal }) {
   const dispatch = useDispatch();
@@ -29,29 +27,6 @@ function CreateEvent({ closeModal }) {
     reset,
   } = useForm();
 
-  // const onSubmit = async (data) => {
-  //   try {
-  //     // Prevent multiple submissions
-  //     const submitButton = document.getElementById("submitBtn");
-  //     submitButton.disabled = true;
-
-  //     const response = await axios.post(`${API_BASE_URL}/event`, {
-  //       name: data.name,
-  //       date: data.date,
-  //       eventAddress: data.eventAddress,
-  //       charityAddress: data.charityAddress,
-  //       description: data.description,
-  //     });
-
-  //     console.log(response.data);
-  //     alert("Registration successful!");
-  //     reset(); // Reset form fields
-  //     submitButton.disabled = false; // Re-enable submit button
-  //   } catch (error) {
-  //     console.error("Error during registration:", error);
-  //     alert("Registration failed. Please try again.");
-  //   }
-  // };
   const onSubmit = (data) => {
     dispatch(createEvent(data));
     reset();

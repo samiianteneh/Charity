@@ -56,7 +56,7 @@ export const userRegistration = (data, role) => {
         console.log("firstresponse", response);
       })
       .catch((error) => {
-        dispatch(dispatch(registerFail(error)));
+        dispatch(registerFail(error));
         let errors;
         if (error?.response) {
           errors = error?.message + " " + error?.response?.data;
@@ -121,7 +121,7 @@ export const updateUser = (userId, newData) => {
   return (dispatch) => {
     dispatch(registerStart());
     axios
-      .put(`${API_BASE_URL}/users/${userId}`, newData)
+      .patch(`${API_BASE_URL}/users/${userId}`, newData)
       .then((response) => {
         dispatch(updateUserSuccess(response?.data));
         dispatch(successMessage("User updated successfully!"));

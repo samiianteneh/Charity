@@ -4,30 +4,20 @@ import classNames from "classnames";
 import LOGO from "../assets/logo.png";
 import avatar from "../assets/woman.png";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const linkClasses =
   "flex items-center gap-2 px-3 font-medium hover:no-underline h-12";
 
-const Sidebar = ({ onSidebarItemClick }) => {
-  const { pathname } = useLocation();
-  const [selectedLabel, setSelectedLabel] = useState("");
-  const [selectedIcon, setSelectedIcon] = useState("");
-
+const Sidebar = () => {
+  const dispatch = useDispatch();
   const localUser = useSelector((state) => state.authReducer.user);
   const userArray = [];
   userArray.push(JSON.parse(localUser));
+  console.log("localUser", userArray);
 
-  useEffect(() => {
-    const selectedItem = DASHBOARD_SIDEBAR_LINKS.find((item) =>
-      pathname.includes(item.path)
-    );
-    if (selectedItem) {
-      setSelectedLabel(selectedItem.label);
-      setSelectedIcon(selectedItem.icon);
-    }
-  }, [pathname]);
+  useEffect(() => {}, []);
   return (
     <div className="hidden sm:flex flex-col col-span-1 md:col-span-2 md:px-4 font-poppins overflow-hidden scrollbar-hide">
       <Link
@@ -44,16 +34,16 @@ const Sidebar = ({ onSidebarItemClick }) => {
       <div className="flex flex-col col-span-2 justify-start items-center mt-auto border-gray-300 bg-white p-3 my-3 rounded-[5px] border-[1px]">
         <div className="flex items-center gap-2">
           <img src={avatar} alt="female avatar" className="w-[40px] h-[40px]" />
-          {/* {userArray?.map((user) => ( */}
-          <div className="flex flex-col">
-            <p className="text-gray-800 text-[13px] font-semibold">
-              {userArray[0]?.fullName}
-            </p>
-            <p className="text-gray-800 text-[11px] font-normal">
-              {userArray[0]?.email}
-            </p>
-          </div>
-          {/* // ))} */}
+          {userArray?.map((user) => (
+            <div className="flex flex-col">
+              <p className="text-gray-800 text-[13px] font-semibold">
+                {user?.fullName}
+              </p>
+              <p className="text-gray-800 text-[11px] font-normal">
+                {user?.email}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -75,7 +65,6 @@ function SidebarLink({ item }) {
             : "text-gray-500 px-4 h-10",
         linkClasses
       )}
-      onClick={() => onSidebarItemClick(item.key)}
     >
       <span className="text-xl">{item.icon}</span>
       <span className=" hidden lg:inline-block font-quicksand font-normal">
