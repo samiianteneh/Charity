@@ -19,6 +19,10 @@ const getUsersSuccess = (data) => ({
   type: actionTypes.GET_USER,
   data,
 });
+const getAdminSuccess = (data) => ({
+  type: actionTypes.GET_ADMIN,
+  data,
+});
 const getSingleUserSuccess = (data) => ({
   type: actionTypes.GET_SINGLE_USER,
   data,
@@ -91,6 +95,34 @@ export const getUsers = () => {
       .get(`${API_BASE_URL}/users`, config)
       .then((response) => {
         dispatch(getUsersSuccess(response?.data));
+        console.log(response, "responsettt");
+      })
+      .catch((error) => {
+        dispatch(userFail(error));
+        dispatch(errorMessage("Failed to fetch users."));
+      });
+  };
+};
+export const getAdmin = () => {
+  return (dispatch) => {
+    dispatch(registerStart());
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      dispatch(userFail("Token not found"));
+      dispatch(errorMessage("Token not found."));
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .get(`${API_BASE_URL}/users/role`, config)
+      .then((response) => {
+        dispatch(getAdminSuccess(response?.data));
         console.log(response, "responsettt");
       })
       .catch((error) => {

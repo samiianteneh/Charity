@@ -24,6 +24,12 @@ const getUser = (state, action) => ({
   is_loading: false,
   error: null,
 });
+const getAdmin = (state, action) => ({
+  ...state,
+  users: action.data,
+  is_loading: false,
+  error: null,
+});
 const getSingleUser = (state, action) => ({
   ...state,
   users: action.data,
@@ -60,6 +66,8 @@ export const userReducer = (state = initialState, action) => {
       return createUser(state, action);
     case actionTypes.GET_USER:
       return getUser(state, action);
+    case actionTypes.GET_ADMIN:
+      return getAdmin(state, action);
     case actionTypes.GET_SINGLE_USER:
       return getSingleUser(state, action);
     case actionTypes.UPDATE_USER:

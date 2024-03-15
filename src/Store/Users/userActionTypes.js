@@ -2,6 +2,7 @@ export const START_REGISTER = "START_REGISTER";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
 export const REGISTRATION_FAIL = "REGISTRATION_FAIL";
 export const GET_USER = "GET_USER";
+export const GET_ADMIN = "GET_ADMIN";
 export const GET_SINGLE_USER = "GET_SINGLE_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const DELETE_USER = "DELETE_USER";

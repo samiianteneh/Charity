@@ -11,9 +11,12 @@ import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 const Settings = () => {
-  const user = localStorage.getItem("user");
-  const roles = JSON.parse(user);
-  console.log(roles?.role, "tokenstokens");
+  const userjson = localStorage.getItem("user");
+  const user = JSON.parse(userjson);
+  const roles = user?.role;
+  const adminId = user?.id;
+  console.log(adminId, "tokenstokens");
+  console.log(roles, "tokenstokens");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
 
@@ -68,24 +71,32 @@ const Settings = () => {
       setImagePreview(info.file.response.imageUrl);
     }
   };
+  const filterdUser =
+    roles == "admin" ? users?.filter((items) => items.id == adminId) : users;
+  console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
         <div className="row-span-1 py-1 rounded-[20px] ">
           <DashboardHeader />
-          <div className="px-5 py-4 m-2 ">
-            <button
-              className="flex bg-green-600 items-center justify-center gap-2 rounded-[5px] border-[1px] py-2 px-3"
-              onClick={() => openModal()}
-            >
-              <IoMdAddCircle className="fill-white " size={20} />
-              <p className="font-normal text-[14px] text-white"> Add Admin</p>
-            </button>
-          </div>
+          {roles == "superadmin" ? (
+            <div className="px-5 py-4 m-2 ">
+              <button
+                className="flex bg-green-600 items-center justify-center gap-2 rounded-[5px] border-[1px] py-2 px-3"
+                onClick={() => openModal()}
+              >
+                <IoMdAddCircle className="fill-white " size={20} />
+                <p className="font-normal text-[14px] text-white"> Add Admin</p>
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-4 mx-auto flex flex-wrap">
               <div className="flex flex-wrap -m-4">
-                {users?.map((user) => (
+                {filterdUser?.map((user) => (
                   <div className="p-4 lg:w-1/2 md:w-full">
                     <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                       <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0"></div>
@@ -115,13 +126,17 @@ const Settings = () => {
                                 strokeWidth={1.75}
                               />
                             </button>
-                            <button onClick={() => handleDeleteClick(user)}>
-                              <Trash2
-                                size={20}
-                                strokeWidth={1.75}
-                                color="#2f855a"
-                              />
-                            </button>
+                            {roles === "superadmin" ? (
+                              <button onClick={() => handleDeleteClick(user)}>
+                                <Trash2
+                                  size={20}
+                                  strokeWidth={1.75}
+                                  color="#2f855a"
+                                />
+                              </button>
+                            ) : (
+                              ""
+                            )}
                           </div>
                         </div>
                       </div>
@@ -206,7 +221,8 @@ const Settings = () => {
                 >
                   Role
                 </label>
-                <Input
+                <select
+                  className=" w-full border-2 rounded-lg p-2"
                   value={editUserData?.role}
                   onChange={(e) =>
                     setEditUserData({
@@ -214,7 +230,14 @@ const Settings = () => {
                       role: e.target.value,
                     })
                   }
-                />
+                >
+                  <option value="Admin">Admin</option>
+                  {roles === "superadmin " ? (
+                    <option value="Super Admin">Super Admin</option>
+                  ) : (
+                    ""
+                  )}
+                </select>
               </Form.Item>
               <Form.Item>
                 <label

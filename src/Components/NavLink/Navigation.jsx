@@ -45,7 +45,7 @@ function Navigation() {
           <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
             <a
               href="#home"
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Home
             </a>
@@ -53,26 +53,26 @@ function Navigation() {
             <a
               href="#"
               onClick={dropNav}
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               About us
             </a>
             <a
               href="#contactUs"
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Contact Us
             </a>
             <button
               onClick={() => handleClick()}
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Donate
             </button>
             {tokens ? (
               <a
                 href="/adminHome"
-                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
               >
                 Admin Page
               </a>
@@ -82,7 +82,7 @@ function Navigation() {
 
             <a
               href="#member"
-              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0"
+              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
             >
               Be a member
               <svg

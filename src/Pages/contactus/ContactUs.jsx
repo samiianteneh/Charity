@@ -15,26 +15,6 @@ const ContactUs = () => {
     reset,
   } = useForm();
 
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const submitButton = document.getElementById("submitBtn");
-  //     submitButton.disabled = true;
-
-  //     const response = await axios.post(`${API_BASE_URL}/feedback`, {
-  //       name: data.name,
-  //       email: data.email,
-  //       message: data.message,
-  //     });
-
-  //     console.log(response.data);
-  //     alert("Message Sent successfully!");
-  //     reset();
-  //     submitButton.disabled = false;
-  //   } catch (error) {
-  //     console.error("Error during sending message:", error);
-  //     alert("Message failed. Please try again.");
-  //   }
-  // };
   const onSubmit = (data) => {
     dispatch(createFeedback(data));
     reset();
@@ -75,7 +55,7 @@ const ContactUs = () => {
                 href="mailto:example@email.com"
                 className="text-green-500 leading-relaxed hidden md:flex"
               >
-                example@email.com
+                NGH@NGH1.org
               </a>
               <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4 hidden md:flex">
                 PHONE
@@ -88,9 +68,7 @@ const ContactUs = () => {
           <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
             Feedback
           </h2>
-          <p className="leading-relaxed mb-5 text-gray-600 font-light text-sm ">
-            "Compassion in Action: Together, We Change Lives."
-          </p>
+
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="relative mb-4">
               <label htmlFor="name" className="leading-7 text-sm text-gray-600">
@@ -138,10 +116,6 @@ const ContactUs = () => {
               Submit
             </button>
           </form>
-          <p className="text-xs text-gray-500 mt-3">
-            "Reach out, join hands, and make a difference. We're here to listen
-            and collaborate towards brighter tomorrows. Get in touch today."
-          </p>
         </div>
       </div>
     </section>
