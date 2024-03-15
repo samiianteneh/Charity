@@ -37,7 +37,7 @@ const ContactUs = () => {
   return (
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-        <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+        <div className="lg:w-2/3  md:h-auto h-96  w-full md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <iframe
             width="100%"
             height="100%"
@@ -50,30 +50,31 @@ const ContactUs = () => {
             src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
             style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}
           ></iframe>
-          <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+
+          <div className="md:bg-white relative flex flex-wrap py-6 rounded ">
             <div className="lg:w-1/2 px-6">
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs hidden md:flex">
                 ADDRESS
               </h2>
-              <p className="mt-1">
+              <p className="mt-1 hidden md:flex">
                 Photo booth tattooed prism, portland taiyaki hoodie neutra
                 typewriter
               </p>
             </div>
-            <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
+            <div className="lg:w-1/2 px-6 mt-4 lg:mt-0 ">
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs hidden md:flex">
                 EMAIL
               </h2>
               <a
                 href="mailto:example@email.com"
-                className="text-green-500 leading-relaxed"
+                className="text-green-500 leading-relaxed hidden md:flex"
               >
                 example@email.com
               </a>
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4 hidden md:flex">
                 PHONE
               </h2>
-              <p className="leading-relaxed">123-456-7890</p>
+              <p className="leading-relaxed hidden md:flex">123-456-7890</p>
             </div>
           </div>
         </div>

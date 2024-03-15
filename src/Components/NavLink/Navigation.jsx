@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import DropDown from "../../assets/icons/system-solid-12-arrow-down.gif";
 import close from "../../assets/icons/system-solid-29-cross.gif";
 import Donate from "../../Pages/home/Donate";
@@ -32,6 +32,7 @@ function Navigation() {
   function newFunction() {
     setIsOpen(true);
   }
+  const tokens = localStorage.getItem("token");
   return (
     <>
       <header>
@@ -68,12 +69,17 @@ function Navigation() {
             >
               Donate
             </button>
-            <a
-              href="/login"
-              className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              Login
-            </a>
+            {tokens ? (
+              <a
+                href="/adminHome"
+                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              >
+                Admin Page
+              </a>
+            ) : (
+              ""
+            )}
+
             <a
               href="#member"
               className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0"
@@ -223,6 +229,26 @@ function Navigation() {
                       Contact Us
                     </a>
                   </li>
+                  {tokens ? (
+                    <li className="mb-2 text-left">
+                      <a
+                        href="/adminHome"
+                        onClick={
+                          subNav
+                            ? () => {
+                                toggleNav();
+                                toggleSubNav();
+                              }
+                            : toggleNav
+                        }
+                        className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                      >
+                        Admin Page
+                      </a>
+                    </li>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </div>
             ) : (

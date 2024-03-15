@@ -22,6 +22,7 @@ const Settings = () => {
   const [imagePreview, setImagePreview] = useState(null);
 
   console.log(selectedUser, "selectedUser");
+  console.log(users, "users");
   useEffect(() => {
     dispatch(getUsers());
   }, []);

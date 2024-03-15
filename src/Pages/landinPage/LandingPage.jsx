@@ -1,15 +1,14 @@
 import React from "react";
-import Navigation from "../../Components/NavLink/Navigation";
 import HomePage from "../home/HomePage";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import WhatWeDo from "../whatWeDo/WhatWeDo";
 import Detail from "../Detail/Detail";
 import BeMember from "../beMember/BeMember";
-import Footer from "../../Components/Footer/Footer";
 import TestimonialSlider from "../testimonials/testimoialSlider";
 import ContactUs from "../contactus/ContactUs";
-
-function LandingPage() {
+import Navigation from "../../Components/NavLink/Navigation";
+import Footer from "../../Components/Footer/Footer";
+export default function LandingPage() {
   return (
     <>
       {/* <Header /> */}
@@ -39,4 +38,3 @@ function LandingPage() {
     </>
   );
 }
-export default LandingPage;

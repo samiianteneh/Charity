@@ -70,7 +70,7 @@ export const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.EVENT_START:
       return eventStart(state, action);
-    case actionTypes.CREATE_EVENT:
+    case actionTypes.CREATE_EVENT_SUCCESS:
       return eventCreateSuccess(state, action);
     case actionTypes.GET_EVENT:
       return eventGetSuccess(state, action);

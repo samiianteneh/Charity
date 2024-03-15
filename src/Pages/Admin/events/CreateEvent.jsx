@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent, getEvent } from "../../../Store/Event/eventActions.js";
+import { API_BASE_URL } from "../../../Config/endpoint.js";
 
 function CreateEvent({ closeModal }) {
   const dispatch = useDispatch();
@@ -34,16 +35,13 @@ function CreateEvent({ closeModal }) {
   //     const submitButton = document.getElementById("submitBtn");
   //     submitButton.disabled = true;
 
-  //     const response = await axios.post(
-  //       "https://jsonplaceholder.typicode.com/users",
-  //       {
-  //         name: data.name,
-  //         date: data.date,
-  //         eventAddress: data.eventAddress,
-  //         charityAddress: data.charityAddress,
-  //         description: data.description,
-  //       }
-  //     );
+  //     const response = await axios.post(`${API_BASE_URL}/event`, {
+  //       name: data.name,
+  //       date: data.date,
+  //       eventAddress: data.eventAddress,
+  //       charityAddress: data.charityAddress,
+  //       description: data.description,
+  //     });
 
   //     console.log(response.data);
   //     alert("Registration successful!");
@@ -177,17 +175,10 @@ function CreateEvent({ closeModal }) {
               type="submit"
               className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-900"
             >
-              Register
+              Add Event
             </button>
           </form>
         </div>
-
-        {/* <button
-          onClick={closeModal}
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md"
-        >
-          Close
-        </button> */}
       </div>
     </div>
   );
