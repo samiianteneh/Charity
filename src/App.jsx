@@ -27,9 +27,9 @@ function App() {
                 <Route path="/members" element={<MemberNew />} />
                 <Route path="/events" element={<EventNew />} />
                 <Route path="/editEvent/:id" element={<EditEventNew />} />
-                <Route path="/settings" element={<Settings />} />{" "}
-                <Route path="/feedBack" element={<Feedback />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="/home" element={<LandingPage />} />
+                <Route path="/feedback" element={<Feedback />} />
               </>
             ) : (
               ""

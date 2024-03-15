@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import Layout from "../../../Layout/layout";
 import { charity } from "../../../Constant/charity";
@@ -8,8 +8,15 @@ import add from "../../../assets/icons/wired-outline-49-plus-circle.png";
 import CreateEvent from "./CreateEvent";
 import EventTable from "./EventTable";
 import { IoMdAddCircle } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvent } from "../../../Store";
 
 const EventNew = () => {
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.eventReducer.events);
+
+  console.log("firstevents", events);
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
   const handleTabClick = (tab) => {
@@ -24,6 +31,10 @@ const EventNew = () => {
 
   const activeEvents = charity.filter((items) => items?.is_active == 1);
   const inActiveEvents = charity.filter((items) => items?.is_active == 0);
+  useEffect(() => {
+    dispatch(getEvent());
+  }, [dispatch]);
+
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">

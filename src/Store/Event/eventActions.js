@@ -11,7 +11,7 @@ const eventStart = () => {
 
 const eventCreateSuccess = (data) => {
   return {
-    type: actionTypes.CREATE_EVENT,
+    type: actionTypes.CREATE_EVENT_SUCCESS,
     data,
   };
 };
@@ -57,9 +57,9 @@ export const createEvent = (data) => {
     axios({
       method: "post",
       url: `${API_BASE_URL}/event`,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
       data: data,
     })
       .then((response) => {
@@ -68,7 +68,7 @@ export const createEvent = (data) => {
         console.log("firjkfdghdjvst", response);
       })
       .catch((error) => {
-        dispatch(dispatch(eventFail(error)));
+        dispatch(eventFail(error));
         let errors;
         if (error?.response) {
           errors = error?.message + " " + error?.response?.data;
@@ -114,6 +114,7 @@ export const getSingleEvent = (event_id) => {
     })
       .then((response) => {
         dispatch(singleEventGetSuccess(response?.data));
+        console.log(response, "responsensajdvjsavg");
       })
       .catch((error) => {
         dispatch(eventFail(error));

@@ -12,10 +12,12 @@ function BeMember() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
     dispatch(userRegistration(data, role));
+    reset();
   };
 
   return (

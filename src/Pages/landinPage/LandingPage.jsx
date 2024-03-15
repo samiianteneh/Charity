@@ -29,6 +29,7 @@ export default function LandingPage() {
         <section id={"member"}>
           <BeMember />
         </section>
+
         <section id={"contactUs"}>
           <ContactUs />
         </section>
