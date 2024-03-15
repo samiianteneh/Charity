@@ -7,13 +7,10 @@ import { charity } from "../../../Constant/charity";
 import { moneyCollected } from "../../../Constant/moneyCollected";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalances } from "../../../Store/BalanceCollection/balanceAction";
+import { getEvent } from "../../../Store";
 function AdminNew() {
-  // const dispatch = useDispatch();
-  // const balance = useSelector((state) => state.BalanceReducer.balance);
-  // console.log(balance, "balancebalance");
-
+  const dispatch = useDispatch();
   const [counts, setCounts] = useState({});
-
   useEffect(() => {
     const countryCounts = {};
     personalInfo.forEach((entry) => {
@@ -22,14 +19,23 @@ function AdminNew() {
     });
     setCounts(countryCounts);
   }, []);
+  // const balance = useSelector((state) => state.BalanceReducer.balance);
+  // console.log(balance, "balancebalance");
+
+  const events = useSelector((state) => state.eventReducer.events);
+  console.log(events, "eventsevents");
+
+  useEffect(() => {
+    dispatch(getEvent());
+  }, [dispatch]);
+
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const activeCharity = charity?.filter((charity) => charity?.is_active == 1);
-  const inActiveCharity = charity?.filter((charity) => charity?.is_active == 0);
+  const activeCharity = events?.filter((charity) => charity?.is_active == 1);
+  const inActiveCharity = events?.filter((charity) => charity?.is_active == 0);
   // useEffect(() => {
   //   dispatch(getBalances());
   // }, [dispatch]);
 
-  // Function to calculate total amount collected for each year
   const calculateYearlyTotal = (data) => {
     const yearlyTotal = {};
     data.forEach(({ date, amount }) => {
@@ -87,10 +93,6 @@ function AdminNew() {
                     </tr>
                   </thead>
                 </table>
-                {/* <div>No of Active Charity event : {activeCharity?.length}</div>
-                <div>
-                  No of InActive Charity event : {inActiveCharity?.length}
-                </div> */}
               </div>
             </div>
             <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">

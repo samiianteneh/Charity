@@ -3,6 +3,7 @@ import { Link } from "lucide-react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import FeedBackModal from "./FeedBackModal";
+import { FaMagnifyingGlassArrowRight } from "react-icons/fa6";
 
 function FeedBackTable({ Comments, type }) {
   const columns = [
@@ -39,9 +40,9 @@ function FeedBackTable({ Comments, type }) {
         <Space size="middle">
           <a
             onClick={() => openModal(record)}
-            className="text-green-500 hover:text-3xl text-xl font-bold py-2 px-4 rounded   "
+            className="text-green-500 hover:text-green-800 text-xl font-bold py-2 px-4 rounded   "
           >
-            <FaEdit />
+            <FaMagnifyingGlassArrowRight />
           </a>
         </Space>
       ),

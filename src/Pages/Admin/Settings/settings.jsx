@@ -11,6 +11,9 @@ import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 const Settings = () => {
+  const user = localStorage.getItem("user");
+  const roles = JSON.parse(user);
+  console.log(roles?.role, "tokenstokens");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
 
