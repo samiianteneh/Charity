@@ -136,7 +136,7 @@ export const updateEvent = (id, data) => {
     dispatch(eventStart());
     axios({
       method: "patch",
-      url: `${API_BASE_URL}/..../${id}`,
+      url: `${API_BASE_URL}/event/${id}`,
       data: data,
     })
       .then((response) => {

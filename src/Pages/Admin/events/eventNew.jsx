@@ -29,8 +29,8 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = charity.filter((items) => items?.is_active == 1);
-  const inActiveEvents = charity.filter((items) => items?.is_active == 0);
+  const activeEvents = events.filter((items) => items?.is_active == 1);
+  const inActiveEvents = events.filter((items) => items?.is_active == 0);
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);

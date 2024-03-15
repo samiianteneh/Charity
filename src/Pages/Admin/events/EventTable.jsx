@@ -9,12 +9,12 @@ function EventTable({ charity, type }) {
   const columns = [
     {
       title: "Name",
-      dataIndex: "charity",
+      dataIndex: "name",
       className: " font-poppins font-normal text-[13px]",
     },
     {
       title: "Event Address	",
-      dataIndex: "charityAddress",
+      dataIndex: "eventAddress",
       className: " font-poppins font-normal text-[13px]",
     },
     {
@@ -24,7 +24,7 @@ function EventTable({ charity, type }) {
     },
     {
       title: "Address",
-      dataIndex: "location",
+      dataIndex: "charityAddress",
       className: " font-poppins font-normal text-[13px]",
     },
     {

@@ -5,8 +5,13 @@ import DashboardHeader from "../../../Layout/dashboardHeader";
 import { personalInfo } from "../../../Constant/personalInfo";
 import { charity } from "../../../Constant/charity";
 import { moneyCollected } from "../../../Constant/moneyCollected";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getBalances } from "../../../Store/BalanceCollection/balanceAction";
 function AdminNew() {
+  // const dispatch = useDispatch();
+  // const balance = useSelector((state) => state.BalanceReducer.balance);
+  // console.log(balance, "balancebalance");
+
   const [counts, setCounts] = useState({});
 
   useEffect(() => {
@@ -20,6 +25,9 @@ function AdminNew() {
   ChartJS.register(ArcElement, Tooltip, Legend);
   const activeCharity = charity?.filter((charity) => charity?.is_active == 1);
   const inActiveCharity = charity?.filter((charity) => charity?.is_active == 0);
+  // useEffect(() => {
+  //   dispatch(getBalances());
+  // }, [dispatch]);
 
   // Function to calculate total amount collected for each year
   const calculateYearlyTotal = (data) => {

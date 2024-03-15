@@ -15,7 +15,6 @@ function CharityDisplay() {
       <div
         className="max-h-96 overflow-y-auto"
         style={{
-          scrollbarWidth: "none",
           msOverflowStyle: "none",
           scrollbarWidth: "none",
           cursor: "pointer",

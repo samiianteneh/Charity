@@ -22,6 +22,7 @@ const Settings = () => {
   const [imagePreview, setImagePreview] = useState(null);
 
   console.log(selectedUser, "selectedUser");
+  console.log(editUserData, "editUserData");
   console.log(users, "users");
   useEffect(() => {
     dispatch(getUsers());
@@ -78,21 +79,21 @@ const Settings = () => {
               <p className="font-normal text-[14px] text-white"> Add Admin</p>
             </button>
           </div>
-          <section class="text-gray-600 body-font">
-            <div class="container px-5 py-4 mx-auto flex flex-wrap">
-              <div class="flex flex-wrap -m-4">
+          <section className="text-gray-600 body-font">
+            <div className="container px-5 py-4 mx-auto flex flex-wrap">
+              <div className="flex flex-wrap -m-4">
                 {users?.map((user) => (
-                  <div class="p-4 lg:w-1/2 md:w-full">
-                    <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
-                      <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0"></div>
-                      <div class="flex-grow">
-                        <h2 class="text-gray-900 text-mg title-font font-medium mb-1">
+                  <div className="p-4 lg:w-1/2 md:w-full">
+                    <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+                      <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0"></div>
+                      <div className="flex-grow">
+                        <h2 className="text-gray-900 text-mg title-font font-medium mb-1">
                           {user.fullName}
                         </h2>
-                        <p class="leading-relaxed font-light text-[12px] mb-3">
+                        <p className="leading-relaxed font-light text-[12px] mb-3">
                           {user.email}
                         </p>
-                        <p class="leading-relaxed font-medium text-[13px] mb-3">
+                        <p className="leading-relaxed font-medium text-[13px] mb-3">
                           {user.role}
                         </p>
                         {imagePreview && (
