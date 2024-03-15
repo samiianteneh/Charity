@@ -3,9 +3,11 @@ import closeIcon from "../../../../assets/icons/system-solid-29-cross.gif";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Switch } from "antd";
+import { useDispatch } from "react-redux";
+import { updateEvent } from "../../../../Store";
 
 function EventEdit({ closeModal, data }) {
-  console.log(data, "datass");
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(data?.is_active);
   const toggleIsActive = () => {
     setIsActive(!isActive);
@@ -30,32 +32,9 @@ function EventEdit({ closeModal, data }) {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      // Prevent multiple submissions
-      const submitButton = document.getElementById("submitBtn");
-      submitButton.disabled = true;
-
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          name: data.name,
-          date: data.date,
-          eventAddress: data.eventAddress,
-          charityAddress: data.charityAddress,
-          description: data.description,
-          isActive: isActive ? 1 : 0,
-        }
-      );
-
-      console.log(response.data);
-      alert("Registration successful!");
-      reset(); // Reset form fields
-      submitButton.disabled = false; // Re-enable submit button
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
-    }
+  const onSubmit = (e) => {
+    e.isActive = isActive ? 1 : 0;
+    dispatch(updateEvent(data?.id, e));
   };
 
   return (
@@ -90,7 +69,7 @@ function EventEdit({ closeModal, data }) {
                 type="text"
                 placeholder="Type here"
                 id="name"
-                defaultValue={data?.charity}
+                defaultValue={data?.name}
                 {...register("name", {
                   required: "Name is required",
                 })}
@@ -130,7 +109,7 @@ function EventEdit({ closeModal, data }) {
                 type="text"
                 placeholder="Enter event address"
                 id="eventAddress"
-                defaultValue={data?.charityAddress}
+                defaultValue={data?.eventAddress}
                 {...register("eventAddress", {
                   required: "Event address is required",
                 })}
@@ -154,7 +133,7 @@ function EventEdit({ closeModal, data }) {
                 type="text"
                 placeholder="Enter charity address"
                 id="charityAddress"
-                defaultValue={data?.location}
+                defaultValue={data?.charityAddress}
                 {...register("charityAddress", {
                   required: "Charity address is required",
                 })}

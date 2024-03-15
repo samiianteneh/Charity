@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
-import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { updateFeedback } from "../../../Store";
 
 function FeedBackModal({ closeModal, data }) {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".modal-content")) {
@@ -24,27 +26,11 @@ function FeedBackModal({ closeModal, data }) {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      // Prevent multiple submissions
-      const submitButton = document.getElementById("submitBtn");
-      submitButton.disabled = true;
-
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          id: data.id,
-        }
-      );
-
-      console.log(response.data);
-      closeModal();
-
-      submitButton.disabled = false; // Re-enable submit button
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
-    }
+  const onSubmit = (formData) => {
+    formData.is_seen = 2;
+    dispatch(updateFeedback(data?.id, formData));
+    console.log(formData, "formData");
+    closeModal();
   };
 
   return (
@@ -79,15 +65,12 @@ function FeedBackModal({ closeModal, data }) {
             className="max-w-[90%] md:max-w-md mx-auto"
           >
             <div className="mb-4 hidden">
-              <label htmlFor="name" className="block text-sm font-medium">
-                Event Name
-              </label>
               <input
                 type="text"
                 placeholder="Type here"
-                id="name"
+                id="id"
                 defaultValue={data?.id}
-                className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+                {...register("id")}
               />
             </div>
 

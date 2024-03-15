@@ -72,6 +72,7 @@ export const updateFeedback = (userId, newData) => {
       .then((response) => {
         dispatch(feedbackUpdate(response?.data));
         dispatch(successMessage("Feedback updated successfully!"));
+        console.log(response, " feedback updated successfully");
       })
       .catch((error) => {
         dispatch(feedbackFail(error));
