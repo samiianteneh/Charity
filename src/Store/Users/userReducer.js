@@ -32,7 +32,7 @@ const getSingleUser = (state, action) => ({
 });
 const updateUser = (state, action) => ({
   ...state,
-  users: state.user.map((user) =>
+  users: state.users.map((user) =>
     user.id === action.data.id ? action.data : user
   ),
   is_loading: false,

@@ -141,6 +141,7 @@ const Settings = () => {
             okButtonProps={{
               className: "bg-green-500 text-white hover:bg-green-700",
             }}
+            okText="Edit"
           >
             <Form>
               <Form.Item>
@@ -232,8 +233,9 @@ const Settings = () => {
             okButtonProps={{
               className: "bg-red-500 text-white hover:bg-red-700",
             }}
+            okText="Yes"
           >
-            <p>Are you sure you want to delete this song?</p>
+            <p>Are you sure you want to delete this user?</p>
           </Modal>
         </div>
       </div>

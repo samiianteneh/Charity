@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { IoMdAddCircle } from "react-icons/io";
 import { Comments } from "../../../Constant/Comments";
@@ -6,8 +6,14 @@ import Layout from "../../../Layout/layout";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import CreateEvent from "../events/CreateEvent";
 import FeedBackTable from "./FeedBackTable";
+import { useDispatch, useSelector } from "react-redux";
+import { getFeedback } from "../../../Store";
 
 const Feedback = () => {
+  const dispatch = useDispatch();
+  const feedbacks = useSelector((state) => state.feedbackReducer.feedbacks);
+
+  console.log("feedbacks", feedbacks);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
   const handleTabClick = (tab) => {
@@ -20,11 +26,17 @@ const Feedback = () => {
     setIsOpen(false);
   };
 
-  const activeComments = Comments.filter((items) => items?.is_seen == 1);
-  const inActiveComments = Comments.filter((items) => items?.is_seen == 0);
-  console.log(Comments, "CommentsComments");
-  console.log(activeComments, "activeComments");
-  console.log(inActiveComments, "inActiveComments");
+  const activeComments = feedbacks.filter((items) => items?.is_seen === true);
+  const inActiveComments = feedbacks.filter(
+    (items) => items?.is_seen === false
+  );
+  // console.log(Comments, "CommentsComments");
+  // console.log(activeComments, "activeComments");
+  // console.log(inActiveComments, "inActiveComments");
+
+  useEffect(() => {
+    dispatch(getFeedback());
+  }, [dispatch]);
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">

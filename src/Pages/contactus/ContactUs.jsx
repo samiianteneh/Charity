@@ -1,8 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { createFeedback } from "../../Store";
+import { API_BASE_URL } from "../../Config/endpoint";
 import axios from "axios";
 
 const ContactUs = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -10,28 +15,29 @@ const ContactUs = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      const submitButton = document.getElementById("submitBtn");
-      submitButton.disabled = true;
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const submitButton = document.getElementById("submitBtn");
+  //     submitButton.disabled = true;
 
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        }
-      );
+  //     const response = await axios.post(`${API_BASE_URL}/feedback`, {
+  //       name: data.name,
+  //       email: data.email,
+  //       message: data.message,
+  //     });
 
-      console.log(response.data);
-      alert("Message Sent successfully!");
-      reset();
-      submitButton.disabled = false;
-    } catch (error) {
-      console.error("Error during sending message:", error);
-      alert("Message failed. Please try again.");
-    }
+  //     console.log(response.data);
+  //     alert("Message Sent successfully!");
+  //     reset();
+  //     submitButton.disabled = false;
+  //   } catch (error) {
+  //     console.error("Error during sending message:", error);
+  //     alert("Message failed. Please try again.");
+  //   }
+  // };
+  const onSubmit = (data) => {
+    dispatch(createFeedback(data));
+    reset();
   };
 
   return (
