@@ -3,6 +3,7 @@ import { FiSettings } from "react-icons/fi";
 import { RiCalendarEventLine } from "react-icons/ri";
 import { FaHome } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { VscFeedback } from "react-icons/vsc";
 
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
@@ -15,7 +16,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     key: "dashboard",
     label: "Dashboard",
     path: "adminHome",
-    icon: <a />,
+    icon: <LuLayoutDashboard />,
   },
 
   {
@@ -35,7 +36,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     key: "feedBack",
     label: "feedBack",
     path: "feedBack",
-    icon: <RiCalendarEventLine />,
+    icon: <VscFeedback />,
   },
 
   {

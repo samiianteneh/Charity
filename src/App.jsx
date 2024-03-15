@@ -12,8 +12,8 @@ import Feedback from "./Pages/Admin/FeedBack/FeedBack";
 
 function App() {
   const tokens = localStorage.getItem("token");
-  const name = localStorage.getItem("name");
-  const role = localStorage.getItem("role");
+  const user = localStorage.getItem("user");
+  console.log(user, "userrr");
   return (
     <>
       <BrowserRouter>
@@ -21,23 +21,19 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {/* {tokens  ? ( */}
-            <>
-              {/* <Route path="/admin" element={<Admin />} /> */}
-              {/* <Route path="/adminNew" element={<AdminNew />} /> */}
-              <Route path="/adminHome" element={<AdminNew />} />
-              <Route path="/members" element={<MemberNew />} />
-              <Route path="/events" element={<EventNew />} />
-              <Route path="/editEvent/:id" element={<EditEventNew />} />
-              {/* <Route path="/dashboard/transaction" element={<Transaction />} /> */}
-              <Route path="/settings" element={<Settings />} />{" "}
-              <Route path="/feedBack" element={<Feedback />} />
-              <Route path="/home" element={<LandingPage />} />
-              {/* <Route path="/events" element={<Events />} />
-              <Route path="/editEvent/:id" element={<EditEvent />} />
-              <Route path="/member" element={<Member />} /> */}
-            </>
-            {/* ):""} */}
+            {tokens ? (
+              <>
+                <Route path="/adminHome" element={<AdminNew />} />
+                <Route path="/members" element={<MemberNew />} />
+                <Route path="/events" element={<EventNew />} />
+                <Route path="/editEvent/:id" element={<EditEventNew />} />
+                <Route path="/settings" element={<Settings />} />{" "}
+                <Route path="/feedBack" element={<Feedback />} />
+                <Route path="/home" element={<LandingPage />} />
+              </>
+            ) : (
+              ""
+            )}
           </Routes>
         </div>
       </BrowserRouter>

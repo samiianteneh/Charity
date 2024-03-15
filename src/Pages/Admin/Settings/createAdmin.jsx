@@ -18,8 +18,9 @@ function CreateAdmin({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data, "datadatadata");
     dispatch(userRegistration(data, role.current));
-    closeModal();
+    // closeModal();
   };
 
   useEffect(() => {
@@ -143,13 +144,11 @@ function CreateAdmin({ closeModal }) {
               <label htmlFor="password" className="block text-sm font-medium">
                 Upload Image
               </label>
-              <Form>
-                <Form.Item label="Profile Picture">
-                  <Upload>
-                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                  </Upload>
-                </Form.Item>
-              </Form>
+              <Form.Item label="Profile Picture">
+                <Upload>
+                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                </Upload>
+              </Form.Item>
             </div>
             <button
               id="submitBtn"

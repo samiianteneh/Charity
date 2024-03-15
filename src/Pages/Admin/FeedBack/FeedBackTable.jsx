@@ -2,7 +2,6 @@ import { Space, Table } from "antd";
 import { Link } from "lucide-react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import EventEdit from "../events/EditEvent";
 import FeedBackModal from "./FeedBackModal";
 
 function FeedBackTable({ Comments, type }) {
