@@ -1,4 +1,5 @@
 export * from "./Auth/authActions";
 export * from "./Users/userActions";
 export * from "./Event/eventActions";
-export * from "./Feedback/feedbackActions";
+export * from "./Event/eventActions";
+export * from "./Post/postActions";

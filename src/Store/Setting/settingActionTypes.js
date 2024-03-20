@@ -1,0 +1,7 @@
+export const SETTING_START = "SETTING_START";
+export const SETTING_FAIL = "SETTING_FAIL";
+
+export const CREATE_SETTING = "CREATE_SETTING";
+export const GET_SETTING = "GET_SETTING";
+export const UPDATE_SETTING = "UPDATE_SETTING";
+export const DELETE_SETTING = "DELETE_SETTING";
