@@ -15,12 +15,12 @@ function ImageOverlay() {
       <img
         src={secondImg}
         alt="Foreground"
-        className="absolute bottom-0 right-[20px] w-2/5 z-10 rounded-2xl"
+        className="absolute bottom-0 right-[20px] w-2/5 z-8 rounded-2xl"
       />
       <img
         src={thirdImg}
         alt="Foreground"
-        className="absolute top-0 left-[-20px] w-3/5 z-10 rounded-2xl"
+        className="absolute top-0 left-[-20px] w-3/5 z-8 rounded-2xl"
       />
     </div>
   );

@@ -4,6 +4,8 @@ import { RiCalendarEventLine } from "react-icons/ri";
 import { FaHome } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { VscFeedback } from "react-icons/vsc";
+import { FaDonate } from "react-icons/fa";
+import { MdPostAdd } from "react-icons/md";
 
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
@@ -25,7 +27,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: "members",
     icon: <MdOutlineManageAccounts />,
   },
-
+  {
+    key: "donators",
+    label: "Donators",
+    path: "donators",
+    icon: <FaDonate />,
+  },
   {
     key: "events",
     label: "Events",
@@ -33,8 +40,15 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     icon: <RiCalendarEventLine />,
   },
   {
+    key: "posts",
+    label: "Posts",
+    path: "posts",
+    icon: <MdPostAdd />,
+  },
+
+  {
     key: "feedBack",
-    label: "feedBack",
+    label: "FeedBack",
     path: "feedBack",
     icon: <VscFeedback />,
   },

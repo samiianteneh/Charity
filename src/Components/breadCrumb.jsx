@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
 import { IoChevronForwardOutline } from "react-icons/io5";
 
@@ -17,7 +17,7 @@ export default function Breadcrumb({ selectedSidebarKey }) {
   const breadcrumbs = DASHBOARD_SIDEBAR_LINKS.slice(0, selectedIndex + 1);
 
   return (
-    <div className="flex items-center text-gray-500">
+    <div className="flex items-center text-gray-500 font-poppins font-normal text-[13px]">
       {breadcrumbs.map((item, index) => (
         <React.Fragment key={item.key}>
           <span>{item.icon}</span>

@@ -1,5 +1,7 @@
 import { errorMessage, successMessage } from "../Messages/messageActions";
 import * as actionTypes from "./postActionTypes";
+import axios from "axios";
+import { API_BASE_URL } from "../../Config/endpoint";
 
 const postStart = () => ({
   type: actionTypes.POST_START,
@@ -51,10 +53,13 @@ export const getPost = () => {
     dispatch(postStart());
     axios({
       method: "get",
-      url: `${API_BASE_URL}/post`,
+      url: "https://fakestoreapi.com/products/category/jewelery",
+
+      // url: `${API_BASE_URL}/post`,
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
+        console.log("firstrety", response);
       })
       .catch((error) => {
         dispatch(postFail(error));

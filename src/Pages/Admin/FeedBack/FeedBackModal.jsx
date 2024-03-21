@@ -27,9 +27,9 @@ function FeedBackModal({ closeModal, data }) {
   } = useForm();
 
   const onSubmit = (formData) => {
-    formData.is_seen = 2;
+    formData.is_seen = true;
     dispatch(updateFeedback(data?.id, formData));
-    console.log(formData, "formData");
+    // console.log(formData, "formData");
     closeModal();
   };
 
@@ -64,16 +64,6 @@ function FeedBackModal({ closeModal, data }) {
             onSubmit={handleSubmit(onSubmit)}
             className="max-w-[90%] md:max-w-md mx-auto"
           >
-            <div className="mb-4 hidden">
-              <input
-                type="text"
-                placeholder="Type here"
-                id="id"
-                defaultValue={data?.id}
-                {...register("id")}
-              />
-            </div>
-
             <button
               id="submitBtn"
               type="submit"

@@ -16,7 +16,7 @@ export default function DashboardHeader() {
     labeled = DASHBOARD_SIDEBAR_LINKS[i];
     console.log(DASHBOARD_SIDEBAR_LINKS[i], labeled, "ncdsjcbjsdcb");
   }
-  const [selectedSidebarKey, setSelectedSidebarKey] = useState("");
+  const [selectedSidebarKey, setSelectedSidebarKey] = useState("dashboard");
 
   const handleSidebarItemClick = (key) => {
     setSelectedSidebarKey(key);
@@ -51,7 +51,7 @@ export default function DashboardHeader() {
     <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between items-center">
       <div className="font-poppins font-normal text-gray-800  p-4 justify-center ">
         <div className=" hidden md:block">
-          <Breadcrumb selectedSidebarKey={selectedSidebarKey}></Breadcrumb>{" "}
+          <Breadcrumb selectedSidebarKey={selectedSidebarKey}></Breadcrumb>
           {/* <div className="flex justify-center items-center  font-normal text-gray-500 gap-[10px]">
             {selectedIcon} {selectedLabel}
             {" "}
@@ -65,7 +65,7 @@ export default function DashboardHeader() {
       <div className="flex items-center justify-center gap-[20px] px-[20px]">
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center gap-2 text-[14px] font-normal text-white bg-green-500 py-2 px-4 rounded-[5px]"
+          className="flex items-center justify-center gap-2 text-[13px] font-normal text-white bg-green-600 py-2 px-4 rounded-[5px]"
         >
           Logout
           <LogOut size={16} />

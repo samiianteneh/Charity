@@ -15,7 +15,7 @@ const Feedback = () => {
 
   console.log("feedbacks", feedbacks);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Tab 1");
+  const [activeTab, setActiveTab] = useState("Tab 2");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -47,23 +47,23 @@ const Feedback = () => {
               <div className="flex   items-center justify-center gap-10 ">
                 <button
                   className={`${
-                    activeTab === "Tab 1"
-                      ? "border-2 text-[14px] font-normal rounded-2xl border-[#43a440] text-[#43a440]"
-                      : "text-gray-500 text-[14px] font-normal  border-b-2"
-                  } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
-                  onClick={() => handleTabClick("Tab 1")}
-                >
-                  Seen{" "}
-                </button>
-                <button
-                  className={`${
                     activeTab === "Tab 2"
                       ? "border-2 text-[14px] font-normal rounded-2xl border-[#43a440] text-[#43a440]"
                       : "text-gray-500 text-[14px] font-normal border-b-2"
                   } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
                   onClick={() => handleTabClick("Tab 2")}
                 >
-                  Un Seen{" "}
+                  Un Read{" "}
+                </button>
+                <button
+                  className={`${
+                    activeTab === "Tab 1"
+                      ? "border-2 text-[14px] font-normal rounded-2xl border-[#43a440] text-[#43a440]"
+                      : "text-gray-500 text-[14px] font-normal  border-b-2"
+                  } py-2 px-4 focus:outline-none hover:text-[#43a440]`}
+                  onClick={() => handleTabClick("Tab 1")}
+                >
+                  Read{" "}
                 </button>
               </div>
               <div className="mt-4">

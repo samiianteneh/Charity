@@ -11,11 +11,11 @@ function WhoWeAre() {
         </div>
         <div className="mx-auto md:mx-0 md:w-2/5 order-1 md:order-2">
           <div className="text-center md:text-start my-5">
-            <div className="inline-block relative">
-              <span className="text-green-600 text-3xl font-bold">
+            <div className="inline-block relative mb-5">
+              <span className="text-green-600 text-3xl font-bold ">
                 Who we are
               </span>
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 transform translate-y-full"></span>
+              {/* <span className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 transform translate-y-full"></span> */}
             </div>
           </div>
           <div className="text-center md:text-end my-5">

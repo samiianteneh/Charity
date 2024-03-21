@@ -65,10 +65,12 @@ export const getFeedback = () => {
 };
 
 export const updateFeedback = (userId, newData) => {
+  console.log(userId, "userId");
+  console.log(newData, "newData");
   return (dispatch) => {
     dispatch(feedbackStart());
     axios
-      .put(`${API_BASE_URL}/feedback/${userId}`, newData)
+      .patch(`${API_BASE_URL}/feedback/${userId}`, newData)
       .then((response) => {
         dispatch(feedbackUpdate(response?.data));
         dispatch(successMessage("Feedback updated successfully!"));

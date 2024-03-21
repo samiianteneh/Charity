@@ -8,12 +8,15 @@ import TestimonialSlider from "../testimonials/testimoialSlider";
 import ContactUs from "../contactus/ContactUs";
 import Navigation from "../../Components/NavLink/Navigation";
 import Footer from "../../Components/Footer/Footer";
+import Navig from "../../Components/NavLink/Navig";
+import Counts from "../Counts/Counts";
 export default function LandingPage() {
   return (
     <>
       {/* <Header /> */}
-      <Navigation />
-      <main>
+      {/* <Navigation /> */}
+      <Navig />
+      <main className="bg-[#f9fafb]">
         <section id={"home"}>
           <HomePage />
         </section>
@@ -23,13 +26,15 @@ export default function LandingPage() {
         <section id={"WhatWeDo"}>
           <WhatWeDo />
         </section>
-        <section id={"testimonials"}>
+        <section id={"counts"}>
+          <Counts />
+        </section>
+        <section id={"Testimonials"}>
           <TestimonialSlider />
         </section>
         <section id={"member"}>
           <BeMember />
         </section>
-
         <section id={"contactUs"}>
           <ContactUs />
         </section>

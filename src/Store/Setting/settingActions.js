@@ -1,3 +1,5 @@
+import axios from "axios";
+import { API_BASE_URL } from "../../Config/endpoint";
 import { errorMessage, successMessage } from "../Messages/messageActions";
 import * as actionTypes from "./settingActionTypes";
 
@@ -25,7 +27,7 @@ const SettingFail = (error) => ({
   error,
 });
 
-export const createSetting = (data) => {
+export const createVolunteerType = (data) => {
   return (dispatch) => {
     dispatch(settingStart());
     axios({
@@ -46,12 +48,12 @@ export const createSetting = (data) => {
       });
   };
 };
-export const getSetting = () => {
+export const getVolunteerType = () => {
   return (dispatch) => {
-    dispatch(SettingStart());
+    dispatch(settingStart());
     axios({
       method: "get",
-      url: `${API_BASE_URL}/Setting`,
+      // url: `${API_BASE_URL}/Setting`,
     })
       .then((response) => {
         dispatch(getSettingSuccess(response?.data));

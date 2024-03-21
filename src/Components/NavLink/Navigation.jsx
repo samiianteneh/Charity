@@ -17,7 +17,7 @@ function Navigation() {
   };
   const dropNav = () => {
     setDropDown(!dropDown);
-    subNav(false);
+    setSubNav(false);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ function Navigation() {
   return (
     <>
       <header>
-        <div class="font-poppins container mx-auto flex justify-between flex-wrap  flex-row items-center">
+        <div className=" container mx-auto flex justify-between flex-wrap  flex-row items-center">
           <div className="px-5 md:block">
             <a href="#home" className=" px-3 font-bold text-xl">
               <img src={logo} alt="logo" className="w-20 md:w-40" />
@@ -45,7 +45,7 @@ function Navigation() {
           <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
             <a
               href="#home"
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Home
             </a>
@@ -53,26 +53,26 @@ function Navigation() {
             <a
               href="#"
               onClick={dropNav}
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               About us
             </a>
             <a
               href="#contactUs"
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Contact Us
             </a>
             <button
               onClick={() => handleClick()}
-              className="mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Donate
             </button>
             {tokens ? (
               <a
                 href="/adminHome"
-                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
               >
                 Admin Page
               </a>
@@ -82,7 +82,7 @@ function Navigation() {
 
             <a
               href="#member"
-              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0"
+              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
             >
               Be a member
               <svg
@@ -91,7 +91,7 @@ function Navigation() {
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                class="w-4 h-4 ml-1"
+                className="w-4 h-4 ml-1"
                 viewBox="0 0 24 24"
               >
                 <path d="M5 12h14M12 5l7 7-7 7"></path>

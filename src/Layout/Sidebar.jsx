@@ -7,7 +7,7 @@ import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
 import { useSelector } from "react-redux";
 
 const linkClasses =
-  "flex items-center gap-2 px-3 font-medium hover:no-underline h-12";
+  "flex items-center gap-2 px-3 font-medium hover:no-underline h-10 text-[12px]";
 
 const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);

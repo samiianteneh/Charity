@@ -4,7 +4,7 @@ import CharityDisplay from "./charityDisplay";
 
 function HomePage() {
   return (
-    <div className="p-10 ">
+    <div className="py-10 ">
       <div className="flex flex-col md:flex-row justify-between items-center">
         {/* <div className="w-full md:w-full mb-4 md:mb-0"> */}
         <div className="w-full md:w-3/5 mb-4 md:mb-0">
