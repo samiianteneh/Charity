@@ -19,7 +19,7 @@ function Navig() {
 
   return (
     <div className="py-4">
-      <header className="text-gray-600 py-4  fixed w-full bg-white z-10 top-0">
+      <header className="text-gray-600 py-4   w-full bg-white z-10 top-0">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-stretch">
           <img
             src={logo}
@@ -54,11 +54,18 @@ function Navig() {
               items={dropdownItems}
             />
             <a
+              href="#member"
+              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Voulentary
+            </a>
+            <a
               href="#contactUs"
               className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
             >
               Contact Us
             </a>
+
             <button
               onClick={() => handleClick()}
               className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"

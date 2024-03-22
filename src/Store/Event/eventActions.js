@@ -50,8 +50,6 @@ const eventFail = (error) => {
 // ================> EVENT CRUD <================
 
 export const createEvent = (data) => {
-  console.log("firdatadatast", data);
-
   return (dispatch) => {
     dispatch(eventStart());
     axios({
@@ -65,9 +63,10 @@ export const createEvent = (data) => {
       .then((response) => {
         dispatch(eventCreateSuccess(response?.data));
         dispatch(successMessage("Event Created Successfully!"));
-        console.log("firjkfdghdjvst", response);
+        console.log("response from backend for charity ", response);
       })
       .catch((error) => {
+        console.log(error, "response from backend for charity  error");
         dispatch(eventFail(error));
         let errors;
         if (error?.response) {
@@ -132,7 +131,6 @@ export const getSingleEvent = (event_id) => {
 };
 
 export const updateEvent = (id, data) => {
-  console.log(data, "datadatadata");
   return (dispatch) => {
     dispatch(eventStart());
     axios({

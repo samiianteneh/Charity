@@ -7,7 +7,7 @@ export const ourWorks = [
     title: "Donate to Help IDPs",
     image: IDPs,
     intro:
-      "With millions displaced from their home and land, internally diplaced people aren't getting the proper support and help goverment,",
+      "With millions displaced from their home and land, internally diplaced people aren't getting the proper support and help ,",
     paragraph_1:
       "The plight of internally displaced people (IDPs) in Ethiopia is indeed a pressing issue that requires urgent attention and support from all sectors of society. As you've highlighted, displacement not only disrupts the physical and social environments but also poses significant challenges to the well-being and livelihoods of those affected.",
     paragraph_2:

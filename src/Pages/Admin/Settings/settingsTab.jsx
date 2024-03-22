@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../../Layout/layout";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import Settings from "./settings";
-import VolunteerType from "../VolunteerType/volunteerType";
+import VolunteerType from "../VolunteerType/VolunteerType";
 import { BiSolidShow } from "react-icons/bi";
 import { MdVolunteerActivism } from "react-icons/md";
 

@@ -34,7 +34,7 @@ function AdminTab() {
   // console.log(balance, "balancebalance");
 
   const events = useSelector((state) => state.eventReducer.events);
-  console.log(events, "eventsevents");
+  // console.log(events, "eventsevents");
 
   useEffect(() => {
     dispatch(getEvent());

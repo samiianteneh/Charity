@@ -43,7 +43,6 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
-  console.log(data, role, "datarole");
   return (dispatch) => {
     dispatch(registerStart());
     axios({
@@ -57,7 +56,7 @@ export const userRegistration = (data, role) => {
       .then((response) => {
         dispatch(registerSuccess(response?.data));
         dispatch(successMessage("User Created Successfully!"));
-        console.log("firstresponse", response);
+        console.log("create Volenteer response", response);
       })
       .catch((error) => {
         dispatch(registerFail(error));
@@ -68,7 +67,7 @@ export const userRegistration = (data, role) => {
         if (error?.request) {
           errors = error?.message + "Failed request, Try Again!";
         }
-        console.log("error when registering user", error);
+        console.log("create Volenteer response", error);
 
         dispatch(errorMessage(errors));
       });

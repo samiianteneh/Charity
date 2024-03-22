@@ -15,13 +15,18 @@ import Posts from "../Post/Post";
 export default function LandingPage() {
   return (
     <>
-      {/* <Header /> */}
+      {/* <div className="hidden md:block">
+        <div className="w-full h-screen flex flex-col">
+          <div className="h-1/6 bg-gray-300"></div>
+          <div className="h-5/6 bg-gray-500"></div>
+        </div>
+      </div> */}
       <div className="md:block">
         {" "}
         <Navigation />
       </div>
       <div className="hidden md:block">
-        <Navig />{" "}
+        <Navig />
       </div>
       <main className="bg-[#f9fafb]">
         <section id={"home"}>
