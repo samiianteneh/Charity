@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Trash2, Pencil } from "lucide-react";
-import { getUsers } from "../../../Store";
+import { getUsers, getVolunteerType } from "../../../Store";
 import { IoMdAddCircle } from "react-icons/io";
 import CreateVolunteer from "./CreateVolunteer";
 import { Button, Form, Input, Modal, Upload } from "antd";
@@ -14,7 +14,8 @@ const VolunteerType = () => {
   const adminId = user?.id;
 
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.userReducer.users);
+  const volunteer_type = useSelector((state) => state.settingReducer.settings);
+  console.log(volunteer_type, "volunteer_typessssssss");
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -23,7 +24,7 @@ const VolunteerType = () => {
   const [editVolunteerData, setEditVolunteerData] = useState(null);
 
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getVolunteerType());
   }, []);
 
   const openModal = () => {
@@ -73,30 +74,40 @@ const VolunteerType = () => {
         <section className="text-gray-600 body-font my-6 font-poppins">
           <div className="container px-5 py-4 mx-auto ">
             <div className="flex flex-wrap -m-4">
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full rounded-[5px] border">
-                <div className="mt-4">
-                  <h2 className="text-gray-700 title-font text-[14px] font-medium">
-                    The Catalyzer
-                  </h2>
-                  <h3 className="text-gray-500 text-[10px] tracking-widest title-font mb-1">
-                    VOLUNTEER TYPE
-                  </h3>
-                  <div className="grid mt-2">
-                    <div className="flex items-center justify-end gap-2 ">
-                      <button onClick={() => handleEditClick(user)}>
-                        <Pencil size={16} color="#2f855a" strokeWidth={1.75} />
-                      </button>
-                      {/* {roles === "superadmin" ? ( */}
-                      <button onClick={() => handleDeleteClick(user)}>
-                        <Trash2 size={16} strokeWidth={1.75} color="#2f855a" />
-                      </button>
-                      {/* ) : (
-                        ""
-                      )} */}
+              {volunteer_type?.map((item, index) => (
+                <div
+                  key={index}
+                  className="lg:w-1/4 md:w-1/2 p-4 w-full rounded-[5px] border m-3 "
+                >
+                  <div className="mt-4">
+                    <h2 className="text-gray-700 title-font text-[14px] font-medium">
+                      {item?.name}
+                    </h2>
+                    <h3 className="text-gray-500 text-[10px] tracking-widest title-font mb-1">
+                      {item?.description}{" "}
+                    </h3>
+                    <div className="grid mt-2">
+                      <div className="flex items-center justify-end gap-2 ">
+                        <button onClick={() => handleEditClick(user)}>
+                          <Pencil
+                            size={16}
+                            color="#2f855a"
+                            strokeWidth={1.75}
+                          />
+                        </button>
+                        {/* {roles === "superadmin" ? ( */}
+                        <button onClick={() => handleDeleteClick(user)}>
+                          <Trash2
+                            size={16}
+                            strokeWidth={1.75}
+                            color="#2f855a"
+                          />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -168,7 +179,7 @@ const VolunteerType = () => {
           }}
           okText="Yes"
         >
-          <p>Are you sure you want to delete this user?</p>
+          <p>Are you sure you want to delete this Volunter Type?</p>
         </Modal>
       </div>
     </div>

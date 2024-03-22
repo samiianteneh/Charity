@@ -37,12 +37,12 @@ function Navigation() {
     <>
       <header>
         <div className=" container mx-auto flex justify-between flex-wrap  flex-row items-center">
-          <div className="px-5 md:block">
+          <div className="px-5 md:hidden">
             <a href="#home" className=" px-3 font-bold text-xl">
               <img src={logo} alt="logo" className="w-20 md:w-40" />
             </a>
           </div>
-          <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
+          {/* <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
             <a
               href="#home"
               className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
@@ -131,7 +131,7 @@ function Navigation() {
                 </ul>
               </div>
             )}
-          </nav>
+          </nav> */}
           <div className="md:hidden">
             {showNav ? (
               <img

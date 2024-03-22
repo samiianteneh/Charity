@@ -51,7 +51,7 @@ function EventTable({ charity, type }) {
 
   const customPagination = {
     showSizeChanger: true,
-    pageSizeOptions: ["2", "10"],
+    pageSizeOptions: ["3"],
     showTotal: (total, range) =>
       `Showing ${range[0]}-${range[1]} of ${total} items`,
   };
@@ -71,7 +71,7 @@ function EventTable({ charity, type }) {
         <h2 className="text-lg font-medium mb-4 text-[#43a440] border-b-[1px]">
           {type == "active" ? "Active" : type === "inActive" ? "Inactive" : ""}{" "}
           Event List
-        </h2>{" "}
+        </h2>
         <Table
           columns={columns}
           dataSource={charity}

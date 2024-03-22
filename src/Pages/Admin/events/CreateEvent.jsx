@@ -30,6 +30,7 @@ function CreateEvent({ closeModal }) {
   const onSubmit = (data) => {
     dispatch(createEvent(data));
     reset();
+    closeModal();
   };
 
   return (

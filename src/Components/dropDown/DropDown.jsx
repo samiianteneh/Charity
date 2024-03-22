@@ -47,9 +47,9 @@ const Dropdown = ({ title, items }) => {
         <div
           onMouseEnter={handleItemMouseEnter}
           onMouseLeave={handleItemMouseLeave}
-          className="absolute bg-white border rounded-lg mt-2"
+          className="absolute bg-white border rounded-lg mt-2 z-10 "
         >
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <a
               key={index}
               href={`#${item.replace(/\s/g, "")}`}

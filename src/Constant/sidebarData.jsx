@@ -23,7 +23,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 
   {
     key: "members",
-    label: "Members",
+    label: "Voulentary",
     path: "members",
     icon: <MdOutlineManageAccounts />,
   },

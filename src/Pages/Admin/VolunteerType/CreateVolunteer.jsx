@@ -47,25 +47,20 @@ const CreateVolunteer = ({ closeModal }) => {
             className="max-w-[90%] md:max-w-md mx-auto"
           >
             <div className="mb-4">
-              <label
-                htmlFor="volunteer_type"
-                className="block text-[11px] font-medium"
-              >
+              <label htmlFor="name" className="block text-[11px] font-medium">
                 Volunteer Type
               </label>
               <input
                 type="text"
                 placeholder="Type here"
-                id="volunteer_type"
-                {...register("volunteer_type", {
+                id="name"
+                {...register("name", {
                   required: "Volunteer type is required",
                 })}
                 className=" font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
-              {errors.volunteer_type && (
-                <p className="text-red-500 text-sm">
-                  {errors.volunteer_type.message}
-                </p>
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name.message}</p>
               )}
             </div>
             <div className="mb-4">

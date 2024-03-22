@@ -40,9 +40,10 @@ export const createFeedback = (data) => {
       .then((response) => {
         dispatch(feedbackCreate(response?.data));
         dispatch(successMessage("Feedback Created Successfully!"));
-        console.log("responsefirst", response);
+        console.log("response for craete feedback", response);
       })
       .catch((error) => {
+        console.log(error, "response for craete feedback error");
         dispatch(feedbackFail(error));
         dispatch(errorMessage("Failed to create feedback."));
       });
@@ -65,8 +66,6 @@ export const getFeedback = () => {
 };
 
 export const updateFeedback = (userId, newData) => {
-  console.log(userId, "userId");
-  console.log(newData, "newData");
   return (dispatch) => {
     dispatch(feedbackStart());
     axios

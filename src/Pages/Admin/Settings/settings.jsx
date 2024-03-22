@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import DashboardHeader from "../../../Layout/dashboardHeader";
-import Layout from "../../../Layout/layout";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, updateUser, deleteUser } from "../../../Store";
+import { updateUser, deleteUser, getAdmin } from "../../../Store";
 import { IoMdAddCircle } from "react-icons/io";
-import CreateEvent from "../events/CreateEvent";
 import CreateAdmin from "./createAdmin";
-import { Trash2, Pencil } from "lucide-react";
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -31,8 +27,8 @@ const Settings = () => {
   console.log(editUserData, "editUserData");
   console.log(users, "users");
   useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+    dispatch(getAdmin());
+  }, [dispatch]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -93,8 +89,8 @@ const Settings = () => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-4 mx-auto flex flex-wrap">
           <div className="flex flex-wrap -m-4">
-            {filterdUser?.map((user) => (
-              <div className="p-4 lg:w-1/2 md:w-full">
+            {/* {filterdUser?.map((user, index) => (
+              <div key={index} className="p-4 lg:w-1/2 md:w-full">
                 <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                   <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0"></div>
                   <div className="flex-grow">
@@ -137,9 +133,9 @@ const Settings = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> 
               </div>
-            ))}
+            ))}*/}
           </div>
         </div>
       </section>

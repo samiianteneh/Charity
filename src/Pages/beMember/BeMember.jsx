@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { userRegistration } from "../../Store/Users/userActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { country } from "../../Constant/country";
 import signIn from "../../assets/signIn.png";
+import { getVolunteerType } from "../../Store";
 function BeMember() {
   const dispatch = useDispatch();
-  const role = "user";
 
+  const volunteer_type = useSelector((state) => state.settingReducer.settings);
+  const role = "volenteer";
+  useEffect(() => {
+    dispatch(getVolunteerType());
+  }, []);
   const {
     register,
     handleSubmit,
@@ -22,24 +27,12 @@ function BeMember() {
   };
 
   return (
-    // <div className=" font-poppins container mx-auto mt-8">
-    //   <div className="text-center md:text-center my-5">
-    //     <div className="inline-block relative">
-    //       <span className="text-green-600 text-3xl font-bold">Be a Family</span>
-    //       <span className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 transform translate-y-full"></span>
-    //     </div>
-    //     <div className="text-start my-5 px-5 md:px-36 ">
-    //       <div className="inline-block relative">
-    //         <span className="text-gray-800 text-xl"> </span>
-    //       </div>
-    //     </div>
-    //   </div>
     <section className="text-gray-600 font-poppins relative">
       <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-        <div class="lg:w-2/6 md:w-1/2 bg-[#f0f0f0] rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <div className="lg:w-2/6 md:w-1/2 bg-[#f0f0f0] rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <div className="inline-block relative mb-5">
             <span className="text-green-600 text-3xl font-bold ">
-              Be a Member
+              Be a Voulentary
             </span>
           </div>
           <form
@@ -62,10 +55,12 @@ function BeMember() {
                       "Please enter your first and last name separated by a space.",
                   },
                 })}
-                className=" font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
-              {errors.name && (
-                <p className="text-red-500 text-sm">{errors.name.message}</p>
+              {errors.fullName && (
+                <p className="text-red-500 text-sm">
+                  {errors.fullName.message}
+                </p>
               )}
             </div>
             <div className="mb-4">
@@ -84,9 +79,8 @@ function BeMember() {
                       "Please enter a valid phone number with country code.",
                   },
                 })}
-                className=" font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
-
               {errors.phone && (
                 <p className="text-red-500 text-sm">{errors.phone.message}</p>
               )}
@@ -106,7 +100,7 @@ function BeMember() {
                     message: "Invalid email address",
                   },
                 })}
-                className=" font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -118,7 +112,7 @@ function BeMember() {
               </label>
               <select
                 id="country"
-                {...register("country", { required: "Country is required" })} // Add validation for required field
+                {...register("country", { required: "Country is required" })}
                 className="w-full px-4 py-3 text-sm font-light rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               >
                 <option value="">Select a country</option>
@@ -133,25 +127,27 @@ function BeMember() {
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="country" className="block text-sm font-medium">
+              <label htmlFor="volunteer" className="block text-sm font-medium">
                 Volunteer Type
               </label>
               <select
                 id="volunteer"
                 {...register("volunteer_type", {
                   required: "Volunteer type is required",
-                })} // Add validation for required field
+                })}
                 className="w-full px-4 py-3 text-sm font-light rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               >
-                <option value="">Select a country</option>
-                {country.map((country) => (
-                  <option key={country.name} value={country.name}>
-                    {country.name}
+                <option value="">Select a volunteer type</option>
+                {volunteer_type.map((volunteer_type) => (
+                  <option key={volunteer_type.id} value={volunteer_type.id}>
+                    {volunteer_type.name}
                   </option>
                 ))}
               </select>
-              {errors.country && (
-                <p className="text-red-500 text-sm">{errors.country.message}</p>
+              {errors.volunteer_type && (
+                <p className="text-red-500 text-sm">
+                  {errors.volunteer_type.message}
+                </p>
               )}
             </div>
             <button

@@ -19,7 +19,7 @@ function TestimonialSlider() {
   const goToTestimonial = (index) => {
     setCurrentTestimonialIndex(index);
   };
-  console.log(Testimonials, "Testimonials");
+  // console.log(Testimonials, "Testimonials");
 
   return (
     <div className=" font-poppins container mx-auto flex px-5 my-16 items-center justify-center flex-col">

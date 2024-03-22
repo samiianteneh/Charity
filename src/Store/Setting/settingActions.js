@@ -32,17 +32,19 @@ export const createVolunteerType = (data) => {
     dispatch(settingStart());
     axios({
       method: "post",
-      url: `${API_BASE_URL}/Setting`,
+      url: `${API_BASE_URL}/volunteryType`,
       header: {
         "Content-Type": "Application/json",
       },
       data,
     })
       .then((response) => {
+        console.log(response, "response for create volunteer type");
         dispatch(createSettingSuccess(response?.data));
         dispatch(successMessage("Setting Created Successfully!"));
       })
       .catch((error) => {
+        console.log(error, "response for create volunteer type err");
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
       });
@@ -53,7 +55,7 @@ export const getVolunteerType = () => {
     dispatch(settingStart());
     axios({
       method: "get",
-      // url: `${API_BASE_URL}/Setting`,
+      url: `${API_BASE_URL}/volunteryType`,
     })
       .then((response) => {
         dispatch(getSettingSuccess(response?.data));

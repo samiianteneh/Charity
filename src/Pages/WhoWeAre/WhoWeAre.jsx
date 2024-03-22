@@ -21,23 +21,37 @@ function WhoWeAre() {
           <div className="text-center md:text-end my-5">
             <div className="inline-block relative text-justify md:text-justify">
               <span className="text-gray-800 md:text-lg sm:text-xs">
-                Welcome to Noah Giving Hands. The situation in Ethiopia,
-                particularly concerning the internal displacement of millions of
-                people due to various challenges such as violence, conflict, and
-                environmental disasters, is profoundly troubling. It's
-                heart-wrenching to witness families compelled to abandon their
-                homes in pursuit of safety, often lacking access to fundamental
-                necessities.
+                Thank you for visiting Noah Giving Hands' website. We share your
+                concern for the plight of internally displaced persons (IDPs) in
+                Ethiopia. The challenges they face due to violence, conflict,
+                and environmental disasters are indeed distressing. At Noah
+                Giving Hands, we are dedicated to providing aid and support to
+                these vulnerable communities.
               </span>
               <br />
               <br />
               <span className="text-gray-800 md:text-lg sm:text-xs">
-                Noah Giving Hands assumes a pivotal role in extending aid to
-                those impacted by these adversities. Our initiatives encompass
-                providing shelter, sustenance, healthcare, and assistance to
-                internally displaced persons (IDPs), aiming to significantly
-                mitigate their distress and provide avenues for a brighter
-                future.
+                Our initiatives focus on addressing the immediate needs of IDPs,
+                including shelter, food, water, healthcare, and other essential
+                services. We believe in offering comprehensive assistance to
+                help alleviate their suffering and restore dignity to their
+                lives.
+              </span>
+              <br />
+              <br />
+              <span className="text-gray-800 md:text-lg sm:text-xs">
+                Through our collective efforts and the generosity of supporters
+                like you, we strive to make a positive impact and contribute to
+                the well-being of those affected by these crises. Together, we
+                can make a difference and bring hope to those in need.
+              </span>
+              <br />
+              <br />
+              <span className="text-gray-800 md:text-lg sm:text-xs">
+                Please explore our website to learn more about our mission,
+                projects, and how you can get involved in supporting our cause.
+                Thank you for your interest and compassion towards the people of
+                Ethiopia.
               </span>
             </div>
           </div>
