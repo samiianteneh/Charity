@@ -3,7 +3,7 @@ import Layout from "../../../Layout/layout";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../../../Store";
+import { deletePost, getPost, updatePost } from "../../../Store";
 import { Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
 import CreateEvent from "../events/CreateEvent";
@@ -11,10 +11,16 @@ import CreatePost from "./createPost";
 
 const Post = () => {
   const dispatch = useDispatch();
-  const Posts = useSelector((state) => state.postReducer.posts);
-
+  const Posts = useSelector((state) =>
+    console.log("testing", state.postReducer.posts)
+  );
+  console.log("kjhgsf", Posts);
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [editPostData, setEditPostData] = useState(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const itemsPerPage = 3;
 
@@ -36,6 +42,32 @@ const Post = () => {
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
+
+  const handleEditClick = (user) => {
+    setSelectedPost(user);
+    setEditPostData(user);
+    setIsEditMode(true);
+  };
+  const handleUpdate = () => {
+    dispatch(updatePost(selectedUser.id, editUserData));
+    setIsEditMode(false);
+  };
+  const handleUpdateCancel = () => {
+    setIsEditMode(false);
+  };
+  const handleDelete = () => {
+    if (selectedPost && selectedPost.id) {
+      dispatch(deletePost(selectedPost.id));
+      setOpenDeleteModal(false);
+    }
+  };
+  const handleDeleteCancel = () => {
+    setOpenDeleteModal(false);
+  };
+  const handleDeleteClick = (post) => {
+    setSelectedPost(post);
+    setOpenDeleteModal(true);
+  };
 
   return (
     <Layout>
@@ -68,7 +100,7 @@ const Post = () => {
                           POST DATE - {post?.createdAt}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
-                          {post.title}
+                          {post?.title}
                         </h1>
                         <p className="leading-relaxed mb-3 text-[11px]">
                           {post?.description}

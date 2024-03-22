@@ -62,7 +62,7 @@ export const getPost = () => {
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
-        console.log("firstrety", response?.data);
+        console.log("firstrety", response);
       })
       .catch((error) => {
         dispatch(postFail(error));

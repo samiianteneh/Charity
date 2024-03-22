@@ -10,6 +10,9 @@ import SettingsTab from "./Pages/Admin/Settings/settingsTab";
 import Post from "./Pages/Admin/Posts/Post";
 import Donators from "./Pages/Donators/Donators";
 import AdminTab from "./Pages/Admin/AdminHome/adminTab";
+import AdminNew from "./Pages/Admin/AdminHome/AdminNew";
+import Donation from "./Pages/Donation/Donation";
+import SuccessPage from "./Pages/Donation/SuccessPage";
 
 function App() {
   const tokens = localStorage.getItem("token");
@@ -21,9 +24,11 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/donation" element={<Donation />} />
+            <Route path="/success" element={<SuccessPage />} />
             {tokens ? (
               <>
-                <Route path="/adminHome" element={<AdminTab />} />
+                <Route path="/adminHome" element={<AdminNew />} />
                 <Route path="/members" element={<MemberNew />} />
                 <Route path="/events" element={<EventNew />} />
                 <Route path="/settings" element={<SettingsTab />} />

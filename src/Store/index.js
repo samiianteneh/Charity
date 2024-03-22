@@ -5,3 +5,4 @@ export * from "./Event/eventActions";
 export * from "./Post/postActions";
 export * from "./Feedback/feedbackActions";
 export * from "./Setting/settingActions";
+export * from "./BalanceCollection/balanceAction";

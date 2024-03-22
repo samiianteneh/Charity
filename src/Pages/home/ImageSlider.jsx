@@ -3,6 +3,7 @@ import IMG1 from "../../assets/pic 1.jpg";
 import IMG2 from "../../assets/pic 2.jpg";
 import IMG3 from "../../assets/pic 3.jpg";
 import Donate from "./Donate";
+import { NavLink } from "react-router-dom";
 
 function ImageSlider() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,12 +52,20 @@ function ImageSlider() {
           person in Ethiopia can lead a healthy, fulfilling life marked by
           self-reliance and dignity
         </div>
-        <button
+        {/* <button
           onClick={() => handleClick()}
           className=" flex max-w-[100%] md:max-w-[75%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
         >
           <p className="font-normal text-white">Donate</p>
-        </button>
+        </button> */}
+        <NavLink
+          className=" flex max-w-[100%] md:max-w-[75%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
+          to="/donation"
+          exact
+          activeClassName="active"
+        >
+          Donation
+        </NavLink>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 text-center mt-2 ">

@@ -165,7 +165,7 @@ function Donate({ closeModal }) {
             {" "}
             <button
               onClick={closeModal}
-              className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md"
+              className="mt-4 px-4 py-2 bg-white text-black border-[1px] shadow-ms rounded-md"
             >
               Close
             </button>
