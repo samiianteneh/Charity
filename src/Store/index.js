@@ -6,3 +6,4 @@ export * from "./Post/postActions";
 export * from "./Feedback/feedbackActions";
 export * from "./Setting/settingActions";
 export * from "./BalanceCollection/balanceAction";
+export * from "./Donate/donateActions.js";

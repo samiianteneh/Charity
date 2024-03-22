@@ -57,8 +57,8 @@ export const getPost = () => {
     dispatch(postStart());
     axios({
       method: "get",
-      // url: "https://fakestoreapi.com/products/category/jewelery",
-      url: `${API_BASE_URL}/post`,
+      url: "https://fakestoreapi.com/products/category/jewelery",
+      // url: `${API_BASE_URL}/post`,
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));

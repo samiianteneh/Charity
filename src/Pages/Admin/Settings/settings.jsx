@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser, deleteUser, getAdmin } from "../../../Store";
+import { personalInfo } from "../../../Constant/personalInfo";
+
 import { IoMdAddCircle } from "react-icons/io";
 import CreateAdmin from "./createAdmin";
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { Pencil, Trash2 } from "lucide-react";
 
 const Settings = () => {
   const userjson = localStorage.getItem("user");
@@ -14,7 +17,7 @@ const Settings = () => {
   console.log(adminId, "tokenstokens");
   console.log(roles, "tokenstokens");
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.userReducer.users);
+  // const users = useSelector((state) => state.userReducer.users);
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -25,10 +28,10 @@ const Settings = () => {
 
   console.log(selectedUser, "selectedUser");
   console.log(editUserData, "editUserData");
-  console.log(users, "users");
-  useEffect(() => {
-    dispatch(getAdmin());
-  }, [dispatch]);
+  // console.log(users, "users");
+  // useEffect(() => {
+  //   dispatch(getAdmin());
+  // }, [dispatch]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -67,8 +70,10 @@ const Settings = () => {
       setImagePreview(info.file.response.imageUrl);
     }
   };
-  const filterdUser =
-    roles == "admin" ? users?.filter((items) => items.id == adminId) : users;
+  const filterdUser = personalInfo;
+  // roles == "admin"
+  //   ? personalInfo?.filter((items) => items.id == adminId)
+  //   : personalInfo;
   console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <div>
@@ -89,7 +94,7 @@ const Settings = () => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-4 mx-auto flex flex-wrap">
           <div className="flex flex-wrap -m-4">
-            {/* {filterdUser?.map((user, index) => (
+            {filterdUser?.map((user, index) => (
               <div key={index} className="p-4 lg:w-1/2 md:w-full">
                 <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                   <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0"></div>
@@ -133,9 +138,9 @@ const Settings = () => {
                       </div>
                     </div>
                   </div>
-                </div> 
+                </div>
               </div>
-            ))}*/}
+            ))}
           </div>
         </div>
       </section>

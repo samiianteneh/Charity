@@ -1,5 +1,7 @@
+import axios from "axios";
 import { errorMessage, successMessage } from "../Messages/messageActions";
 import * as actionTypes from "./donateActionTypes";
+import { API_BASE_URL } from "../../config/endpoint";
 
 const donateStart = () => ({
   type: actionTypes.DONATE_START,
@@ -51,7 +53,7 @@ export const getDonate = () => {
     dispatch(donateStart());
     axios({
       method: "get",
-      url: `${API_BASE_URL}/Donate`,
+      url: `${API_BASE_URL}/payment/balance`,
     })
       .then((response) => {
         dispatch(getDonateSuccess(response?.data));

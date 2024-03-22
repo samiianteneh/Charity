@@ -30,13 +30,13 @@ const columns = [
 ];
 
 const MemberNew = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.userReducer.users);
-  console.log(users, "userssss");
+  // const dispatch = useDispatch();
+  // const users = useSelector((state) => state.userReducer.users);
+  // console.log(users, "userssss");
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
   return (
     <Layout>
       <div className="font-poppins grid  gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
@@ -44,7 +44,7 @@ const MemberNew = () => {
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%] m-3">
-              <Table columns={columns} dataSource={users} />
+              <Table columns={columns} dataSource={personalInfo} />
             </div>
           </div>
         </div>

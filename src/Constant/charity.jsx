@@ -7,7 +7,7 @@ export const charity = [
     charityAddress: "Amhara, Ethiopia",
     eventAddress: "Internally Displaced Persons Camp, Amhara",
     name: "IDPs Aid Organization",
-    is_active: 1,
+    isActive: 1,
   },
   {
     eventId: 2,
@@ -17,7 +17,7 @@ export const charity = [
     charityAddress: "Tigray, Ethiopia",
     eventAddress: "Internally Displaced Persons Camp, Tigray",
     name: "Humanitarian Relief Foundation",
-    is_active: 0,
+    isActive: 0,
   },
   {
     eventId: 3,
@@ -27,7 +27,7 @@ export const charity = [
     charityAddress: "Afar, Ethiopia",
     eventAddress: "Drought-affected villages, Afar",
     name: "Drought Relief Organization",
-    is_active: 1,
+    isActive: 1,
   },
   {
     eventId: 4,
@@ -37,6 +37,6 @@ export const charity = [
     charityAddress: "Somali, Ethiopia",
     eventAddress: "Refugee camps, Somali",
     name: "Children's Health Initiative",
-    is_active: 1,
+    isActive: 1,
   },
 ];

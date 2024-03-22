@@ -1,9 +1,11 @@
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { personalInfo } from "../../Constant/personalInfo";
+
 import DashboardHeader from "../../Layout/dashboardHeader";
 import Layout from "../../Layout/layout";
-import { getUsers } from "../../Store";
+import { getDonate, getUsers } from "../../Store";
 
 const columns = [
   {
@@ -26,13 +28,13 @@ const columns = [
 ];
 
 const Donators = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.userReducer.users);
-  console.log(users, "userssss");
+  // const dispatch = useDispatch();
+  // const users = useSelector((state) => state.donateReducer.donators);
+  // console.log(users, "userssss");
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getDonate());
+  // }, [dispatch]);
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
@@ -40,7 +42,7 @@ const Donators = () => {
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%] m-3">
-              <Table columns={columns} dataSource={users} />
+              <Table columns={columns} dataSource={personalInfo} />
             </div>
           </div>
         </div>
