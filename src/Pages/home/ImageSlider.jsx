@@ -59,12 +59,12 @@ function ImageSlider() {
           <p className="font-normal text-white">Donate</p>
         </button> */}
         <NavLink
-          className=" flex max-w-[100%] md:max-w-[75%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
+          className=" flex max-w-[10%] md:max-w-[10%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
           to="/donation"
           exact
           activeClassName="active"
         >
-          Donation
+          Donat
         </NavLink>
       </div>
 
