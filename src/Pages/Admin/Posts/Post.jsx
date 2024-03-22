@@ -48,10 +48,7 @@ const Post = () => {
               onClick={() => openModal()}
             >
               <IoMdAddCircle className="fill-green-600 " size={20} />
-              <p className="font-normal text-[12px] text-green-600">
-                {" "}
-                Add Post
-              </p>
+              <p className="font-normal text-[12px] text-green-600">Add Post</p>
             </button>
           </div>
 

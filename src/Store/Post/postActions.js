@@ -35,9 +35,9 @@ export const createPost = (data) => {
     axios({
       method: "post",
       url: `${API_BASE_URL}/post`,
-      header: {
-        "Content-Type": "multipart/form-data",
-      },
+      // header: {
+      //   "Content-Type": "multipart/form-data",
+      // },
       data,
     })
       .then((response) => {
@@ -47,7 +47,7 @@ export const createPost = (data) => {
         dispatch(successMessage("Post Created Successfully!"));
       })
       .catch((error) => {
-        dispatch(postFail(error));
+        dispatch(postFail(error?.message));
         dispatch(errorMessage(error));
       });
   };

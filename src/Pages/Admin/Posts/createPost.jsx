@@ -10,6 +10,8 @@ import { API_BASE_URL } from "../../../Config/endpoint";
 const CreatePost = ({ closeModal }) => {
   const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState(null);
+  const [image, setFile] = useState(null);
+
   console.log(imageUrl, "imageUrl");
 
   const {
@@ -20,19 +22,15 @@ const CreatePost = ({ closeModal }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(createPost({ ...data, imageUrl }));
+    dispatch(createPost({ ...data, image }));
     // reset();
     setImageUrl(null);
+    closeModal();
   };
-  const beforeUpload = (file) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      console.log("first", e.target.result);
 
-      setImageUrl(e);
-    };
-    reader.readAsDataURL(file);
-    return false;
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
   };
 
   return (
@@ -54,8 +52,8 @@ const CreatePost = ({ closeModal }) => {
               <input
                 type="text"
                 placeholder="Type here"
-                id="postName"
-                {...register("postName", {
+                id="name"
+                {...register("name", {
                   required: "Post Name is required",
                 })}
                 pattern="^[a-zA-Z\s]+$"
@@ -65,7 +63,7 @@ const CreatePost = ({ closeModal }) => {
                 <p className="text-red-500 text-sm">{errors.name.message}</p>
               )}
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="date" className="block text-sm font-medium">
                 Post Date
               </label>
@@ -81,7 +79,7 @@ const CreatePost = ({ closeModal }) => {
               {errors.date && (
                 <p className="text-red-500 text-sm">{errors.date.message}</p>
               )}
-            </div>
+            </div> */}
 
             <div className="mb-4">
               <label
@@ -104,6 +102,17 @@ const CreatePost = ({ closeModal }) => {
               )}
             </div>
             <div className="mb-4">
+              <label htmlFor="file" className="block text-sm font-medium">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                id="image"
+                onChange={handleFileChange}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            {/* <div className="mb-4">
               <label htmlFor="password" className="block text-sm font-medium">
                 Upload Image
               </label>
@@ -112,7 +121,7 @@ const CreatePost = ({ closeModal }) => {
                   <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
               </Form.Item>
-            </div>
+            </div> */}
             <button
               id="submitBtn"
               type="submit"
