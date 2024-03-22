@@ -28,18 +28,22 @@ const postFail = (error) => ({
 });
 
 export const createPost = (data) => {
+  console.log(data, "exampleData");
+
   return (dispatch) => {
     dispatch(postStart());
     axios({
       method: "post",
       url: `${API_BASE_URL}/post`,
       header: {
-        "Content-Type": "Application/json",
+        "Content-Type": "multipart/form-data",
       },
       data,
     })
       .then((response) => {
         dispatch(createPostSuccess(response?.data));
+        console.log("just cheking the post response", response?.data);
+
         dispatch(successMessage("Post Created Successfully!"));
       })
       .catch((error) => {
@@ -53,13 +57,12 @@ export const getPost = () => {
     dispatch(postStart());
     axios({
       method: "get",
-      url: "https://fakestoreapi.com/products/category/jewelery",
-
-      // url: `${API_BASE_URL}/post`,
+      // url: "https://fakestoreapi.com/products/category/jewelery",
+      url: `${API_BASE_URL}/post`,
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
-        console.log("firstrety", response);
+        console.log("firstrety", response?.data);
       })
       .catch((error) => {
         dispatch(postFail(error));

@@ -7,6 +7,7 @@ import { getPost } from "../../../Store";
 import { Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
 import CreateEvent from "../events/CreateEvent";
+import CreatePost from "./createPost";
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Post = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Posts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = Posts?.posts?.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -53,26 +54,26 @@ const Post = () => {
               </p>
             </button>
           </div>
-          <section class="text-gray-600 body-font">
-            <div class="container px-5 py-4 mx-auto">
-              <div class="flex flex-wrap -m-4">
+          <section className="text-gray-600 body-font">
+            <div className="container px-5 py-4 mx-auto">
+              <div className="flex flex-wrap -m-4">
                 {currentItems?.map((post) => (
-                  <div class="p-4 md:w-1/3">
-                    <div class="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                  <div className="p-4 md:w-1/3">
+                    <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        class="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={post.image}
+                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        src={post?.imageUrl}
                         alt="blog"
                       />
-                      <div class="p-6 pb-1">
-                        <h2 class="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                          POST DATE - {post.date}
+                      <div className="p-6 pb-1">
+                        <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
+                          POST DATE - {post?.createdAt}
                         </h2>
-                        <h1 class="title-font text-[13px] font-medium text-gray-900 mb-3">
+                        <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                           {post.title}
                         </h1>
-                        <p class="leading-relaxed mb-3 text-[11px]">
-                          {post.description}
+                        <p className="leading-relaxed mb-3 text-[11px]">
+                          {post?.description}
                         </p>
                       </div>
                       <div className="m-2 ">
@@ -104,11 +105,11 @@ const Post = () => {
             </div>
           </section>
 
-          {isOpen && <CreateEvent closeModal={closeModal} />}
+          {isOpen && <CreatePost closeModal={closeModal} />}
 
           <Pagination
             defaultCurrent={currentPage}
-            total={Posts.length}
+            total={Posts?.posts?.length}
             pageSize={itemsPerPage}
             onChange={handlePageChange}
             className="flex justify-end"
