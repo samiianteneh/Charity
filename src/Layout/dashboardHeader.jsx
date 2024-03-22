@@ -14,7 +14,6 @@ export default function DashboardHeader() {
   let labeled;
   for (let i = 0; i < DASHBOARD_SIDEBAR_LINKS.length; i++) {
     labeled = DASHBOARD_SIDEBAR_LINKS[i];
-    // console.log(DASHBOARD_SIDEBAR_LINKS[i], labeled, "ncdsjcbjsdcb");
   }
   const [selectedSidebarKey, setSelectedSidebarKey] = useState("dashboard");
 
@@ -42,6 +41,10 @@ export default function DashboardHeader() {
     // console.log(DASHBOARD_SIDEBAR_LINKS[i], labeled, "ncdsjcbjsdcb");
   }
 
+  // console.log(
+  //   DASHBOARD_SIDEBAR_LINKS?.map((keys) => keys.key),
+  //   "firstdashboard"
+  // );
   // console.log(
   //   DASHBOARD_SIDEBAR_LINKS?.map((keys) => keys.key),
   //   "firstdashboard"

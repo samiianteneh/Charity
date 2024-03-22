@@ -12,7 +12,7 @@ const postStart = (state) => ({
   is_loading: true,
   error: null,
 });
-const createPost = (state, action) => ({
+const createPostSuccess = (state, action) => ({
   ...state,
   posts: [...state.posts, action.data],
   is_loading: false,
@@ -20,13 +20,14 @@ const createPost = (state, action) => ({
 });
 const getPost = (state, action) => ({
   ...state,
+  // posts: Array.isArray(action.data) ? action.data : [], // Ensure action.data is an array
   posts: action.data,
   is_loading: false,
   error: null,
 });
 const getSinglePost = (state, action) => ({
   ...state,
-  posts: action.data,
+  single_post: action.data,
   is_loading: false,
   error: null,
 });
@@ -57,7 +58,7 @@ export const postReducer = (state = initialState, action) => {
     case actionTypes.POST_START:
       return postStart(state);
     case actionTypes.CREATE_POST:
-      return createPost(state, action);
+      return createPostSuccess(state, action);
     case actionTypes.GET_POST:
       return getPost(state, action);
     case actionTypes.UPDATE_POST:

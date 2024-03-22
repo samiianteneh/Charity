@@ -3,23 +3,30 @@ import Layout from "../../../Layout/layout";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../../../Store";
+import { deletePost, getPost, updatePost } from "../../../Store";
 import { Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
 import CreateEvent from "../events/CreateEvent";
+import CreatePost from "./createPost";
 
 const Post = () => {
   const dispatch = useDispatch();
-  const Posts = useSelector((state) => state.postReducer.posts);
-
+  const Posts = useSelector((state) =>
+    console.log("testing", state.postReducer.posts)
+  );
+  console.log("kjhgsf", Posts);
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [editPostData, setEditPostData] = useState(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const itemsPerPage = 3;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Posts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = Posts?.posts?.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -36,6 +43,32 @@ const Post = () => {
     dispatch(getPost());
   }, [dispatch]);
 
+  const handleEditClick = (user) => {
+    setSelectedPost(user);
+    setEditPostData(user);
+    setIsEditMode(true);
+  };
+  const handleUpdate = () => {
+    dispatch(updatePost(selectedUser.id, editUserData));
+    setIsEditMode(false);
+  };
+  const handleUpdateCancel = () => {
+    setIsEditMode(false);
+  };
+  const handleDelete = () => {
+    if (selectedPost && selectedPost.id) {
+      dispatch(deletePost(selectedPost.id));
+      setOpenDeleteModal(false);
+    }
+  };
+  const handleDeleteCancel = () => {
+    setOpenDeleteModal(false);
+  };
+  const handleDeleteClick = (post) => {
+    setSelectedPost(post);
+    setOpenDeleteModal(true);
+  };
+
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
@@ -47,12 +80,10 @@ const Post = () => {
               onClick={() => openModal()}
             >
               <IoMdAddCircle className="fill-green-600 " size={20} />
-              <p className="font-normal text-[12px] text-green-600">
-                {" "}
-                Add Post
-              </p>
+              <p className="font-normal text-[12px] text-green-600">Add Post</p>
             </button>
           </div>
+
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-4 mx-auto">
               <div className="flex flex-wrap -m-4">
@@ -61,18 +92,18 @@ const Post = () => {
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
                         className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={post.image}
+                        src={post?.imageUrl}
                         alt="blog"
                       />
                       <div className="p-6 pb-1">
                         <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                          POST DATE - {post.date}
+                          POST DATE - {post?.createdAt}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
-                          {post.title}
+                          {post?.title}
                         </h1>
                         <p className="leading-relaxed mb-3 text-[11px]">
-                          {post.description}
+                          {post?.description}
                         </p>
                       </div>
                       <div className="m-2 ">
@@ -104,11 +135,11 @@ const Post = () => {
             </div>
           </section>
 
-          {isOpen && <CreateEvent closeModal={closeModal} />}
+          {isOpen && <CreatePost closeModal={closeModal} />}
 
           <Pagination
             defaultCurrent={currentPage}
-            total={Posts.length}
+            total={Posts?.posts?.length}
             pageSize={itemsPerPage}
             onChange={handlePageChange}
             className="flex justify-end"

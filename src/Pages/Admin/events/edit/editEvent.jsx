@@ -35,6 +35,7 @@ function EventEdit({ closeModal, data }) {
   const onSubmit = (e) => {
     e.isActive = isActive ? 1 : 0;
     dispatch(updateEvent(data?.id, e));
+    closeModal();
   };
 
   return (
