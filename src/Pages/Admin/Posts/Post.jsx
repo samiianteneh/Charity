@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../../Store";
 import { Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
+import CreateEvent from "../events/CreateEvent";
 
 const Post = () => {
   const dispatch = useDispatch();
   const Posts = useSelector((state) => state.postReducer.posts);
-  console.log(Posts, "Posts");
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
+
   const itemsPerPage = 3;
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -21,6 +23,13 @@ const Post = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -94,6 +103,8 @@ const Post = () => {
               </div>
             </div>
           </section>
+
+          {isOpen && <CreateEvent closeModal={closeModal} />}
 
           <Pagination
             defaultCurrent={currentPage}
