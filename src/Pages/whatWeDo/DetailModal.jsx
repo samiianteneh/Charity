@@ -29,6 +29,10 @@ function DetailModal({ closeModal, data }) {
           <p>{data?.paragraph_1}</p>
           <br />
           <p>{data?.paragraph_2}</p>
+          <br />
+          <p>{data?.paragraph_3}</p>
+          <br />
+          <p>{data?.paragraph_4}</p>
         </div>
 
         <button

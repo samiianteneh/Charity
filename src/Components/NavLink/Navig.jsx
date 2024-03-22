@@ -27,8 +27,23 @@ function Navig() {
             alt="Noah Giving Hands logo"
           />
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center">
-            <a className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1">
+            <a
+              href="#home"
+              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
               Home
+            </a>
+            <a
+              href="#event"
+              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Events
+            </a>
+            <a
+              href="#post"
+              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
+              Posts
             </a>
             <Dropdown
               title={
@@ -38,7 +53,10 @@ function Navig() {
               }
               items={dropdownItems}
             />
-            <a className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1">
+            <a
+              href="#contactUs"
+              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
+            >
               Contact Us
             </a>
             <button
@@ -58,7 +76,10 @@ function Navig() {
           ) : (
             ""
           )}
-          <button className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0">
+          <a
+            href="#member"
+            className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
+          >
             Become a member
             <svg
               fill="none"
@@ -71,7 +92,7 @@ function Navig() {
             >
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </button>
+          </a>
         </div>
       </header>
       {isOpen && <Donate closeModal={closeModal} />}

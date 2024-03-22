@@ -16,7 +16,7 @@ function ImageSlider() {
   }
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const images = [IMG1, IMG2, IMG3]; // Add more image URLs as needed
+  const images = [IMG1]; // Add more image URLs as needed
   const totalImages = images.length;
 
   useEffect(() => {
@@ -46,9 +46,10 @@ function ImageSlider() {
         <div className="font-extrabold text-4xl md:text-5xl ">
           Building a Brighter Future Together
         </div>
-        <div className="max-w-[100%] md:max-w-[100%] text-left hidden md:block py-4 font-light">
-          Building An Ethiopia where every man, woman, and child starts to live
-          a healthy, fulfilling life of self-reliance and dignity.
+        <div className="max-w-[70%]  text-left hidden md:block py-4 text-xl font-light">
+          Our vision is building a future where every internally displaced
+          person in Ethiopia can lead a healthy, fulfilling life marked by
+          self-reliance and dignity
         </div>
         <button
           onClick={() => handleClick()}

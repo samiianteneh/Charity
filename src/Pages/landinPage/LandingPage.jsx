@@ -10,15 +10,28 @@ import Navigation from "../../Components/NavLink/Navigation";
 import Footer from "../../Components/Footer/Footer";
 import Navig from "../../Components/NavLink/Navig";
 import Counts from "../Counts/Counts";
+import Event from "../Events/Event";
+import Posts from "../Post/Post";
 export default function LandingPage() {
   return (
     <>
       {/* <Header /> */}
-      {/* <Navigation /> */}
-      <Navig />
+      <div className="md:block">
+        {" "}
+        <Navigation />
+      </div>
+      <div className="hidden md:block">
+        <Navig />{" "}
+      </div>
       <main className="bg-[#f9fafb]">
         <section id={"home"}>
           <HomePage />
+        </section>
+        <section id={"event"}>
+          <Event />
+        </section>
+        <section id={"post"}>
+          <Posts />
         </section>
         <section id={"WhoWeAre"}>
           <WhoWeAre />

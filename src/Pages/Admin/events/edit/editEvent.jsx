@@ -8,7 +8,7 @@ import { updateEvent } from "../../../../Store";
 
 function EventEdit({ closeModal, data }) {
   const dispatch = useDispatch();
-  const [isActive, setIsActive] = useState(data?.is_active);
+  const [isActive, setIsActive] = useState(data?.isActive);
   const toggleIsActive = () => {
     setIsActive(!isActive);
   };

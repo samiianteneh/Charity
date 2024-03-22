@@ -64,8 +64,8 @@ function Donate({ closeModal }) {
   };
   console.log(amounts, "amountsss");
   return (
-    <div className="font-poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-4 rounded-lg max-w-[50%] min-w-[25%] modal-content">
+    <div className="font-poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-80 flex justify-center items-center z-50 ">
+      <div className="bg-white rounded-lg max-w-[70%] min-w-[25%] modal-content p-10">
         <div className="flex justify-between items-center mt-4 py-2">
           <h2 className="text-lg font-semibold ">Donation</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />

@@ -141,10 +141,13 @@ export const updateEvent = (id, data) => {
       data: data,
     })
       .then((response) => {
+        console.log(response, "response from backend for charity update");
         dispatch(updateEventSuccess(response?.data));
         dispatch(successMessage("Event Updated Successfully!"));
       })
       .catch((error) => {
+        console.log(error, "response from backend for charity update error");
+
         dispatch(eventFail(error));
         let errors;
         if (error.response) {
