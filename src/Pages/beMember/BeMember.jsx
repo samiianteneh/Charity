@@ -18,12 +18,12 @@ function BeMember() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm();
 
   const onSubmit = (data) => {
     dispatch(userRegistration(data, role));
-    reset();
+    // reset();
   };
 
   return (
@@ -127,20 +127,23 @@ function BeMember() {
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="volunteer" className="block text-sm font-medium">
+              <label
+                htmlFor="volenteerTypeId"
+                className="block text-sm font-medium"
+              >
                 Volunteer Type
               </label>
               <select
-                id="volunteer"
-                {...register("volunteer_type", {
+                id="volenteerTypeId"
+                {...register("volenteerTypeId", {
                   required: "Volunteer type is required",
                 })}
                 className="w-full px-4 py-3 text-sm font-light rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               >
                 <option value="">Select a volunteer type</option>
-                {volunteer_type.map((volunteer_type) => (
-                  <option key={volunteer_type.id} value={volunteer_type.id}>
-                    {volunteer_type.name}
+                {volunteer_type.map((volenteerTypeId) => (
+                  <option key={volenteerTypeId.id} value={volenteerTypeId.id}>
+                    {volenteerTypeId.name}
                   </option>
                 ))}
               </select>

@@ -23,6 +23,10 @@ const columns = [
     title: "Country",
     dataIndex: "country",
   },
+  {
+    title: "Volentery type",
+    dataIndex: "volunteerTypeId",
+  },
 ];
 
 const MemberNew = () => {
