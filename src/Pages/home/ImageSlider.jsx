@@ -64,7 +64,7 @@ function ImageSlider() {
           exact
           activeClassName="active"
         >
-          Donat
+          Donate
         </NavLink>
       </div>
 

@@ -11,19 +11,21 @@ function BeMember() {
 
   const volunteer_type = useSelector((state) => state.settingReducer.settings);
   const role = "volenteer";
+
   useEffect(() => {
     dispatch(getVolunteerType());
   }, []);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
     dispatch(userRegistration(data, role));
-    // reset();
+    reset();
   };
 
   return (

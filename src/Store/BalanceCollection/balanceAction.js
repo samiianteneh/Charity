@@ -34,14 +34,7 @@ export const getBalances = () => {
       })
       .catch((error) => {
         dispatch(balanceFail(error));
-        let errors;
-        if (error?.response) {
-          errors = error?.message + " " + error?.response?.data;
-        }
-        if (error?.request) {
-          errors = error?.message + "Failed request, Try Again!";
-        }
-        dispatch(errorMessage(errors));
+        dispatch(errorMessage(error));
       });
   };
 };
