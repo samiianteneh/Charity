@@ -1,4 +1,4 @@
-import * as types from "./messageTypes";
+import * as types from "./messageActionTypes";
 const initialState = {
   msgVisible: false,
   msg: "",

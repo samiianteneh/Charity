@@ -60,16 +60,8 @@ export const userRegistration = (data, role) => {
       })
       .catch((error) => {
         dispatch(registerFail(error));
-        let errors;
-        if (error?.response) {
-          errors = error?.message + " " + error?.response?.data;
-        }
-        if (error?.request) {
-          errors = error?.message + "Failed request, Try Again!";
-        }
+        dispatch(errorMessage(error));
         console.log("create Volenteer response err", error);
-
-        dispatch(errorMessage(errors));
       });
   };
 };
@@ -126,7 +118,7 @@ export const getAdmin = () => {
       })
       .catch((error) => {
         dispatch(userFail(error));
-        dispatch(errorMessage("Failed to fetch users."));
+        dispatch(errorMessage("Failed to fetch Admin Users."));
       });
   };
 };

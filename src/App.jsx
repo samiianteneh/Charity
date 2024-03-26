@@ -13,12 +13,15 @@ import AdminTab from "./Pages/Admin/AdminHome/adminTab";
 import AdminNew from "./Pages/Admin/AdminHome/AdminNew";
 import Donation from "./Pages/Donation/Donation";
 import SuccessPage from "./Pages/Donation/SuccessPage";
+import Message from "./Components/Message";
 
 function App() {
   const tokens = localStorage.getItem("token");
   const user = localStorage.getItem("user");
   return (
     <>
+      <Message />
+
       <BrowserRouter>
         <div className="">
           <Routes>

@@ -69,15 +69,7 @@ export const createEvent = (data) => {
       .catch((error) => {
         console.log(error, "response from backend for charity  error");
         dispatch(eventFail(error));
-        let errors;
-        if (error?.response) {
-          errors = error?.message + " " + error?.response?.data;
-        }
-        if (error?.request) {
-          errors = error?.message + "Failed request, Try Again!";
-        }
-
-        dispatch(errorMessage(errors));
+        dispatch(errorMessage("Failed to create Event"));
       });
   };
 };
@@ -93,15 +85,7 @@ export const getEvent = () => {
       })
       .catch((error) => {
         dispatch(eventFail(error));
-        let errors;
-        if (error?.response) {
-          errors = error?.message + " " + error?.response?.data;
-        }
-        if (error?.request) {
-          errors = error?.message + "Failed request, Try Again!";
-        }
-
-        dispatch(errorMessage(errors));
+        dispatch(errorMessage("Failed to get Event"));
       });
   };
 };
@@ -118,15 +102,7 @@ export const getSingleEvent = (event_id) => {
       })
       .catch((error) => {
         dispatch(eventFail(error));
-        let errors;
-        if (error?.response) {
-          errors = error?.message + " " + error?.response?.data;
-        }
-        if (error?.request) {
-          errors = error?.message + "Failed request, Try Again!";
-        }
-
-        dispatch(errorMessage(errors));
+        dispatch(errorMessage("Failed to get Single Event"));
       });
   };
 };
@@ -149,15 +125,7 @@ export const updateEvent = (id, data) => {
         console.log(error, "response from backend for charity update error");
 
         dispatch(eventFail(error));
-        let errors;
-        if (error.response) {
-          errors = error.message + " " + error.response.data;
-        }
-        if (error.request) {
-          errors = error.message + "Failed request, Try Again!";
-        }
-
-        dispatch(errorMessage(errors));
+        dispatch(errorMessage("Failed to update Event"));
       });
   };
 };
