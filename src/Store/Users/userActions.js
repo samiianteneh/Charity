@@ -67,7 +67,7 @@ export const userRegistration = (data, role) => {
         if (error?.request) {
           errors = error?.message + "Failed request, Try Again!";
         }
-        console.log("create Volenteer response", error);
+        console.log("create Volenteer response err", error);
 
         dispatch(errorMessage(errors));
       });
