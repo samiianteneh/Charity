@@ -11,9 +11,9 @@ import { getFeedback } from "../../../Store";
 
 const Feedback = () => {
   const dispatch = useDispatch();
-  const feedbacks = useSelector((state) => state.feedbackReducer.feedbacks);
+  // const feedbacks = useSelector((state) => state.feedbackReducer.feedbacks);
 
-  console.log("feedbacks", feedbacks);
+  console.log("feedbacks", Comments);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 2");
   const handleTabClick = (tab) => {
@@ -26,17 +26,15 @@ const Feedback = () => {
     setIsOpen(false);
   };
 
-  const activeComments = feedbacks.filter((items) => items?.is_seen === true);
-  const inActiveComments = feedbacks.filter(
-    (items) => items?.is_seen === false
-  );
+  const activeComments = Comments.filter((items) => items?.is_seen === true);
+  const inActiveComments = Comments.filter((items) => items?.is_seen === false);
   // console.log(Comments, "CommentsComments");
   // console.log(activeComments, "activeComments");
   // console.log(inActiveComments, "inActiveComments");
 
-  useEffect(() => {
-    dispatch(getFeedback());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getFeedback());
+  // }, [dispatch]);
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">

@@ -65,13 +65,19 @@ function Navig() {
             >
               Contact Us
             </a>
+            <a
+              href="/donation"
+              className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
+            >
+              Donate
+            </a>
 
-            <button
+            {/* <button
               onClick={() => handleClick()}
               className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
             >
               Donate
-            </button>
+            </button> */}
           </nav>
           {tokens ? (
             <a

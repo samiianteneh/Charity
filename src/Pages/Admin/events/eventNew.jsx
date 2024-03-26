@@ -12,10 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvent } from "../../../Store";
 
 const EventNew = () => {
-  const dispatch = useDispatch();
-  const events = useSelector((state) => state.eventReducer.events);
+  // const dispatch = useDispatch();
+  // const events = useSelector((state) => state.eventReducer.events);
 
-  console.log("firstevents", events);
+  console.log("firstevents", charity);
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
@@ -29,11 +29,11 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = events.filter((items) => items?.isActive == 1);
-  const inActiveEvents = events.filter((items) => items?.isActive == 0);
-  useEffect(() => {
-    dispatch(getEvent());
-  }, [dispatch]);
+  const activeEvents = charity.filter((items) => items?.isActive == 1);
+  const inActiveEvents = charity.filter((items) => items?.isActive == 0);
+  // useEffect(() => {
+  //   dispatch(getEvent());
+  // }, [dispatch]);
 
   return (
     <Layout>

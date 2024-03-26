@@ -6,6 +6,7 @@ import { feedbackReducer } from "./Feedback/feedbackReducer";
 import { postReducer } from "./Post/postReducer";
 import { settingReducer } from "./Setting/settingReducer";
 import { BalanceReducer } from "./BalanceCollection/BalanceReducer";
+import { DonateReducer } from "./Donate/DonateReducer";
 
 const rootReducer = combineReducers({
   authReducer: authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   postReducer: postReducer,
   settingReducer: settingReducer,
   BalanceReducer: BalanceReducer,
+  DonateReducer: DonateReducer,
 });
 
 export default rootReducer;

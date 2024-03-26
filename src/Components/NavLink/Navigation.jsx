@@ -195,6 +195,22 @@ function Navigation() {
                     </a>
                   </li>
                   <li className="mb-2 text-left">
+                    <a
+                      href="/donation"
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
+                      className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                    >
+                      Donate
+                    </a>
+                  </li>
+                  {/* <li className="mb-2 text-left">
                     <div
                       onClick={
                         subNav
@@ -212,7 +228,7 @@ function Navigation() {
                     >
                       Donate
                     </div>
-                  </li>
+                  </li> */}
                   <li className="mb-2 text-left">
                     <a
                       href="#contactUs"

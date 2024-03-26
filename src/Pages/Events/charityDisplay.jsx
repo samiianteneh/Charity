@@ -23,12 +23,12 @@ function CharityDisplay() {
   const dispatch = useDispatch();
 
   const events = useSelector((state) => state.eventReducer.events);
-  // console.log(events, "eventsevents");
+  console.log(charity, "charitycharity");
 
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
-  const filerdCharity = events?.filter((item) => {
+  const filerdCharity = charity?.filter((item) => {
     return item?.isActive == 1;
   });
   console.log(filerdCharity, "filerdCharity");
