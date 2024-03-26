@@ -4,15 +4,11 @@ import { Trash2, Pencil } from "lucide-react";
 import { getUsers, getVolunteerType } from "../../../Store";
 import { IoMdAddCircle } from "react-icons/io";
 import CreateVolunteer from "./CreateVolunteer";
-import { Button, Form, Input, Modal, Upload } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Input, Modal, Upload } from "antd";
 
 const VolunteerType = () => {
   const userjson = localStorage.getItem("user");
   const user = JSON.parse(userjson);
-  const roles = user?.role;
-  const adminId = user?.id;
-
   const dispatch = useDispatch();
   const volunteer_type = useSelector((state) => state.settingReducer.settings);
   console.log(volunteer_type, "volunteer_typessssssss");

@@ -11,10 +11,11 @@ import CreatePost from "./createPost";
 
 const Post = () => {
   const dispatch = useDispatch();
-  const Posts = useSelector((state) =>
-    console.log("testing", state.postReducer.posts)
-  );
-  console.log("kjhgsf", Posts);
+  const Posts = useSelector((state) => state.postReducer.posts);
+  console.log(Posts, "Postad");
+  useEffect(() => {
+    dispatch(getPost());
+  }, [dispatch]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -22,7 +23,7 @@ const Post = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
-  const itemsPerPage = 3;
+  const itemsPerPage = 6;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -38,10 +39,6 @@ const Post = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    dispatch(getPost());
-  }, [dispatch]);
 
   const handleEditClick = (user) => {
     setSelectedPost(user);
@@ -87,8 +84,8 @@ const Post = () => {
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-4 mx-auto">
               <div className="flex flex-wrap -m-4">
-                {currentItems?.map((post) => (
-                  <div className="p-4 md:w-1/3">
+                {currentItems?.map((post, index) => (
+                  <div key={index} className="p-4 md:w-1/3">
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
                         className="lg:h-48 md:h-36 w-full object-cover object-center"

@@ -23,7 +23,7 @@ function PostDisplay() {
           cursor: "pointer",
         }}
       >
-        {Posts?.map((post, index) => (
+        {Posts?.posts?.map((post, index) => (
           <div key={index} className="p-4 md:w-1/3">
             <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <img
