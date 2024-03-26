@@ -119,7 +119,7 @@ export const getAdmin = () => {
       },
     };
     axios
-      .get(`${API_BASE_URL}/users/role`, config)
+      .get(`${API_BASE_URL}/users/new`, config)
       .then((response) => {
         dispatch(getAdminSuccess(response?.data));
         console.log(response, "responsettt");

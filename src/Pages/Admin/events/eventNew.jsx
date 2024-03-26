@@ -15,8 +15,6 @@ const EventNew = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventReducer.events);
 
-  console.log("firstevents", charity);
-
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
   const handleTabClick = (tab) => {

@@ -41,7 +41,7 @@ function ImageSlider() {
       <img
         src={images[currentImageIndex]}
         alt={`Slide ${currentImageIndex}`}
-        className="w-full h-auto md:max-h-96"
+        className="w-full h-auto md:h-[38rem] "
       />
       <div className="absolute top-1/2 left-0 transform -translate-y-1/2 text-white py-4 bg-black bg-opacity-50 px-4 md:px-8">
         <div className="font-extrabold text-4xl md:text-5xl ">

@@ -28,7 +28,7 @@ const postFail = (error) => ({
 });
 
 export const createPost = (data) => {
-  console.log(data, "exampleData");
+  console.log(data, "Data for create Post");
 
   return (dispatch) => {
     dispatch(postStart());
@@ -71,6 +71,7 @@ export const getPost = () => {
   };
 };
 export const updatePost = (postID, updatedData) => {
+  console.log(updatedData, "data for update post");
   return (dispatch) => {
     dispatch(postStart());
     axios({

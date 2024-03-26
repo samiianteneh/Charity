@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,13 @@ import { createEvent } from "../../../Store/Event/eventActions.js";
 
 function CreateEvent({ closeModal }) {
   const dispatch = useDispatch();
+  const [image, setFile] = useState(null);
+  console.log(image, "imageUrl");
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,7 +35,8 @@ function CreateEvent({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(createEvent(data));
+    dispatch(createEvent({ ...data, image }));
+    setFile(null);
     reset();
     closeModal();
   };
@@ -65,7 +73,7 @@ function CreateEvent({ closeModal }) {
             </div>
             <div className="mb-4">
               <label htmlFor="date" className="block text-sm font-medium">
-                Date
+                Event Date
               </label>
               <input
                 type="date"
@@ -78,6 +86,24 @@ function CreateEvent({ closeModal }) {
               />
               {errors.date && (
                 <p className="text-red-500 text-sm">{errors.date.message}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label htmlFor="date" className="block text-sm font-medium">
+                Event Time
+              </label>
+              <input
+                type="time"
+                id="event_time"
+                {...register("event_time", {
+                  required: "time is required",
+                })}
+                className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+              {errors.event_time && (
+                <p className="text-red-500 text-sm">
+                  {errors.event_time.message}
+                </p>
               )}
             </div>
             <div className="mb-4">
@@ -105,17 +131,44 @@ function CreateEvent({ closeModal }) {
             </div>
             <div className="mb-4">
               <label
-                htmlFor="charityAddress"
+                htmlFor="eventAddress"
                 className="block text-sm font-medium"
               >
-                Charity Address
+                Ticket Price
               </label>
               <input
                 type="text"
-                placeholder="Enter charity address"
+                placeholder="Enter event Price"
+                id="event_price"
+                {...register("event_price", {
+                  required: "Ticket Price is required",
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: "Please enter a valid ticket price (numbers only)",
+                  },
+                })}
+                min="0"
+                className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+              {errors.event_price && (
+                <p className="text-red-500 text-sm">
+                  {errors.event_price.message}
+                </p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="charityAddress"
+                className="block text-sm font-medium"
+              >
+                Aid Address
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Aid address"
                 id="charityAddress"
                 {...register("charityAddress", {
-                  required: "Charity address is required",
+                  required: "Aid address is required",
                 })}
                 pattern="^[a-zA-Z0-9\s\,\.\-]+$"
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
@@ -145,6 +198,17 @@ function CreateEvent({ closeModal }) {
                   {errors.description.message}
                 </p>
               )}
+            </div>
+            <div className="mb-4">
+              <label htmlFor="file" className="block text-sm font-medium">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                id="image"
+                onChange={handleFileChange}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
             </div>
             <button
               id="submitBtn"

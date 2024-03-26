@@ -71,7 +71,7 @@ const Settings = () => {
     }
   };
   const filterdUser =
-    roles == "admin" ? users?.filter((items) => items.id == adminId) : users;
+    roles == "admin" ? users?.filter((items) => items?.id == adminId) : users;
   console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <div>
