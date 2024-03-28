@@ -35,9 +35,9 @@ export const createPost = (data) => {
     axios({
       method: "post",
       url: `${API_BASE_URL}/post`,
-      // header: {
-      //   "Content-Type": "multipart/form-data",
-      // },
+      header: {
+        "Content-Type": "multipart/form-data",
+      },
       data,
     })
       .then((response) => {
@@ -77,6 +77,9 @@ export const updatePost = (postID, updatedData) => {
     axios({
       method: "put",
       url: `${API_BASE_URL}/post/${postID}`,
+      header: {
+        "Content-Type": "multipart/form-data",
+      },
       updatedData,
     })
       .then((response) => {

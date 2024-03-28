@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser, deleteUser, getAdmin } from "../../../Store";
+import { updateUser, getAdmin, userDelete } from "../../../Store";
 import { personalInfo } from "../../../Constant/personalInfo";
 
 import { IoMdAddCircle } from "react-icons/io";
@@ -53,7 +53,7 @@ const Settings = () => {
   };
   const handleDelete = () => {
     if (selectedUser && selectedUser.id) {
-      dispatch(deleteUser(selectedUser.id));
+      dispatch(userDelete(selectedUser.id, users));
       setOpenDeleteModal(false);
     }
   };
@@ -149,7 +149,7 @@ const Settings = () => {
         />
       )}
       <Modal
-        title={<span style={{ color: "green-600" }}>Edit User</span>}
+        title={<span style={{ color: "green-600" }}>Edit Admin</span>}
         open={isEditMode}
         onOk={handleUpdate}
         onCancel={handleUpdateCancel}

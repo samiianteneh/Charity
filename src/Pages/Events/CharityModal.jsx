@@ -20,7 +20,7 @@ function CharityModal({ closeModal, data }) {
 
   return (
     <div className="font- poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-70 flex justify-center items-center z-50">
-      <div className="bg-white p-4 rounded-lg max-w-[50%] modal-content">
+      <div className="bg-white p-4 rounded-lg max-w-[90%] md:max-w-[50%] modal-content">
         <div className="flex justify-end items-center mt-4 py-2">
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>

@@ -6,6 +6,14 @@ import EventEdit from "./edit/EditEvent";
 function EventTable({ charity, type }) {
   const columns = [
     {
+      title: "",
+      dataIndex: "image",
+      className: "font-poppins font-normal text-[13px] text-center",
+      render: (image) => (
+        <img src={image} alt="Event" className="w-[100px] h-[100px]" />
+      ),
+    },
+    {
       title: "Name",
       dataIndex: "name",
       className: " font-poppins font-normal text-[13px]",
@@ -21,7 +29,7 @@ function EventTable({ charity, type }) {
       className: " font-poppins font-normal text-[13px]",
     },
     {
-      title: "Address",
+      title: "Aid Address",
       dataIndex: "charityAddress",
       className: " font-poppins font-normal text-[13px]",
     },
@@ -68,7 +76,7 @@ function EventTable({ charity, type }) {
   return (
     <div>
       <div className="container mx-auto mt-8">
-        <h2 className="text-lg font-medium mb-4 text-[#43a440] border-b-[1px]">
+        <h2 className="text-lg font-medium mb-4 text-[#43a440] border-b-[1px] overflow-auto">
           {type == "active" ? "Active" : type === "inActive" ? "Inactive" : ""}{" "}
           Event List
         </h2>

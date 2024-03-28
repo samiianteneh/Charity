@@ -43,15 +43,16 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
-  conosle.log("mainlyyyyy", data, role);
+  console.log(data, role, "data sent for registration");
+  // return;
   return (dispatch) => {
     dispatch(registerStart());
     axios({
       method: "post",
       url: `${API_BASE_URL}/users`,
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
       data: { ...data, role },
     })
       .then((response) => {
@@ -70,21 +71,21 @@ export const userRegistration = (data, role) => {
 export const getUsers = () => {
   return (dispatch) => {
     dispatch(registerStart());
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
-    if (!token) {
-      dispatch(userFail("Token not found"));
-      dispatch(errorMessage("Token not found."));
-      return;
-    }
+    // if (!token) {
+    //   dispatch(userFail("Token not found"));
+    //   dispatch(errorMessage("Token not found."));
+    //   return;
+    // }
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // };
     axios
-      .get(`${API_BASE_URL}/users`, config)
+      .get(`${API_BASE_URL}/users`)
       .then((response) => {
         dispatch(getUsersSuccess(response?.data));
         console.log(response, "responsettt");
@@ -159,19 +160,21 @@ export const updateUser = (userId, newData) => {
 };
 
 export const userDelete = (userId, data) => {
-  console.log(userId, "userId");
+  console.log(userId, data, "userId");
 
   return (dispatch) => {
     dispatch(registerStart());
     axios
       .delete(`${API_BASE_URL}/users/${userId}`)
-      .then(() => {
-        dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId)));
+      .then((response) => {
+        dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId))); // Pass the userId instead of filtered data
         dispatch(successMessage("User deleted successfully!"));
+        console.log("User deleted successfully!", response?.data);
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage("Failed to delete user."));
+        console.log(error, "response for delete user err");
       });
   };
 };

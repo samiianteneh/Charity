@@ -24,22 +24,25 @@ function PostDisplay() {
         }}
       >
         {Posts?.posts?.map((post, index) => (
-          <div key={index} className="p-4 w-1/3">
+          <div
+            key={index}
+            className="bg-white rounded-lg shadow-md p-6 mb-4 max-w-1/3 min-w-80 mx-3  "
+          >
             <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <img
-                className="lg:h-48 md:h-36 w-full object-cover object-center"
-                src={post.image}
+                className="h-48 md:h-60 w-full object-cover object-center"
+                src={post?.imageUrl}
                 alt="blog"
               />
               <div className="p-6 pb-1">
                 <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                  POST DATE - {post.date}
+                  POST DATE - {post?.createdAt.slice(0, 10)}
                 </h2>
                 <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
-                  {post.title}
+                  {post?.name}
                 </h1>
                 <p className="leading-relaxed mb-3 text-[11px]">
-                  {post.description}
+                  {post?.description}
                 </p>
               </div>
               <div className="m-2 "></div>

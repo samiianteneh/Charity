@@ -59,47 +59,56 @@ export const getVolunteerType = () => {
     })
       .then((response) => {
         dispatch(getSettingSuccess(response?.data));
+        console.log(response, "response for get voluntery type");
       })
       .catch((error) => {
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
+        console.log(error, "response for get voluntery type err");
       });
   };
 };
 export const updateSetting = (SettingID, updatedData) => {
+  console.log(SettingID, updatedData, "object");
+  // return;
   return (dispatch) => {
-    dispatch(SettingStart());
+    dispatch(updateSettingSuccess());
     axios({
       method: "put",
-      url: `${API_BASE_URL}/Setting/${SettingID}`,
+      url: `${API_BASE_URL}/volunteryType/${SettingID}`,
       updatedData,
     })
       .then((response) => {
         dispatch(updateSettingSuccess(response?.data));
+        console.log(response, "response for update voluntery type");
       })
       .catch((error) => {
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
+        console.log(error, "response for update voluntery type error");
       });
   };
 };
 export const deleteSetting = (SettingID, data) => {
+  console.log("testing id", SettingID);
   return (dispatch) => {
-    dispatch(SettingStart());
+    dispatch(deleteSettingSuccess());
     axios({
       method: "delete",
       url: `${API_BASE_URL}/Setting/${SettingID}`,
-      updatedData,
+      data,
     })
       .then((response) => {
         dispatch(
           deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
         );
         dispatch(successMessage("Setting deleted successfully!"));
+        console.log(response, "response for delete voluntery");
       })
       .catch((error) => {
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
+        console.log(error, " response for delete voluntery err");
       });
   };
 };
