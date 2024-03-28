@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../../Layout/layout";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import DashboardHeader from "../../../Layout/dashboardHeader";
-// import { personalInfo } from "../../../Constant/personalInfo";
+import { personalInfo } from "../../../Constant/personalInfo";
 // import { charity } from "../../../Constant/charity";
 import { moneyCollected } from "../../../Constant/moneyCollected";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +10,14 @@ import { getBalances, getEvent, getUsers } from "../../../Store";
 function AdminNew() {
   const dispatch = useDispatch();
   const personalInfos = useSelector((state) => state.userReducer.users);
-  console.log(personalInfos, "userssssa");
+  console.log(personalInfos, "userssssar");
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
   const [counts, setCounts] = useState({});
+
   useEffect(() => {
     const countryCounts = {};
     personalInfos.forEach((entry) => {
@@ -24,9 +25,9 @@ function AdminNew() {
       countryCounts[country] = (countryCounts[country] || 0) + 1;
     });
     setCounts(countryCounts);
-  }, []);
+  }, [personalInfos]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
-  console.log(balance, "balancebalance");
+  console.log(balance?.allBalance, "balancebalance");
 
   const events = useSelector((state) => state.eventReducer.events);
 
@@ -44,15 +45,15 @@ function AdminNew() {
 
   const calculateYearlyTotal = (data) => {
     const yearlyTotal = {};
-    data.forEach(({ date, amount }) => {
-      const year = new Date(date).getFullYear();
+    data?.forEach(({ createdAt, amount }) => {
+      const year = new Date(createdAt).getFullYear();
       yearlyTotal[year] = (yearlyTotal[year] || 0) + amount;
     });
     return yearlyTotal;
   };
 
   // Calculate total amount collected for each year
-  const yearlyTotal = calculateYearlyTotal(moneyCollected);
+  const yearlyTotal = calculateYearlyTotal(balance?.allBalance);
   return (
     <Layout>
       <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">

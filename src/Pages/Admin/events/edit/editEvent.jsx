@@ -7,8 +7,16 @@ import { useDispatch } from "react-redux";
 import { updateEvent } from "../../../../Store";
 
 function EventEdit({ closeModal, data }) {
+  console.log(data, "datadata");
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(data?.isActive);
+  const [image, setFile] = useState(null);
+  console.log(image, "imageUrl");
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
   const toggleIsActive = () => {
     setIsActive(!isActive);
   };
@@ -34,7 +42,9 @@ function EventEdit({ closeModal, data }) {
 
   const onSubmit = (e) => {
     e.isActive = isActive ? 1 : 0;
+    e.image = image;
     dispatch(updateEvent(data?.id, e));
+    setFile(null);
     closeModal();
   };
 
@@ -83,22 +93,45 @@ function EventEdit({ closeModal, data }) {
             </div>
             <div className="mb-4">
               <label htmlFor="date" className="block text-sm font-medium">
-                Date
+                Event Date
               </label>
               <input
                 type="date"
                 id="date"
-                defaultValue={data?.date}
+                defaultValue={data?.date ? data.date.slice(0, 10) : ""}
                 {...register("date", {
                   required: "Date is required",
                 })}
                 min={new Date().toISOString().split("T")[0]} // Set minimum date to today
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
+
               {errors.date && (
                 <p className="text-red-500 text-sm">{errors.date.message}</p>
               )}
             </div>
+            <div className="mb-4">
+              <label htmlFor="event_time" className="block text-sm font-medium">
+                Event Time
+              </label>
+              <input
+                type="time"
+                id="event_time"
+                defaultValue={
+                  data?.event_time ? data.event_time.slice(0, 5) : ""
+                }
+                {...register("event_time", {
+                  required: "Time is required",
+                })}
+                className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+              {errors.event_time && (
+                <p className="text-red-500 text-sm">
+                  {errors.event_time.message}
+                </p>
+              )}
+            </div>
+
             <div className="mb-4">
               <label
                 htmlFor="eventAddress"
@@ -125,18 +158,47 @@ function EventEdit({ closeModal, data }) {
             </div>
             <div className="mb-4">
               <label
+                htmlFor="event_price"
+                className="block text-sm font-medium"
+              >
+                Ticket Price
+              </label>
+              <input
+                type="number"
+                placeholder="Enter ticket price"
+                id="event_price"
+                defaultValue={data?.event_price}
+                {...register("event_price", {
+                  required: "Ticket Price is required",
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: "Please enter a valid ticket price (numbers only)",
+                  },
+                })}
+                min="0" // Optional: specify minimum value if necessary
+                className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+              {errors.event_price && (
+                <p className="text-red-500 text-sm">
+                  {errors.event_price.message}
+                </p>
+              )}
+            </div>
+
+            <div className="mb-4">
+              <label
                 htmlFor="charityAddress"
                 className="block text-sm font-medium"
               >
-                Charity Address
+                Aid Address
               </label>
               <input
                 type="text"
-                placeholder="Enter charity address"
+                placeholder="Enter Aid address"
                 id="charityAddress"
                 defaultValue={data?.charityAddress}
                 {...register("charityAddress", {
-                  required: "Charity address is required",
+                  required: "Aid address is required",
                 })}
                 pattern="^[a-zA-Z0-9\s\,\.\-]+$"
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
@@ -167,6 +229,17 @@ function EventEdit({ closeModal, data }) {
                   {errors.description.message}
                 </p>
               )}
+            </div>
+            <div className="mb-4">
+              <label htmlFor="file" className="block text-sm font-medium">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                id="image"
+                onChange={handleFileChange}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
             </div>
             <button
               id="submitBtn"

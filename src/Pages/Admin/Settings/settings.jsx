@@ -17,7 +17,7 @@ const Settings = () => {
   console.log(adminId, "tokenstokens");
   console.log(roles, "tokenstokens");
   const dispatch = useDispatch();
-  // const users = useSelector((state) => state.userReducer.users);
+  const users = useSelector((state) => state.userReducer.users);
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -28,10 +28,10 @@ const Settings = () => {
 
   console.log(selectedUser, "selectedUser");
   console.log(editUserData, "editUserData");
-  // console.log(users, "users");
-  // useEffect(() => {
-  //   dispatch(getAdmin());
-  // }, [dispatch]);
+  console.log(users, "users");
+  useEffect(() => {
+    dispatch(getAdmin());
+  }, [dispatch]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -70,10 +70,8 @@ const Settings = () => {
       setImagePreview(info.file.response.imageUrl);
     }
   };
-  const filterdUser = personalInfo;
-  // roles == "admin"
-  //   ? personalInfo?.filter((items) => items.id == adminId)
-  //   : personalInfo;
+  const filterdUser =
+    roles == "admin" ? users?.filter((items) => items?.id == adminId) : users;
   console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <div>

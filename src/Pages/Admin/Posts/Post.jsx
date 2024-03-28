@@ -1,33 +1,41 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../../Layout/layout";
 import DashboardHeader from "../../../Layout/dashboardHeader";
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, getPost, updatePost } from "../../../Store";
-import { Pagination } from "antd";
+import { deletePost, getPost } from "../../../Store";
+import { Modal, Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
-import CreateEvent from "../events/CreateEvent";
 import CreatePost from "./createPost";
+import PostEdit from "./PostEdit";
 
 const Post = () => {
   const dispatch = useDispatch();
-  const Posts = useSelector((state) =>
-    console.log("testing", state.postReducer.posts)
-  );
-  console.log("kjhgsf", Posts);
+  const Posts = useSelector((state) => state.postReducer.posts);
+  console.log(Posts, "Postad");
+  useEffect(() => {
+    dispatch(getPost());
+  }, [dispatch]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [editPostData, setEditPostData] = useState(null);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
-  const itemsPerPage = 3;
+  const itemsPerPage = 6;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = Posts?.posts?.slice(indexOfFirstItem, indexOfLastItem);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [dataEdit, setDataEdit] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
+  const openEditModal = (record) => {
+    setIsOpenEdit(true);
+    setDataEdit(record);
+  };
+  const closeEditModal = () => {
+    setIsOpenEdit(false);
+  };
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -38,34 +46,17 @@ const Post = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    dispatch(getPost());
-  }, [dispatch]);
-
-  const handleEditClick = (user) => {
-    setSelectedPost(user);
-    setEditPostData(user);
-    setIsEditMode(true);
-  };
-  const handleUpdate = () => {
-    dispatch(updatePost(selectedUser.id, editUserData));
-    setIsEditMode(false);
-  };
-  const handleUpdateCancel = () => {
-    setIsEditMode(false);
-  };
-  const handleDelete = () => {
-    if (selectedPost && selectedPost.id) {
-      dispatch(deletePost(selectedPost.id));
-      setOpenDeleteModal(false);
-    }
-  };
   const handleDeleteCancel = () => {
     setOpenDeleteModal(false);
   };
-  const handleDeleteClick = (post) => {
-    setSelectedPost(post);
+  const handleDelete = () => {
+    if (selectedUser && selectedUser.id) {
+      dispatch(deletePost(selectedUser.id));
+      setOpenDeleteModal(false);
+    }
+  };
+  const handleDeleteClick = (user) => {
+    setSelectedUser(user);
     setOpenDeleteModal(true);
   };
 
@@ -87,8 +78,8 @@ const Post = () => {
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-4 mx-auto">
               <div className="flex flex-wrap -m-4">
-                {currentItems?.map((post) => (
-                  <div className="p-4 md:w-1/3">
+                {currentItems?.map((post, index) => (
+                  <div key={index} className="p-4 md:w-1/3">
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
                         className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -97,7 +88,7 @@ const Post = () => {
                       />
                       <div className="p-6 pb-1">
                         <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                          POST DATE - {post?.createdAt}
+                          POST DATE - {post?.createdAt.slice(0, 10)}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                           {post?.title}
@@ -108,7 +99,7 @@ const Post = () => {
                       </div>
                       <div className="m-2 ">
                         <div className="flex items-center justify-end gap-3 ">
-                          <button onClick={() => handleEditClick(user)}>
+                          <button onClick={() => openEditModal(post)}>
                             <Pencil
                               size={16}
                               color="#2f855a"
@@ -116,7 +107,7 @@ const Post = () => {
                             />
                           </button>
                           {/* {roles === "superadmin" ? ( */}
-                          <button onClick={() => handleDeleteClick(user)}>
+                          <button onClick={() => handleDeleteClick(post)}>
                             <Trash2
                               size={16}
                               strokeWidth={1.75}
@@ -136,7 +127,21 @@ const Post = () => {
           </section>
 
           {isOpen && <CreatePost closeModal={closeModal} />}
-
+          {isOpenEdit && (
+            <PostEdit closeModal={closeEditModal} data={dataEdit} />
+          )}
+          <Modal
+            title="Confirm Delete"
+            open={openDeleteModal}
+            onOk={handleDelete}
+            onCancel={handleDeleteCancel}
+            okButtonProps={{
+              className: "bg-red-500 text-white hover:bg-red-700",
+            }}
+            okText="Yes"
+          >
+            <p>Are you sure you want to delete this user?</p>
+          </Modal>
           <Pagination
             defaultCurrent={currentPage}
             total={Posts?.posts?.length}

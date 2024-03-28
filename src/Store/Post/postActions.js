@@ -28,7 +28,7 @@ const postFail = (error) => ({
 });
 
 export const createPost = (data) => {
-  console.log(data, "exampleData");
+  console.log(data, "Data for create Post");
 
   return (dispatch) => {
     dispatch(postStart());
@@ -57,8 +57,8 @@ export const getPost = () => {
     dispatch(postStart());
     axios({
       method: "get",
-      url: "https://fakestoreapi.com/products/category/jewelery",
-      // url: `${API_BASE_URL}/post`,
+      // url: "https://fakestoreapi.com/products/category/jewelery",
+      url: `${API_BASE_URL}/post`,
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
@@ -71,6 +71,7 @@ export const getPost = () => {
   };
 };
 export const updatePost = (postID, updatedData) => {
+  console.log(updatedData, "data for update post");
   return (dispatch) => {
     dispatch(postStart());
     axios({

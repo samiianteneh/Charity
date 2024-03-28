@@ -28,7 +28,7 @@ function CharityDisplay() {
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
-  const filerdCharity = charity?.filter((item) => {
+  const filerdCharity = events?.filter((item) => {
     return item?.isActive == 1;
   });
   console.log(filerdCharity, "filerdCharity");

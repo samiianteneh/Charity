@@ -50,6 +50,7 @@ const eventFail = (error) => {
 // ================> EVENT CRUD <================
 
 export const createEvent = (data) => {
+  console.log(data, "Data for create Event");
   return (dispatch) => {
     dispatch(eventStart());
     axios({
@@ -107,6 +108,7 @@ export const getSingleEvent = (event_id) => {
 };
 
 export const updateEvent = (id, data) => {
+  console.log(id, data, "Data for Update Event");
   return (dispatch) => {
     dispatch(eventStart());
     axios({

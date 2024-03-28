@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -37,6 +37,12 @@ function CreateAdmin({ closeModal }) {
     };
   }, [closeModal]);
 
+  const [image, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
   return (
     <div className="font-poppins font-normal fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg min-w-[40%] md:min-w-[30%] modal-content">
@@ -140,16 +146,17 @@ function CreateAdmin({ closeModal }) {
                 </p>
               )}
             </div>
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium">
+            {/* <div className="mb-4">
+              <label htmlFor="file" className="block text-sm font-medium">
                 Upload Image
               </label>
-              <Form.Item label="Profile Picture">
-                <Upload>
-                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                </Upload>
-              </Form.Item>
-            </div>
+              <input
+                type="file"
+                id="image"
+                onChange={handleFileChange}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
+            </div> */}
             <button
               id="submitBtn"
               type="submit"

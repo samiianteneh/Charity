@@ -35,8 +35,8 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
       <div className="flex flex-col col-span-2 justify-start items-center mt-auto border-gray-300 bg-white p-3 my-3 rounded-[5px] border-[1px]">
         <div className="flex items-center gap-2">
           <img src={avatar} alt="female avatar" className="w-[40px] h-[40px]" />
-          {userArray?.map((user) => (
-            <div className="flex flex-col">
+          {userArray?.map((user, index) => (
+            <div key={index} className="flex flex-col">
               <p className="text-gray-800 text-[13px] font-semibold">
                 {user?.fullName}
               </p>
@@ -62,8 +62,8 @@ function SidebarLink({ item }) {
         pathname.includes(item.path)
           ? "bg-white px-4 text-gray-700 font-bold rounded-[10px]"
           : isSettings
-            ? "border-t-[1px] border-gray-400 text-gray-500 mt-6"
-            : "text-gray-500 px-4 h-10",
+          ? "border-t-[1px] border-gray-400 text-gray-500 mt-6"
+          : "text-gray-500 px-4 h-10",
         linkClasses
       )}
     >

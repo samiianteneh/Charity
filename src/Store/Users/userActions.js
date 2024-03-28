@@ -43,24 +43,26 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
+  conosle.log("mainlyyyyy", data, role);
   return (dispatch) => {
     dispatch(registerStart());
     axios({
       method: "post",
       url: `${API_BASE_URL}/users`,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
       data: { ...data, role },
     })
       .then((response) => {
         dispatch(registerSuccess(response?.data));
         dispatch(successMessage("User Created Successfully!"));
-        console.log("create Volenteer response", response);
+        console.log("create Volunteer response", response);
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage(error));
+        console.log("create Volunteer response err", error);
       });
   };
 };
@@ -110,7 +112,7 @@ export const getAdmin = () => {
       },
     };
     axios
-      .get(`${API_BASE_URL}/users/role`, config)
+      .get(`${API_BASE_URL}/users/new`, config)
       .then((response) => {
         dispatch(getAdminSuccess(response?.data));
         console.log(response, "responsettt");

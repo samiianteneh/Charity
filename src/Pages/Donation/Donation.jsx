@@ -78,7 +78,7 @@ function Donation() {
   };
   return (
     <div className="flex justify-center items-center">
-      <div className="mt-20 w-[30%]">
+      <div className="mt-20 w-[70%] md:w-[30%]">
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium">
             Full Name
@@ -215,9 +215,9 @@ function Donation() {
                 <button
                   onClick={submitOnce}
                   disabled={
-                    amounts === null &&
-                    name === null &&
-                    Phone === null &&
+                    amounts === null ||
+                    name === null ||
+                    Phone === null ||
                     email === null
                   }
                   className="mt-4 mx-1 md:mx-4 px-1 md:px-4 py-2 bg-green-600 text-white rounded-md"
@@ -231,7 +231,12 @@ function Donation() {
               <div>
                 <button
                   onClick={submitMonthly}
-                  disabled={amounts === null}
+                  disabled={
+                    amounts === null ||
+                    name === null ||
+                    Phone === null ||
+                    email === null
+                  }
                   className="mt-4 mx-1 md:mx-4 px-1 md:px-4 py-2 bg-green-600 text-white rounded-md"
                   type="submit"
                 >
