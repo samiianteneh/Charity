@@ -118,13 +118,14 @@ function EventEdit({ closeModal, data }) {
                 type="time"
                 id="event_time"
                 defaultValue={
-                  data?.event_time ? data.event_time.slice(0, 5) : ""
+                  data && data.event_time ? data.event_time.slice(0, 5) : ""
                 }
                 {...register("event_time", {
                   required: "Time is required",
                 })}
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
+
               {errors.event_time && (
                 <p className="text-red-500 text-sm">
                   {errors.event_time.message}
@@ -143,7 +144,7 @@ function EventEdit({ closeModal, data }) {
                 type="text"
                 placeholder="Enter event address"
                 id="eventAddress"
-                defaultValue={data?.eventAddress}
+                defaultValue={data?.charityAddress}
                 {...register("eventAddress", {
                   required: "Event address is required",
                 })}

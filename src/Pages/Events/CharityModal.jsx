@@ -24,9 +24,11 @@ function CharityModal({ closeModal, data }) {
         <div className="flex justify-end items-center mt-4 py-2">
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
+
         <div className="flex justify-center  items-center  py-2">
           <img src={logo} alt="logo" className="w-20 md:w-40" />
         </div>
+
         <div className="flex justify-center items-center mt-4 py-2">
           <h2 className="text-lg font-semibold ">{data?.name}</h2>
         </div>
@@ -36,7 +38,11 @@ function CharityModal({ closeModal, data }) {
               {data?.description}
             </p>
             <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
-              <img src={logo} alt="logo" className="w-20 md:w-64" />
+              <img
+                src={data?.imageUrl}
+                alt="event image"
+                className="w-20 md:w-64"
+              />
             </p>
             <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
               <span className="text-green-600 font-extrabold">
@@ -56,7 +62,7 @@ function CharityModal({ closeModal, data }) {
                 <span className="text-green-600 font-extrabold">
                   Date:{""}{" "}
                 </span>
-                {data?.date.slice(0, 10)}
+                {data?.date?.slice(0, 10)}
               </span>
               <span>
                 <span className="text-green-600 font-extrabold">

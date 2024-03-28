@@ -7,10 +7,10 @@ function EventTable({ charity, type }) {
   const columns = [
     {
       title: "",
-      dataIndex: "image",
+      dataIndex: "imageUrl",
       className: "font-poppins font-normal text-[13px] text-center",
-      render: (image) => (
-        <img src={image} alt="Event" className="w-[100px] h-[100px]" />
+      render: (imageUrl) => (
+        <img src={imageUrl} alt="Event" className="w-[100px] h-[100px]" />
       ),
     },
     {
@@ -26,7 +26,8 @@ function EventTable({ charity, type }) {
     {
       title: "Date",
       dataIndex: "date",
-      className: " font-poppins font-normal text-[13px]",
+      className: "font-poppins font-normal text-[13px]",
+      render: (date) => (date ? date.slice(0, 10) : null),
     },
     {
       title: "Aid Address",

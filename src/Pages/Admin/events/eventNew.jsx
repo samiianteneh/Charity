@@ -10,10 +10,16 @@ import EventTable from "./EventTable";
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvent } from "../../../Store";
+import { date } from "../../../Components/NavLink/date";
 
 const EventNew = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.eventReducer.events);
+  const eventsall = useSelector((state) => state.eventReducer.events);
+
+  const events = eventsall?.posts;
+
+  // const events = eventsall?.posts;
+  console.log(events, "eventsss");
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
@@ -27,11 +33,12 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = events.filter((items) => items?.isActive == 1);
-  const inActiveEvents = events.filter((items) => items?.isActive == 0);
+  const activeEvents = events?.filter((items) => items?.isActive == 1);
+  const inActiveEvents = events?.filter((items) => items?.isActive == 0);
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
+  console.log(activeEvents, inActiveEvents, "activeEvents");
 
   return (
     <Layout>

@@ -36,8 +36,12 @@ function AdminNew() {
   }, [dispatch]);
 
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const activeCharity = events?.filter((charity) => charity?.isActive == 1);
-  const inActiveCharity = events?.filter((charity) => charity?.isActive == 0);
+  const activeCharity = events?.posts?.filter(
+    (charity) => charity?.isActive == 1
+  );
+  const inActiveCharity = events?.posts?.filter(
+    (charity) => charity?.isActive == 0
+  );
 
   useEffect(() => {
     dispatch(getBalances());

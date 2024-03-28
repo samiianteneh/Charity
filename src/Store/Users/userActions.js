@@ -51,7 +51,7 @@ export const userRegistration = (data, role) => {
       method: "post",
       url: `${API_BASE_URL}/users`,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
       data: { ...data, role },
     })
