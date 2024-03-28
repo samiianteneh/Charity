@@ -28,8 +28,6 @@ const feedbackFail = (error) => ({
 });
 
 export const createFeedback = (data) => {
-  console.log("firstdatadata", data);
-
   return (dispatch) => {
     dispatch(feedbackStart());
     axios({
@@ -71,8 +69,8 @@ export const updateFeedback = (userId, newData) => {
     axios
       .patch(`${API_BASE_URL}/feedback/${userId}`, newData)
       .then((response) => {
-        dispatch(feedbackUpdate(response?.data));
-        dispatch(successMessage("Feedback updated successfully!"));
+        dispatch(feedbackUpdate(response?.data?.updatedFeedback));
+        dispatch(successMessage("Feedback Readed successfully!"));
         console.log(response, " feedback updated successfully");
       })
       .catch((error) => {

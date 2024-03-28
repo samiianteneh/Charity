@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import IMG1 from "../../assets/pic 1.jpg";
-import IMG2 from "../../assets/pic 2.jpg";
-import IMG3 from "../../assets/pic 3.jpg";
+import IMG1 from "../../assets/landing page pic.jpg";
 import Donate from "./Donate";
 import { NavLink } from "react-router-dom";
 
@@ -59,7 +57,7 @@ function ImageSlider() {
           <p className="font-normal text-white">Donate</p>
         </button> */}
         <NavLink
-          className=" flex max-w-[10%] md:max-w-[10%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
+          className=" flex max-w-[30%] md:max-w-[8%] text-left   md:block border-green-600 border-[2px] rounded-md px-4 items-center justify-center bg-green-600 py-3 transition duration-300 ease-in-out transform hover:scale-105"
           to="/donation"
           exact
           activeClassName="active"

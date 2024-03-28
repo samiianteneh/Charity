@@ -1,10 +1,11 @@
 import React from "react";
-import { FaHome } from "react-icons/fa";
+import { FaDonate, FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdOutlineManageAccounts, MdPostAdd } from "react-icons/md";
 import { RiCalendarEventLine } from "react-icons/ri";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { VscFeedback } from "react-icons/vsc";
 
 function Sidebar() {
   return (
@@ -26,10 +27,25 @@ function Sidebar() {
             <MdOutlineManageAccounts className="" />
           </div>
         </NavLink>
-
+        <NavLink to="/donators" activeClassName="active">
+          <div className="flex gap-10 py-2">
+            <FaDonate className="" />
+          </div>
+        </NavLink>
         <NavLink to="/events" activeClassName="active">
           <div className="flex gap-10 py-2">
             <RiCalendarEventLine className="" />
+          </div>
+        </NavLink>
+        <NavLink to="/posts" activeClassName="active">
+          <div className="flex gap-10 py-2">
+            <MdPostAdd className="" />
+          </div>
+        </NavLink>
+
+        <NavLink to="/feedBack" activeClassName="active">
+          <div className="flex gap-10 py-2">
+            <VscFeedback className="" />
           </div>
         </NavLink>
         <NavLink to="/settings" activeClassName="active">

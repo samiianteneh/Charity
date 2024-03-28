@@ -29,8 +29,8 @@ function TestimonialSlider() {
             Testimonials
           </h1>
           <div className="flex flex-wrap -m-4">
-            {Testimonials.map((testimony) => (
-              <div className="p-4 md:w-1/3 w-full">
+            {Testimonials.map((testimony, index) => (
+              <div key={index} className="p-4 md:w-1/3 w-full">
                 <div className="h-full bg-gray-100 p-8 rounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

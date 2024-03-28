@@ -9,7 +9,7 @@ import { useEffect } from "react";
 const columns = [
   {
     title: "Name",
-    dataIndex: "fullName",
+    dataIndex: "name",
   },
   {
     title: "Email",
@@ -25,7 +25,7 @@ const columns = [
   },
   {
     title: "Volentery type",
-    dataIndex: "volunteerTypeId",
+    render: (record) => (record.volunteer ? record.volunteer.name : ""),
   },
 ];
 
@@ -43,7 +43,7 @@ const MemberNew = () => {
         <div className=" py-1 rounded-[20px] ">
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
-            <div className="max-w-[90%] m-3">
+            <div className="max-w-[90%]  m-3 overflow-auto">
               <Table columns={columns} dataSource={users} />
             </div>
           </div>

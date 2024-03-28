@@ -79,10 +79,10 @@ const Post = () => {
             <div className="container px-5 py-4 mx-auto">
               <div className="flex flex-wrap -m-4">
                 {currentItems?.map((post, index) => (
-                  <div key={index} className="p-4 md:w-1/3">
+                  <div key={index} className="p-4 md:w-1/2 w-1/3">
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        className="h-36 md:h-48 w-full object-cover object-center"
                         src={post?.imageUrl}
                         alt="blog"
                       />

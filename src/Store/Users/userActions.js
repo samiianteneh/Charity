@@ -43,6 +43,8 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
+  console.log(data, role, "data sent for registration");
+  // return;
   return (dispatch) => {
     dispatch(registerStart());
     axios({
@@ -69,21 +71,21 @@ export const userRegistration = (data, role) => {
 export const getUsers = () => {
   return (dispatch) => {
     dispatch(registerStart());
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
-    if (!token) {
-      dispatch(userFail("Token not found"));
-      dispatch(errorMessage("Token not found."));
-      return;
-    }
+    // if (!token) {
+    //   dispatch(userFail("Token not found"));
+    //   dispatch(errorMessage("Token not found."));
+    //   return;
+    // }
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // };
     axios
-      .get(`${API_BASE_URL}/users`, config)
+      .get(`${API_BASE_URL}/users`)
       .then((response) => {
         dispatch(getUsersSuccess(response?.data));
         console.log(response, "responsettt");
@@ -157,7 +159,7 @@ export const updateUser = (userId, newData) => {
   };
 };
 
-export const userDelete = (userId, data) => {
+export const userDelete = (userId) => {
   console.log(userId, "userId");
 
   return (dispatch) => {
@@ -165,12 +167,14 @@ export const userDelete = (userId, data) => {
     axios
       .delete(`${API_BASE_URL}/users/${userId}`)
       .then(() => {
-        dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId)));
+        dispatch(deleteUserSuccess(userId)); // Pass the userId instead of filtered data
         dispatch(successMessage("User deleted successfully!"));
+        console.log("User deleted successfully!");
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage("Failed to delete user."));
+        console.log(error, "response for delete user err");
       });
   };
 };

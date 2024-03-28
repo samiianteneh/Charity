@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Trash2, Pencil } from "lucide-react";
-import { getUsers, getVolunteerType } from "../../../Store";
+import {
+  deleteSetting,
+  getUsers,
+  getVolunteerType,
+  updateSetting,
+} from "../../../Store";
 import { IoMdAddCircle } from "react-icons/io";
 import CreateVolunteer from "./CreateVolunteer";
 import { Form, Input, Modal, Upload } from "antd";
@@ -18,10 +23,11 @@ const VolunteerType = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [editVolunteerData, setEditVolunteerData] = useState(null);
+  console.log(editVolunteerData, "editVolunteerData");
 
   useEffect(() => {
     dispatch(getVolunteerType());
-  }, []);
+  }, [dispatch]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -35,7 +41,7 @@ const VolunteerType = () => {
     setIsEditMode(true);
   };
   const handleUpdate = () => {
-    dispatch(updateUser(selectedUser.id, editUserData));
+    dispatch(updateSetting(selectedUser.id, editVolunteerData));
     setIsEditMode(false);
   };
   const handleUpdateCancel = () => {
@@ -43,7 +49,7 @@ const VolunteerType = () => {
   };
   const handleDelete = () => {
     if (selectedUser && selectedUser.id) {
-      dispatch(deleteUser(selectedUser.id));
+      dispatch(deleteSetting(selectedUser.id));
       setOpenDeleteModal(false);
     }
   };
@@ -84,7 +90,7 @@ const VolunteerType = () => {
                     </h3>
                     <div className="grid mt-2">
                       <div className="flex items-center justify-end gap-2 ">
-                        <button onClick={() => handleEditClick(user)}>
+                        <button onClick={() => handleEditClick(item)}>
                           <Pencil
                             size={16}
                             color="#2f855a"
@@ -131,17 +137,18 @@ const VolunteerType = () => {
           <Form>
             <Form.Item>
               <label
-                htmlFor="volunteer_type"
+                htmlFor="name"
                 className="block text-[11px] font-medium mb-2"
               >
                 Volunteer Type
               </label>
               <Input
-                value={editVolunteerData?.volunteer_type}
+                value={editVolunteerData?.name}
+                defaultValue={selectedUser?.name}
                 onChange={(e) =>
                   setEditVolunteerData({
                     ...editVolunteerData,
-                    volunteer_type: e.target.value,
+                    name: e.target.value,
                   })
                 }
               />
@@ -155,6 +162,7 @@ const VolunteerType = () => {
               </label>
               <Input
                 value={editVolunteerData?.description}
+                defaultValue={selectedUser?.description}
                 onChange={(e) =>
                   setEditVolunteerData({
                     ...editVolunteerData,

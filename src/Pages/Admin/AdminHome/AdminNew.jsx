@@ -54,12 +54,14 @@ function AdminNew() {
 
   // Calculate total amount collected for each year
   const yearlyTotal = calculateYearlyTotal(balance?.allBalance);
+  const totalCountries = Object.keys(counts).length;
+
   return (
     <Layout>
       <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
         <div className="row-span-1 py-1 rounded-[20px] ">
           <DashboardHeader />
-          <div className="grid grid-cols-3 gap-[12px] p-[10px] h-[70px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[12px] p-[10px] h-[70px]">
             <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">
               <div className="container mx-auto mt-8 ml-10">
                 <h2 className="text-xl font-semibold mb-4 text-[#43a440]">
@@ -67,12 +69,17 @@ function AdminNew() {
                 </h2>
                 <div className="flex ml-2">
                   <ul className="list-disc pl-4">
-                    {Object.keys(counts).map((country) => (
-                      <li key={country} className="text-gray-800">
-                        <span className="font-semibold">{country}</span>{" "}
-                        {counts[country]}
-                      </li>
-                    ))}
+                    <div>
+                      <ul>
+                        {Object.keys(counts).map((country) => (
+                          <li key={country} className="text-gray-800">
+                            <span className="font-semibold">{country}</span>{" "}
+                            {counts[country]}
+                          </li>
+                        ))}
+                      </ul>
+                      <p>Total Countries: {totalCountries}</p>{" "}
+                    </div>
                   </ul>
                 </div>
               </div>

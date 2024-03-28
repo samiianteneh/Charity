@@ -53,12 +53,7 @@ function Navig() {
               }
               items={dropdownItems}
             />
-            <a
-              href="#member"
-              className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              Voulentary
-            </a>
+
             <a
               href="#contactUs"
               className="mr-3 text-green-600 hover:text-green-800 hover:font-semibold transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
@@ -93,7 +88,7 @@ function Navig() {
             href="#member"
             className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
           >
-            Become a member
+            Become a volenteer
             <svg
               fill="none"
               stroke="currentColor"

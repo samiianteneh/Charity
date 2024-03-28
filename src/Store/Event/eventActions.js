@@ -51,14 +51,15 @@ const eventFail = (error) => {
 
 export const createEvent = (data) => {
   console.log(data, "Data for create Event");
+
   return (dispatch) => {
     dispatch(eventStart());
     axios({
       method: "post",
       url: `${API_BASE_URL}/event`,
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
       data: data,
     })
       .then((response) => {
@@ -108,7 +109,7 @@ export const getSingleEvent = (event_id) => {
 };
 
 export const updateEvent = (id, data) => {
-  console.log(id, data, "Data for Update Event");
+  // console.log(id, data, "Data for Update Event");
   return (dispatch) => {
     dispatch(eventStart());
     axios({

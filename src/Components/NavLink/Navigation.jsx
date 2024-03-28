@@ -171,6 +171,38 @@ function Navigation() {
                   </li>
                   <li className="mb-2 text-left">
                     <a
+                      href="#event"
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
+                      className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                    >
+                      Events
+                    </a>
+                  </li>
+                  <li className="mb-2 text-left">
+                    <a
+                      href="#post"
+                      onClick={
+                        subNav
+                          ? () => {
+                              toggleNav();
+                              toggleSubNav();
+                            }
+                          : toggleNav
+                      }
+                      className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
+                    >
+                      Posts
+                    </a>
+                  </li>
+                  <li className="mb-2 text-left">
+                    <a
                       href="#"
                       onClick={toggleSubNav}
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
@@ -191,7 +223,7 @@ function Navigation() {
                       }
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
-                      Membership
+                      be a volenteer
                     </a>
                   </li>
                   <li className="mb-2 text-left">

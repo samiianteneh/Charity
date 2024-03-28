@@ -1,14 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { userRegistration } from "../../../Store";
+
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 function CreateAdmin({ closeModal }) {
+  const [image, setFile] = useState(null);
+
   const dispatch = useDispatch();
-  const role = useRef("admin");
+  const role = "admin";
 
   const {
     register,
@@ -18,9 +21,10 @@ function CreateAdmin({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data, "datadatadata");
-    dispatch(userRegistration(data, role.current));
-    // closeModal();
+    dispatch(userRegistration({ ...data, image }, role));
+    reset();
+    setFile(null);
+    closeModal();
   };
 
   useEffect(() => {
@@ -36,7 +40,10 @@ function CreateAdmin({ closeModal }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [closeModal]);
-
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
   return (
     <div className="font-poppins font-normal fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg min-w-[40%] md:min-w-[30%] modal-content">
@@ -50,7 +57,7 @@ function CreateAdmin({ closeModal }) {
             className="max-w-[90%] md:max-w-md mx-auto"
           >
             <div className="mb-4">
-              <label htmlFor="name" className="block text-[13px] font-medium">
+              <label htmlFor="name" className="block text-sm font-medium">
                 Full Name
               </label>
               <input
@@ -65,14 +72,16 @@ function CreateAdmin({ closeModal }) {
                       "Please enter your first and last name separated by a space.",
                   },
                 })}
-                className=" font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
-              {errors.name && (
-                <p className="text-red-500 text-sm">{errors.name.message}</p>
+              {errors.fullName && (
+                <p className="text-red-500 text-sm">
+                  {errors.fullName.message}
+                </p>
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-[13px] font-medium">
+              <label htmlFor="phone" className="block text-sm font-medium">
                 Phone Number
               </label>
               <input
@@ -87,15 +96,14 @@ function CreateAdmin({ closeModal }) {
                       "Please enter a valid phone number with country code.",
                   },
                 })}
-                className=" font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
-
               {errors.phone && (
                 <p className="text-red-500 text-sm">{errors.phone.message}</p>
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-[13px] font-medium">
+              <label htmlFor="email" className="block text-sm font-medium">
                 Email
               </label>
               <input
@@ -109,7 +117,7 @@ function CreateAdmin({ closeModal }) {
                     message: "Invalid email address",
                   },
                 })}
-                className=" font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+                className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -141,19 +149,20 @@ function CreateAdmin({ closeModal }) {
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium">
+              <label htmlFor="file" className="block text-sm font-medium">
                 Upload Image
               </label>
-              <Form.Item label="Profile Picture">
-                <Upload>
-                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                </Upload>
-              </Form.Item>
+              <input
+                type="file"
+                id="image"
+                onChange={handleFileChange}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              />
             </div>
             <button
               id="submitBtn"
               type="submit"
-              className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-900"
+              className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-900"
             >
               Add
             </button>

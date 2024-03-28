@@ -12,12 +12,14 @@ const feedbackStart = (state) => ({
   is_loading: true,
   error: null,
 });
-const createFeedback = (state, action) => ({
-  ...state,
-  feedbacks: [...state.feedbacks, action.data],
-  is_loading: false,
-  error: null,
-});
+const createFeedback = (state, action) => {
+  return {
+    ...state,
+    feedbacks: [...state.feedbacks, action.data],
+    is_loading: false,
+    error: null,
+  };
+};
 const getFeedback = (state, action) => ({
   ...state,
   feedbacks: action.data,
