@@ -33,7 +33,7 @@ const getSingleSetting = (state, action) => ({
 const updateSetting = (state, action) => ({
   ...state,
   settings: state.settings.map((setting) =>
-    setting.id === action.updatedFeedback.id ? action.updatedFeedback : setting
+    setting.id === action.data.id ? action.data : setting
   ),
   is_loading: false,
   error: null,

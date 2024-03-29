@@ -72,9 +72,9 @@ export const updateSetting = (SettingID, updatedData) => {
   console.log(SettingID, updatedData, "object");
   // return;
   return (dispatch) => {
-    dispatch(updateSettingSuccess());
+    dispatch(settingStart());
     axios({
-      method: "put",
+      method: "patch",
       url: `${API_BASE_URL}/volunteryType/${SettingID}`,
       updatedData,
     })
@@ -90,18 +90,18 @@ export const updateSetting = (SettingID, updatedData) => {
   };
 };
 export const deleteSetting = (SettingID, data) => {
-  console.log("testing id", SettingID);
+  console.log("testing id", SettingID, data);
   return (dispatch) => {
-    dispatch(deleteSettingSuccess());
+    dispatch(settingStart());
     axios({
       method: "delete",
       url: `${API_BASE_URL}/Setting/${SettingID}`,
-      data,
     })
       .then((response) => {
-        dispatch(
-          deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
-        );
+        // dispatch(
+        //   deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
+        // );
+        // dispatch(deleteSettingSuccess(response?.data));
         dispatch(successMessage("Setting deleted successfully!"));
         console.log(response, "response for delete voluntery");
       })

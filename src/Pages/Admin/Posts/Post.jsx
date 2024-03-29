@@ -140,7 +140,7 @@ const Post = () => {
             }}
             okText="Yes"
           >
-            <p>Are you sure you want to delete this user?</p>
+            <p>Are you sure you want to delete this post?</p>
           </Modal>
           <Pagination
             defaultCurrent={currentPage}

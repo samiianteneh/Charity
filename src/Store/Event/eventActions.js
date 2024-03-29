@@ -63,7 +63,7 @@ export const createEvent = (data) => {
       data: data,
     })
       .then((response) => {
-        dispatch(eventCreateSuccess(response?.data));
+        dispatch(eventCreateSuccess(response?.data?.post));
         dispatch(successMessage("Event Created Successfully!"));
         console.log("response from backend for charity ", response);
       })

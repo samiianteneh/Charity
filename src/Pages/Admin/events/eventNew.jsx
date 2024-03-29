@@ -33,12 +33,12 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = events?.post.filter((items) => items?.isActive == 1);
-  const inActiveEvents = events?.post.filter((items) => items?.isActive == 0);
+  // const activeEvents = events?.event.filter((items) => items?.isActive == 1);
+  // const inActiveEvents = events?.event.filter((items) => items?.isActive == 0);
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
-  console.log(activeEvents, inActiveEvents, "activeEvents");
+  // console.log(activeEvents, inActiveEvents, "activeEvents");
 
   return (
     <Layout>
@@ -78,7 +78,7 @@ const EventNew = () => {
                   InActive{" "}
                 </button>
               </div>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 {activeTab === "Tab 1" && (
                   <div className="">
                     {" "}
@@ -91,7 +91,7 @@ const EventNew = () => {
                     <EventTable charity={inActiveEvents} type="inActive" />
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
             {isOpen && <CreateEvent closeModal={closeModal} />}
           </div>

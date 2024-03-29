@@ -94,14 +94,12 @@ export const updatePost = (postID, updatedData) => {
 export const deletePost = (postID, data) => {
   return (dispatch) => {
     dispatch(postStart());
-    axios({
-      method: "delete",
-      url: `${API_BASE_URL}/post/${postID}`,
-      updatedData,
-    })
+    axios
+      .delete(`${API_BASE_URL}/post/${postID}`)
       .then((response) => {
         dispatch(deletePostSuccess(data?.filter((item) => item.id !== postID)));
         dispatch(successMessage("Post deleted successfully!"));
+        console.log(response?.data, "checking post delete");
       })
       .catch((error) => {
         dispatch(postFail(error));
