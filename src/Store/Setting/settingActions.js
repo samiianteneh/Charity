@@ -108,7 +108,7 @@ export const updateSetting = (SettingID, data) => {
     };
     axios({
       method: "PATCH",
-      url: `http://172.16.32.101:3000/v1/volunteryType/${SettingID}`, // Use SettingID in URL
+      url: `${API_BASE_URL}/volunteryType/${SettingID}`,
       headers: headers, // Pass headers to the request
       data: updatedData, // Pass updatedData as the request payload
     })
@@ -125,18 +125,18 @@ export const updateSetting = (SettingID, data) => {
   };
 };
 export const deleteSetting = (SettingID, data) => {
-  console.log("testing id", SettingID);
+  console.log("testing id", SettingID, data);
   return (dispatch) => {
-    dispatch(deleteSettingSuccess());
+    dispatch(settingStart());
     axios({
       method: "delete",
       url: `${API_BASE_URL}/Setting/${SettingID}`,
-      data,
     })
       .then((response) => {
-        dispatch(
-          deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
-        );
+        // dispatch(
+        //   deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
+        // );
+        // dispatch(deleteSettingSuccess(response?.data));
         dispatch(successMessage("Setting deleted successfully!"));
         console.log(response, "response for delete voluntery");
       })

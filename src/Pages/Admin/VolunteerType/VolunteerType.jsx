@@ -20,10 +20,10 @@ const VolunteerType = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedVolunteer, setSelectedVolunteer] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [editVolunteerData, setEditVolunteerData] = useState(null);
-  console.log(editVolunteerData, "editVolunteerData");
+  console.log(editVolunteerData, selectedVolunteer, "editVolunteerData");
 
   useEffect(() => {
     dispatch(getVolunteerType());
@@ -35,29 +35,29 @@ const VolunteerType = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleEditClick = (user) => {
-    setSelectedUser(user);
-    setEditVolunteerData(user);
+  const handleEditClick = (volunteer) => {
+    setSelectedVolunteer(volunteer);
+    setEditVolunteerData(volunteer);
     setIsEditMode(true);
   };
   const handleUpdate = () => {
-    dispatch(updateSetting(selectedUser.id, editVolunteerData));
+    dispatch(updateSetting(selectedVolunteer.id, editVolunteerData));
     setIsEditMode(false);
   };
   const handleUpdateCancel = () => {
     setIsEditMode(false);
   };
   const handleDelete = () => {
-    if (selectedUser && selectedUser.id) {
-      dispatch(deleteSetting(selectedUser.id));
+    if (selectedVolunteer && selectedVolunteer.id) {
+      dispatch(deleteSetting(selectedVolunteer.id, volunteer_type));
       setOpenDeleteModal(false);
     }
   };
   const handleDeleteCancel = () => {
     setOpenDeleteModal(false);
   };
-  const handleDeleteClick = (user) => {
-    setSelectedUser(user);
+  const handleDeleteClick = (volunteer) => {
+    setSelectedVolunteer(volunteer);
     setOpenDeleteModal(true);
   };
   return (
@@ -98,7 +98,7 @@ const VolunteerType = () => {
                           />
                         </button>
                         {/* {roles === "superadmin" ? ( */}
-                        <button onClick={() => handleDeleteClick(user)}>
+                        <button onClick={() => handleDeleteClick(item)}>
                           <Trash2
                             size={16}
                             strokeWidth={1.75}
@@ -143,8 +143,9 @@ const VolunteerType = () => {
                 Volunteer Type
               </label>
               <Input
+                id="name"
                 value={editVolunteerData?.name}
-                defaultValue={selectedUser?.name}
+                defaultValue={selectedVolunteer?.name}
                 onChange={(e) =>
                   setEditVolunteerData({
                     ...editVolunteerData,
@@ -161,8 +162,9 @@ const VolunteerType = () => {
                 Description
               </label>
               <Input
+                id="description"
                 value={editVolunteerData?.description}
-                defaultValue={selectedUser?.description}
+                defaultValue={selectedVolunteer?.description}
                 onChange={(e) =>
                   setEditVolunteerData({
                     ...editVolunteerData,
@@ -183,7 +185,7 @@ const VolunteerType = () => {
           }}
           okText="Yes"
         >
-          <p>Are you sure you want to delete this Volunter Type?</p>
+          <p>Are you sure you want to delete this Volunteer Type?</p>
         </Modal>
       </div>
     </div>

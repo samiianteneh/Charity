@@ -112,7 +112,7 @@ function AdminNew() {
             <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">
               <div className="container mx-auto mt-8 ml-10">
                 <h2 className="text-xl font-semibold mb-4 text-[#43a440]">
-                  Chash Collected
+                  Cash Collected
                 </h2>
               </div>
               <div className=" ml-2">
