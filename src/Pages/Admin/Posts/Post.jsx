@@ -26,7 +26,7 @@ const Post = () => {
   const currentItems = Posts?.slice(indexOfFirstItem, indexOfLastItem);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [dataEdit, setDataEdit] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedPost, setSelectedPost] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const openEditModal = (record) => {
@@ -50,13 +50,13 @@ const Post = () => {
     setOpenDeleteModal(false);
   };
   const handleDelete = () => {
-    if (selectedUser && selectedUser.id) {
-      dispatch(deletePost(selectedUser.id));
+    if (selectedPost && selectedPost.id) {
+      dispatch(deletePost(selectedPost.id, Posts));
       setOpenDeleteModal(false);
     }
   };
-  const handleDeleteClick = (user) => {
-    setSelectedUser(user);
+  const handleDeleteClick = (post) => {
+    setSelectedPost(post);
     setOpenDeleteModal(true);
   };
 

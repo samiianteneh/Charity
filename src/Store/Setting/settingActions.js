@@ -136,7 +136,7 @@ export const deleteSetting = (SettingID, data) => {
         dispatch(
           deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
         );
-        dispatch(deleteSettingSuccess(response?.data));
+        // dispatch(deleteSettingSuccess(response?.data));
         dispatch(successMessage("Setting deleted successfully!"));
         console.log(response, "response for delete voluntery");
       })
