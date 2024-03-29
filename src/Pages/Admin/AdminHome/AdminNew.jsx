@@ -18,14 +18,14 @@ function AdminNew() {
 
   const [counts, setCounts] = useState({});
 
-  // useEffect(() => {
-  //   const countryCounts = {};
-  //   personalInfos.forEach((entry) => {
-  //     const country = entry.country;
-  //     countryCounts[country] = (countryCounts[country] || 0) + 1;
-  //   });
-  //   setCounts(countryCounts);
-  // }, [personalInfos]);
+  useEffect(() => {
+    const countryCounts = {};
+    personalInfos.forEach((entry) => {
+      const country = entry.country;
+      countryCounts[country] = (countryCounts[country] || 0) + 1;
+    });
+    setCounts(countryCounts);
+  }, [personalInfos]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
   console.log(balance?.allBalance, "balancebalance");
 
@@ -62,10 +62,10 @@ function AdminNew() {
 
   return (
     <Layout>
-      <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
-        <div className="row-span-1 py-1 rounded-[20px] ">
+      <div className="font-poppins grid grid-rows-3 grid-flow-col gap-[20px] rounded-[10px] bg-white w-[full] h-full border-gray-300 border-[1px]">
+        <div className="row-span-1 py-1 rounded-[20px] w-[100%] ">
           <DashboardHeader />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[12px] p-[10px] h-[70px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[12px] p-[10px]  h-[70px]">
             <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">
               <div className="container mx-auto mt-8 ml-10">
                 <h2 className="text-xl font-semibold mb-4 text-[#43a440]">

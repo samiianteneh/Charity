@@ -14,11 +14,8 @@ import { date } from "../../../Components/NavLink/date";
 
 const EventNew = () => {
   const dispatch = useDispatch();
-  const eventsall = useSelector((state) => state.eventReducer.events);
+  const events = useSelector((state) => state.eventReducer.events);
 
-  const events = eventsall?.posts;
-
-  // const events = eventsall?.posts;
   console.log(events, "eventsss");
 
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +30,8 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = events?.post.filter((items) => items?.isActive == 1);
-  const inActiveEvents = events?.post.filter((items) => items?.isActive == 0);
+  const activeEvents = events?.filter((items) => items?.isActive == 1);
+  const inActiveEvents = events?.filter((items) => items?.isActive == 0);
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);

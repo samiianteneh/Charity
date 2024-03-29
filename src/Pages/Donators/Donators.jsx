@@ -38,7 +38,7 @@ const Donators = () => {
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
-        <div className="row-span-1 py-1 rounded-[20px] ">
+        <div className="row-span-1 py-1 rounded-[20px] w-[100%]">
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%]  m-3 overflow-auto">

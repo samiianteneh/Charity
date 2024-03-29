@@ -42,96 +42,7 @@ function Navigation() {
               <img src={logo} alt="logo" className="w-20 md:w-40" />
             </a>
           </div>
-          {/* <nav className="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center">
-            <a
-              href="#home"
-              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              Home
-            </a>
 
-            <a
-              href="#"
-              onClick={dropNav}
-              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              About us
-            </a>
-            <a
-              href="#contactUs"
-              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              Contact Us
-            </a>
-            <button
-              onClick={() => handleClick()}
-              className="mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-            >
-              Donate
-            </button>
-            {tokens ? (
-              <a
-                href="/adminHome"
-                className=" border-[1px] border-green-600  rounded-[5px] py-1 px-2 mr-5 text-green-600 hover:text-green-800 shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-md font-normal px-1"
-              >
-                Admin Page
-              </a>
-            ) : (
-              ""
-            )}
-
-            <a
-              href="#member"
-              className="inline-flex items-center bg-green-600 border-0 text-white py-1 px-1 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
-            >
-              Be a member
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                className="w-4 h-4 ml-1"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-
-            {dropDown && (
-              <div className="absolute right-[10%] w-[25%] xl:w-[15%] top-10 bg-gray-100 p-4 z-10">
-                <ul className="">
-                  <li className="mb-2 text-left">
-                    <a
-                      href="#WhoWeAre"
-                      onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
-                    >
-                      Who We Are
-                    </a>
-                  </li>
-                  <li className="mb-2 text-left">
-                    <a
-                      href="#WhatWeDo"
-                      onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
-                    >
-                      What We Do
-                    </a>
-                  </li>
-                  <li className="mb-2 text-left">
-                    <a
-                      href="#testimonials"
-                      onClick={dropNav}
-                      className="text-[#43a440] hover:text-2xlm hover:text-black px-3 font-bold text"
-                    >
-                      Testimonials
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </nav> */}
           <div className="md:hidden">
             {showNav ? (
               <img
@@ -242,25 +153,7 @@ function Navigation() {
                       Donate
                     </a>
                   </li>
-                  {/* <li className="mb-2 text-left">
-                    <div
-                      onClick={
-                        subNav
-                          ? () => {
-                              toggleNav();
-                              toggleSubNav();
-                              newFunction();
-                            }
-                          : () => {
-                              toggleNav();
-                              newFunction();
-                            }
-                      }
-                      className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
-                    >
-                      Donate
-                    </div>
-                  </li> */}
+
                   <li className="mb-2 text-left">
                     <a
                       href="#contactUs"
@@ -325,7 +218,6 @@ function Navigation() {
                         toggleNav();
                         toggleSubNav();
                       }}
-                      o
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
                       What We Do

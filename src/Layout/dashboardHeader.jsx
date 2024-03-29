@@ -51,26 +51,34 @@ export default function DashboardHeader() {
   // );
 
   return (
-    <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between items-center">
-      <div className="font-poppins font-normal text-gray-800  p-4 justify-center ">
-        <div className=" hidden md:block">
+    <div>
+      <div className="flex border-b-[1px] border-blueGreen mb-[20px] justify-between items-center ">
+        <div className="hidden md:block font-poppins font-normal text-gray-800  p-4 justify-center">
+          {" "}
           <Breadcrumb selectedSidebarKey={selectedSidebarKey}></Breadcrumb>
-          {/* <div className="flex justify-center items-center  font-normal text-gray-500 gap-[10px]">
-            {selectedIcon} {selectedLabel}
-            {" "}
-          </div> */}
         </div>
+        <div className="hidden md:block">
+          {" "}
+          <button
+            onClick={handleLogout}
+            className="flex items-center justify-center gap-2 text-[13px] font-normal text-white bg-green-600 py-2 px-4 rounded-[5px]"
+          >
+            Logout
+            <LogOut size={16} />
+          </button>
+        </div>
+      </div>
+      <div className="flex border-b-[1px] border-blueGreen mb-[20px]  justify-between  items-center md:hidden w-[90%]">
         <Sidebar
+          className="font-poppins font-normal text-gray-800  p-4 justify-center w-auto"
           selectedSidebarKey={selectedSidebarKey}
           handleSidebarItemClick={handleSidebarItemClick}
         />
-      </div>
-      <div className="flex items-center justify-center gap-[20px] px-[20px]">
+
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center gap-2 text-[13px] font-normal text-white bg-green-600 py-2 px-4 rounded-[5px]"
+          className=" text-[13px] font-normal text-white bg-green-600 py-2 px-4 rounded-[5px]"
         >
-          Logout
           <LogOut size={16} />
         </button>
       </div>

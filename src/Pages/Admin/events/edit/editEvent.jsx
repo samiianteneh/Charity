@@ -117,9 +117,7 @@ function EventEdit({ closeModal, data }) {
               <input
                 type="time"
                 id="event_time"
-                defaultValue={
-                  data && data.event_time ? data.event_time.slice(0, 5) : ""
-                }
+                defaultValue={data.event_time}
                 {...register("event_time", {
                   required: "Time is required",
                 })}

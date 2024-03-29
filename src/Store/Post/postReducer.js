@@ -21,7 +21,7 @@ const createPostSuccess = (state, action) => ({
 const getPost = (state, action) => ({
   ...state,
   // posts: Array.isArray(action.data) ? action.data : [], // Ensure action.data is an array
-  posts: action.data,
+  posts: action.data.posts,
   is_loading: false,
   error: null,
 });

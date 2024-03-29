@@ -23,7 +23,7 @@ function PostDisplay() {
           cursor: "pointer",
         }}
       >
-        {Posts?.posts?.map((post, index) => (
+        {Posts?.map((post, index) => (
           <div
             key={index}
             className="bg-white rounded-lg shadow-md p-6 mb-4 max-w-1/3 min-w-80 mx-3  "

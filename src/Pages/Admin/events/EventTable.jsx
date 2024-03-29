@@ -81,6 +81,13 @@ function EventTable({ charity, type }) {
           {type == "active" ? "Active" : type === "inActive" ? "Inactive" : ""}{" "}
           Event List
         </h2>
+        <div className="max-w-[90%]  m-3 overflow-auto">
+          <Table
+            columns={columns}
+            dataSource={charity}
+            pagination={customPagination}
+          />{" "}
+        </div>
         <Table
           columns={columns}
           dataSource={charity}

@@ -51,7 +51,7 @@ const eventFail = (error) => {
 
 export const createEvent = (data) => {
   console.log(data, "Data for create Event");
-
+  // return;
   return (dispatch) => {
     dispatch(eventStart());
     axios({
@@ -63,7 +63,7 @@ export const createEvent = (data) => {
       data: data,
     })
       .then((response) => {
-        dispatch(eventCreateSuccess(response?.data));
+        dispatch(eventCreateSuccess(response?.data?.Event));
         dispatch(successMessage("Event Created Successfully!"));
         console.log("response from backend for charity ", response);
       })

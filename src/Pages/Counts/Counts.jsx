@@ -18,14 +18,14 @@ const Counts = () => {
   }, [dispatch]);
 
   const [counts, setCounts] = useState({});
-  // useEffect(() => {
-  //   const countryCounts = {};
-  //   Volentery?.forEach((entry) => {
-  //     const country = entry.country;
-  //     countryCounts[country] = (countryCounts[country] || 0) + 1;
-  //   });
-  //   setCounts(countryCounts);
-  // }, [Volentery]);
+  useEffect(() => {
+    const countryCounts = {};
+    Volentery?.forEach((entry) => {
+      const country = entry.country;
+      countryCounts[country] = (countryCounts[country] || 0) + 1;
+    });
+    setCounts(countryCounts);
+  }, [Volentery]);
   const totalCountries = Object.keys(counts).length;
   const balanceFilter = balance?.allBalance;
 

@@ -30,14 +30,19 @@ const getSingleSetting = (state, action) => ({
   is_loading: false,
   error: null,
 });
-const updateSetting = (state, action) => ({
-  ...state,
-  settings: state.settings.map((setting) =>
-    setting.id === action.updatedFeedback.id ? action.updatedFeedback : setting
-  ),
-  is_loading: false,
-  error: null,
-});
+const updateSetting = (state, action) => {
+  console.log("action.updatedFeedback", action.data?.data?.updatedFeedback);
+  const data = action.data?.data?.updatedFeedback;
+  return {
+    ...state,
+    settings: state.settings.map((setting) =>
+      setting.id === data.id ? data : setting
+    ),
+    is_loading: false,
+    error: null,
+  };
+};
+
 const deleteSetting = (state, action) => ({
   ...state,
   settings: action.data,

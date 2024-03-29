@@ -35,20 +35,20 @@ export const createPost = (data) => {
     axios({
       method: "post",
       url: `${API_BASE_URL}/post`,
-      header: {
+      headers: {
         "Content-Type": "multipart/form-data",
       },
-      data,
+      data: data,
     })
       .then((response) => {
-        dispatch(createPostSuccess(response?.data));
-        console.log("just cheking the post response", response?.data);
-
+        dispatch(createPostSuccess(response?.data?.post));
         dispatch(successMessage("Post Created Successfully!"));
+        console.log("just cheking the post response", response?.data);
       })
       .catch((error) => {
         dispatch(postFail(error?.message));
         dispatch(errorMessage(error));
+        console.log("just cheking the post response err", error);
       });
   };
 };

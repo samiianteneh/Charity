@@ -9,8 +9,8 @@ import { VscFeedback } from "react-icons/vsc";
 
 function Sidebar() {
   return (
-    <div className="flex  md:hidden">
-      <div className="pt-10 text-4xl gap-3 flex md:flex-col md:ml-5">
+    <div className="flex  md:hidden ">
+      <div className=" text-lg gap-3 flex md:flex-col md:ml-5 ">
         <NavLink to="/" activeClassName="active">
           <div className="flex gap-10 py-2">
             <FaHome className="" />

@@ -23,7 +23,7 @@ const Post = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Posts?.posts?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = Posts?.slice(indexOfFirstItem, indexOfLastItem);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [dataEdit, setDataEdit] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -63,7 +63,7 @@ const Post = () => {
   return (
     <Layout>
       <div className="font-poppins gap-[20px] rounded-[10px] bg-white w-full h-full border-gray-300 border-[1px]">
-        <div className="row-span-1 py-1 rounded-[20px] ">
+        <div className="row-span-1 py-1 rounded-[20px] w-[100%] ">
           <DashboardHeader />
           <div className="px-5 py-4 m-2 ">
             <button
@@ -79,23 +79,26 @@ const Post = () => {
             <div className="container px-5 py-4 mx-auto">
               <div className="flex flex-wrap -m-4">
                 {currentItems?.map((post, index) => (
-                  <div key={index} className="p-4 md:w-1/2 w-1/3">
+                  <div key={index} className="p-4 w-full md:w-1/3 ">
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
-                        className="h-36 md:h-48 w-full object-cover object-center"
+                        className="h-36 md:h-48 min-w-full object-cover object-center"
                         src={post?.imageUrl}
                         alt="blog"
                       />
                       <div className="p-6 pb-1">
                         <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                          POST DATE - {post?.createdAt.slice(0, 10)}
+                          POST DATE -{" "}
+                          {post?.createdAt ? post?.createdAt.slice(0, 10) : ""}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                           {post?.title}
                         </h1>
-                        <p className="leading-relaxed mb-3 text-[11px]">
-                          {post?.description}
-                        </p>
+                        <div className="h-36 overflow-y-auto">
+                          <p className="leading-relaxed mb-3  text-[11px]">
+                            {post?.description}
+                          </p>
+                        </div>
                       </div>
                       <div className="m-2 ">
                         <div className="flex items-center justify-end gap-3 ">
@@ -144,7 +147,7 @@ const Post = () => {
           </Modal>
           <Pagination
             defaultCurrent={currentPage}
-            total={Posts?.posts?.length}
+            total={Posts?.length}
             pageSize={itemsPerPage}
             onChange={handlePageChange}
             className="flex justify-end"

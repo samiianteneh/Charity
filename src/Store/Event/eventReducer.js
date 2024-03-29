@@ -18,7 +18,7 @@ const eventStart = (state) => {
 const eventCreateSuccess = (state, action) => {
   return {
     ...state,
-    events: [...state.events, action.data],
+    events: [...state.events, action.data], // Ensure action.data is an iterable (e.g., array)
     loading: false,
     error: null,
   };
@@ -26,7 +26,7 @@ const eventCreateSuccess = (state, action) => {
 const eventGetSuccess = (state, action) => {
   return {
     ...state,
-    events: action.data,
+    events: action.data.posts,
     loading: false,
     error: null,
   };
