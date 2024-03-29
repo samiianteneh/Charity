@@ -150,6 +150,26 @@ function CreateAdmin({ closeModal }) {
             </div>
             <div className="mb-4">
               <label htmlFor="file" className="block text-sm font-medium">
+                Role
+              </label>
+              <select
+                id="role"
+                {...register("role", { required: "role is required" })}
+                className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+              >
+                <option value="" selected disabled>
+                  Choose admin type
+                </option>
+                <option key="admin" value="admin">
+                  Admin
+                </option>
+                <option key="superadmin" value="superadmin">
+                  Super Admin
+                </option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label htmlFor="file" className="block text-sm font-medium">
                 Upload Image
               </label>
               <input
