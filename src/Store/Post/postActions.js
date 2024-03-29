@@ -92,6 +92,7 @@ export const updatePost = (postID, updatedData) => {
   };
 };
 export const deletePost = (postID, data) => {
+  console.log("checking if post delete working", postID, data);
   return (dispatch) => {
     dispatch(postStart());
     axios

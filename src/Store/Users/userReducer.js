@@ -36,20 +36,25 @@ const getSingleUser = (state, action) => ({
   is_loading: false,
   error: null,
 });
-const updateUser = (state, action) => ({
-  ...state,
-  users: state.users.map((user) =>
-    user.id === action.data.id ? action.data : user
-  ),
-  is_loading: false,
-  error: null,
-});
-const deleteUser = (state, action) => ({
-  ...state,
-  users: state.users.filter((user) => user.id !== action.userId),
-  is_loading: false,
-  error: null,
-});
+const updateUser = (state, action) => {
+  console.log("checking update user result", action?.data?.updateResultUser);
+  const data = action?.data?.updateResultUser;
+  return {
+    ...state,
+    users: state.users.map((user) => (user.id === data.id ? data : user)),
+    is_loading: false,
+    error: null,
+  };
+};
+const deleteUser = (state, action) => {
+  console.log(action?.data, users, "action?.data");
+  return {
+    ...state,
+    users: state.users.filter((user) => user.id !== action.data.userId),
+    is_loading: false,
+    error: null,
+  };
+};
 
 const userFail = (state, action) => ({
   ...state,
