@@ -109,7 +109,7 @@ export const getSingleEvent = (event_id) => {
 };
 
 export const updateEvent = (id, data) => {
-  // console.log(id, data, "Data for Update Event");
+  console.log(id, data, "Data for Update Event");
   return (dispatch) => {
     dispatch(eventStart());
     axios({

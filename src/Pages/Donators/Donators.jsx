@@ -21,15 +21,11 @@ const columns = [
     title: "Phone",
     dataIndex: "phone",
   },
-  {
-    title: "Country",
-    dataIndex: "country",
-  },
 ];
 
 const Donators = () => {
   const dispatch = useDispatch();
-  const personalInfos = useSelector((state) => state.userReducer.users);
+  const personalInfos = useSelector((state) => state.BalanceReducer.balance);
   console.log(personalInfos, "donaters");
   useEffect(() => {
     dispatch(getBalances());
@@ -42,7 +38,7 @@ const Donators = () => {
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%]  m-3 overflow-auto">
-              <Table columns={columns} dataSource={personalInfos?.users} />
+              <Table columns={columns} dataSource={personalInfos} />
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ const balanceStart = (start) => {
 };
 
 const getBalance = (state, action) => {
+  console.log("objectttss", state, action);
   return {
     ...state,
     balance: action.data,

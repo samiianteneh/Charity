@@ -27,7 +27,7 @@ function AdminNew() {
     setCounts(countryCounts);
   }, [personalInfos]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
-  console.log(balance?.allBalance, "balancebalance");
+  console.log(balance, "balancebalance");
 
   const events = useSelector((state) => state.eventReducer.events);
 
@@ -36,12 +36,8 @@ function AdminNew() {
   }, [dispatch]);
 
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const activeCharity = events?.posts?.filter(
-    (charity) => charity?.isActive == 1
-  );
-  const inActiveCharity = events?.posts?.filter(
-    (charity) => charity?.isActive == 0
-  );
+  const activeCharity = events?.filter((charity) => charity?.isActive == 1);
+  const inActiveCharity = events?.filter((charity) => charity?.isActive == 0);
 
   useEffect(() => {
     dispatch(getBalances());
@@ -57,7 +53,7 @@ function AdminNew() {
   };
 
   // Calculate total amount collected for each year
-  const yearlyTotal = calculateYearlyTotal(balance?.allBalance);
+  const yearlyTotal = calculateYearlyTotal(balance);
   const totalCountries = Object.keys(counts).length;
 
   return (

@@ -88,11 +88,6 @@ function EventTable({ charity, type }) {
             pagination={customPagination}
           />{" "}
         </div>
-        <Table
-          columns={columns}
-          dataSource={charity}
-          pagination={customPagination}
-        />
       </div>
       {isOpen && <EventEdit closeModal={closeModal} data={data} />}
     </div>

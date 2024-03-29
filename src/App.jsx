@@ -13,6 +13,7 @@ import AdminNew from "./Pages/Admin/AdminHome/AdminNew";
 import Donation from "./Pages/Donation/Donation";
 import SuccessPage from "./Pages/Donation/SuccessPage";
 import Message from "./Components/Message";
+import ErrorPage from "./Pages/Donation/errorPage";
 
 function App() {
   const tokens = localStorage.getItem("token");
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/success" element={<SuccessPage />} />
+            <Route path="/error" element={<ErrorPage />} />
             {tokens ? (
               <>
                 <Route path="/adminHome" element={<AdminNew />} />

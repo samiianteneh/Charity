@@ -130,13 +130,13 @@ export const deleteSetting = (SettingID, data) => {
     dispatch(settingStart());
     axios({
       method: "delete",
-      url: `${API_BASE_URL}/Setting/${SettingID}`,
+      url: `${API_BASE_URL}/volunteryType/${SettingID}`,
     })
       .then((response) => {
-        // dispatch(
-        //   deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
-        // );
-        // dispatch(deleteSettingSuccess(response?.data));
+        dispatch(
+          deleteSettingSuccess(data?.filter((item) => item.id !== SettingID))
+        );
+        dispatch(deleteSettingSuccess(response?.data));
         dispatch(successMessage("Setting deleted successfully!"));
         console.log(response, "response for delete voluntery");
       })

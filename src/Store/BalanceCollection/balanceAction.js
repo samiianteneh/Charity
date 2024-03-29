@@ -30,7 +30,7 @@ export const getBalances = () => {
       url: `${API_BASE_URL}/payment/balance`,
     })
       .then((response) => {
-        dispatch(getBalance(response?.data));
+        dispatch(getBalance(response?.data?.allBalance));
         console.log(response, "response from server for balance");
       })
       .catch((error) => {

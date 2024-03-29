@@ -75,7 +75,7 @@ export const updatePost = (postID, updatedData) => {
   return (dispatch) => {
     dispatch(postStart());
     axios({
-      method: "put",
+      method: "patch",
       url: `${API_BASE_URL}/post/${postID}`,
       header: {
         "Content-Type": "multipart/form-data",
@@ -84,8 +84,14 @@ export const updatePost = (postID, updatedData) => {
     })
       .then((response) => {
         dispatch(updatePostSuccess(response?.data));
+        console.log(response, "response from server for update post success");
       })
       .catch((error) => {
+        console.log(
+          error,
+          "response from server for update post success error"
+        );
+
         dispatch(postFail(error));
         dispatch(errorMessage(error));
       });

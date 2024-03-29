@@ -46,7 +46,7 @@ function PostEdit({ closeModal, data }) {
     <div className="font- poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg min-w-[75%] md:min-w-[50%] modal-content">
         <div className="flex justify-between items-center mt-4 py-2">
-          <h2 className="text-lg font-semibold ">Create Event</h2>
+          <h2 className="text-lg font-semibold ">Post Edit</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
         <div className="max-h-[90%] overflow-auto text-justify font-light">

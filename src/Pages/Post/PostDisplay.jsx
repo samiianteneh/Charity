@@ -26,7 +26,7 @@ function PostDisplay() {
         {Posts?.map((post, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 mb-4 max-w-1/3 min-w-80 mx-3  "
+            className="bg-white rounded-lg shadow-md p-6 mb-4  max-w-96 min-w-80 mx-3  "
           >
             <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <img

@@ -92,6 +92,9 @@ const Post = () => {
                           {post?.createdAt ? post?.createdAt.slice(0, 10) : ""}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
+                          {post?.name}
+                        </h1>
+                        <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                           {post?.title}
                         </h1>
                         <div className="h-36 overflow-y-auto">

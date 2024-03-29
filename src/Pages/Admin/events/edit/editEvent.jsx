@@ -10,13 +10,13 @@ function EventEdit({ closeModal, data }) {
   console.log(data, "datadata");
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(data?.isActive);
-  const [image, setFile] = useState(null);
-  console.log(image, "imageUrl");
+  // const [image, setFile] = useState(null);
+  // console.log(image, "imageUrl");
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-  };
+  // const handleFileChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setFile(selectedFile);
+  // };
   const toggleIsActive = () => {
     setIsActive(!isActive);
   };
@@ -42,9 +42,7 @@ function EventEdit({ closeModal, data }) {
 
   const onSubmit = (e) => {
     e.isActive = isActive ? 1 : 0;
-    e.image = image;
     dispatch(updateEvent(data?.id, e));
-    setFile(null);
     closeModal();
   };
 
@@ -52,7 +50,7 @@ function EventEdit({ closeModal, data }) {
     <div className="font- poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-4 rounded-lg min-w-[75%] md:min-w-[50%] modal-content">
         <div className="flex justify-between items-center mt-4 py-2">
-          <h2 className="text-lg font-semibold ">Create Event</h2>
+          <h2 className="text-lg font-semibold ">Update Event</h2>
           <img src={closeIcon} onClick={closeModal} className="w-10 h-10" />
         </div>
         <div className="max-h-[90%] overflow-auto text-justify font-light">
@@ -102,7 +100,7 @@ function EventEdit({ closeModal, data }) {
                 {...register("date", {
                   required: "Date is required",
                 })}
-                min={new Date().toISOString().split("T")[0]} // Set minimum date to today
+                // min={new Date().toISOString().split("T")[0]} // Set minimum date to today
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
 
@@ -229,7 +227,7 @@ function EventEdit({ closeModal, data }) {
                 </p>
               )}
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="file" className="block text-sm font-medium">
                 Upload Image
               </label>
@@ -239,7 +237,7 @@ function EventEdit({ closeModal, data }) {
                 onChange={handleFileChange}
                 className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
-            </div>
+            </div> */}
             <button
               id="submitBtn"
               type="submit"
