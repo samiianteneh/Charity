@@ -58,12 +58,12 @@ export const userRegistration = (data, role) => {
       .then((response) => {
         dispatch(registerSuccess(response?.data));
         dispatch(successMessage("User Created Successfully!"));
-        console.log("create Volenteer response", response);
+        console.log("create Volunteer response", response);
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage(error));
-        console.log("create Volenteer response err", error);
+        console.log("create Volunteer response err", error);
       });
   };
 };
@@ -159,17 +159,17 @@ export const updateUser = (userId, newData) => {
   };
 };
 
-export const userDelete = (userId) => {
-  console.log(userId, "userId");
+export const userDelete = (userId, data) => {
+  console.log(userId, data, "userId");
 
   return (dispatch) => {
     dispatch(registerStart());
     axios
       .delete(`${API_BASE_URL}/users/${userId}`)
-      .then(() => {
-        dispatch(deleteUserSuccess(userId)); // Pass the userId instead of filtered data
+      .then((response) => {
+        dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId))); // Pass the userId instead of filtered data
         dispatch(successMessage("User deleted successfully!"));
-        console.log("User deleted successfully!");
+        console.log("User deleted successfully!", response?.data);
       })
       .catch((error) => {
         dispatch(registerFail(error));

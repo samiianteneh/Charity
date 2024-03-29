@@ -90,6 +90,7 @@ export const updateSetting = (SettingID, updatedData) => {
   };
 };
 export const deleteSetting = (SettingID, data) => {
+  console.log("testing id", SettingID);
   return (dispatch) => {
     dispatch(deleteSettingSuccess());
     axios({

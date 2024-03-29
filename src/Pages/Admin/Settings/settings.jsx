@@ -53,7 +53,7 @@ const Settings = () => {
   };
   const handleDelete = () => {
     if (selectedUser && selectedUser.id) {
-      dispatch(userDelete(selectedUser.id));
+      dispatch(userDelete(selectedUser.id, users));
       setOpenDeleteModal(false);
     }
   };

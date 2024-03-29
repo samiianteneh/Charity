@@ -46,7 +46,7 @@ const updateUser = (state, action) => ({
 });
 const deleteUser = (state, action) => ({
   ...state,
-  users: state.users.filter((user) => user.id !== action.userId), // Filter out the deleted user
+  users: state.users.filter((user) => user.id !== action.userId),
   is_loading: false,
   error: null,
 });
