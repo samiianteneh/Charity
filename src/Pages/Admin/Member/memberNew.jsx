@@ -25,7 +25,8 @@ const columns = [
   },
   {
     title: "Volentery type",
-    render: (record) => (record.volunteer ? record.volunteer.name : ""),
+    dataIndex: "role",
+    // render: (record) => (record.volunteer ? record.volunteer.name : ""),
   },
 ];
 
@@ -44,7 +45,7 @@ const MemberNew = () => {
           <DashboardHeader />
           <div className="container mx-auto  mt-8">
             <div className="max-w-[90%]  m-3 overflow-auto">
-              <Table columns={columns} dataSource={users} />
+              <Table columns={columns} dataSource={users?.users} />
             </div>
           </div>
         </div>

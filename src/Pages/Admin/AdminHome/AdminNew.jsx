@@ -18,14 +18,14 @@ function AdminNew() {
 
   const [counts, setCounts] = useState({});
 
-  useEffect(() => {
-    const countryCounts = {};
-    personalInfos.forEach((entry) => {
-      const country = entry.country;
-      countryCounts[country] = (countryCounts[country] || 0) + 1;
-    });
-    setCounts(countryCounts);
-  }, [personalInfos]);
+  // useEffect(() => {
+  //   const countryCounts = {};
+  //   personalInfos.forEach((entry) => {
+  //     const country = entry.country;
+  //     countryCounts[country] = (countryCounts[country] || 0) + 1;
+  //   });
+  //   setCounts(countryCounts);
+  // }, [personalInfos]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
   console.log(balance?.allBalance, "balancebalance");
 
