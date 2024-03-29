@@ -23,12 +23,12 @@ function CharityDisplay() {
   const dispatch = useDispatch();
 
   const events = useSelector((state) => state.eventReducer.events);
-  console.log(charity, "charitycharity");
+  console.log(events, "charitycharity");
 
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
-  const filerdCharity = events?.post?.filter((item) => {
+  const filerdCharity = events?.posts?.filter((item) => {
     return item?.isActive == 1;
   });
   console.log(filerdCharity, "filerdCharity");
@@ -55,13 +55,13 @@ function CharityDisplay() {
             <h3 className="text-xl font-semibold mb-4 text-[24px]">
               {item?.name}
             </h3>
-            <div className="justify-items-stretch grid text-lg">
+            <div className="justify-items-stretch grid text-lg pt-10">
               <p className="text-gray-600  font-normal grid ">
                 <span className="mb-3 w-full">
                   <span className="text-green-600 font-extrabold ">
                     Date:{""}{" "}
                   </span>
-                  {item?.date.slice(0, 10)}
+                  {item?.date?.slice(0, 10)}
                 </span>
                 <span className="gap-2 mb-3 w-full">
                   <span className="text-green-600 font-extrabold">

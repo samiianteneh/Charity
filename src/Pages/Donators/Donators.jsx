@@ -10,7 +10,7 @@ import { getBalances } from "../../Store";
 const columns = [
   {
     title: "Name",
-    dataIndex: "fullName",
+    dataIndex: "name",
     className: "text-[13px]",
   },
   {

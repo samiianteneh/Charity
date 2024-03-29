@@ -36,10 +36,10 @@ function AdminNew() {
   }, [dispatch]);
 
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const activeCharity = events?.post?.filter(
+  const activeCharity = events?.posts?.filter(
     (charity) => charity?.isActive == 1
   );
-  const inActiveCharity = events?.post?.filter(
+  const inActiveCharity = events?.posts?.filter(
     (charity) => charity?.isActive == 0
   );
 
