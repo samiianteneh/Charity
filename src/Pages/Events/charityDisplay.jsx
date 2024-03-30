@@ -23,7 +23,7 @@ function CharityDisplay() {
   const dispatch = useDispatch();
 
   const events = useSelector((state) => state.eventReducer.events);
-  console.log(events, "charitycharity");
+  // console.log(events, "charitycharity");
 
   useEffect(() => {
     dispatch(getEvent());
@@ -31,7 +31,7 @@ function CharityDisplay() {
   const filerdCharity = events?.filter((item) => {
     return item?.isActive == 1;
   });
-  console.log(filerdCharity, "filerdCharity");
+  // console.log(filerdCharity, "filerdCharity");
 
   return (
     <div className="container mx-auto font-poppins">

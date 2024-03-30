@@ -50,7 +50,7 @@ const eventFail = (error) => {
 // ================> EVENT CRUD <================
 
 export const createEvent = (data) => {
-  console.log(data, "Data for create Event");
+  // console.log(data, "Data for create Event");
   // return;
   return (dispatch) => {
     dispatch(eventStart());
@@ -65,10 +65,10 @@ export const createEvent = (data) => {
       .then((response) => {
         dispatch(eventCreateSuccess(response?.data?.Event));
         dispatch(successMessage("Event Created Successfully!"));
-        console.log("response from backend for charity ", response);
+        // console.log("response from backend for charity ", response);
       })
       .catch((error) => {
-        console.log(error, "response from backend for charity  error");
+        // console.log(error, "response from backend for charity  error");
         dispatch(eventFail(error));
         dispatch(errorMessage("Failed to create Event"));
       });
@@ -99,7 +99,7 @@ export const getSingleEvent = (event_id) => {
     })
       .then((response) => {
         dispatch(singleEventGetSuccess(response?.data));
-        console.log(response, "responsensajdvjsavg");
+        // console.log(response, "responsensajdvjsavg");
       })
       .catch((error) => {
         dispatch(eventFail(error));
@@ -109,7 +109,7 @@ export const getSingleEvent = (event_id) => {
 };
 
 export const updateEvent = (id, data) => {
-  console.log(id, data, "Data for Update Event");
+  // console.log(id, data, "Data for Update Event");
   return (dispatch) => {
     dispatch(eventStart());
     axios({
@@ -118,12 +118,12 @@ export const updateEvent = (id, data) => {
       data: data,
     })
       .then((response) => {
-        console.log(response, "response from backend for charity update");
+        // console.log(response, "response from backend for charity update");
         dispatch(updateEventSuccess(response?.data));
         dispatch(successMessage("Event Updated Successfully!"));
       })
       .catch((error) => {
-        console.log(error, "response from backend for charity update error");
+        // console.log(error, "response from backend for charity update error");
 
         dispatch(eventFail(error));
         dispatch(errorMessage("Failed to update Event"));
@@ -131,7 +131,7 @@ export const updateEvent = (id, data) => {
   };
 };
 export const deleteUser = (userId, data) => {
-  console.log(userId, "userId");
+  // console.log(userId, "userId");
 
   return (dispatch) => {
     dispatch(eventStart());

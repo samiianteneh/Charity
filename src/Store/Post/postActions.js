@@ -28,7 +28,7 @@ const postFail = (error) => ({
 });
 
 export const createPost = (data) => {
-  console.log(data, "Data for create Post");
+  // console.log(data, "Data for create Post");
 
   return (dispatch) => {
     dispatch(postStart());
@@ -43,12 +43,12 @@ export const createPost = (data) => {
       .then((response) => {
         dispatch(createPostSuccess(response?.data?.post));
         dispatch(successMessage("Post Created Successfully!"));
-        console.log("just cheking the post response", response?.data);
+        // console.log("just cheking the post response", response?.data);
       })
       .catch((error) => {
         dispatch(postFail(error?.message));
         dispatch(errorMessage(error));
-        console.log("just cheking the post response err", error);
+        // console.log("just cheking the post response err", error);
       });
   };
 };
@@ -62,7 +62,7 @@ export const getPost = () => {
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
-        console.log("firstrety", response);
+        // console.log("firstrety", response);
       })
       .catch((error) => {
         dispatch(postFail(error));
@@ -98,7 +98,7 @@ export const getPost = () => {
 //   };
 // };
 export const updatePost = (postID, updatedData) => {
-  console.log(updatedData, "data for update post");
+  // console.log(updatedData, "data for update post");
   return (dispatch) => {
     dispatch(postStart());
     axios({
@@ -113,13 +113,13 @@ export const updatePost = (postID, updatedData) => {
         dispatch(successMessage("Post Update Successfully!"));
 
         dispatch(updatePostSuccess(response?.data));
-        console.log(response, "response from server for update post success");
+        // console.log(response, "response from server for update post success");
       })
       .catch((error) => {
-        console.log(
-          error,
-          "response from server for update post success error"
-        );
+        // console.log(
+        //   error,
+        //   "response from server for update post success error"
+        // );
 
         dispatch(postFail(error));
         dispatch(errorMessage(error));
@@ -128,7 +128,7 @@ export const updatePost = (postID, updatedData) => {
 };
 
 export const deletePost = (postID, data) => {
-  console.log("checking if post delete working", postID, data);
+  // console.log("checking if post delete working", postID, data);
   return (dispatch) => {
     dispatch(postStart());
     axios
@@ -136,7 +136,7 @@ export const deletePost = (postID, data) => {
       .then((response) => {
         dispatch(deletePostSuccess(data?.filter((item) => item.id !== postID)));
         dispatch(successMessage("Post deleted successfully!"));
-        console.log(response?.data, "checking post delete");
+        // console.log(response?.data, "checking post delete");
       })
       .catch((error) => {
         dispatch(postFail(error));

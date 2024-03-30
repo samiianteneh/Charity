@@ -12,7 +12,7 @@ export function date(dates) {
     hour12: true, // Use 24-hour format
   };
   const formattedDate = date.toLocaleDateString("en-US", options);
-  console.log(formattedDate, "formattedDate"); // Output: "Saturday, March 25, 2023 14:30:00"
+  // console.log(formattedDate, "formattedDate"); // Output: "Saturday, March 25, 2023 14:30:00"
 
   return formattedDate;
 }

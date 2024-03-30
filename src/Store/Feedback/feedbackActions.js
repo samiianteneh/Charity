@@ -38,10 +38,10 @@ export const createFeedback = (data) => {
       .then((response) => {
         dispatch(feedbackCreate(response?.data));
         dispatch(successMessage("Feedback Created Successfully!"));
-        console.log("response for craete feedback", response);
+        // console.log("response for craete feedback", response);
       })
       .catch((error) => {
-        console.log(error, "response for craete feedback error");
+        // console.log(error, "response for craete feedback error");
         dispatch(feedbackFail(error));
         dispatch(errorMessage("Failed to create feedback."));
       });
@@ -71,7 +71,7 @@ export const updateFeedback = (userId, newData) => {
       .then((response) => {
         dispatch(feedbackUpdate(response?.data?.updatedFeedback));
         dispatch(successMessage("Feedback Readed successfully!"));
-        console.log(response, " feedback updated successfully");
+        // console.log(response, " feedback updated successfully");
       })
       .catch((error) => {
         dispatch(feedbackFail(error));

@@ -37,7 +37,7 @@ const getSingleUser = (state, action) => ({
   error: null,
 });
 const updateUser = (state, action) => {
-  console.log("checking update user result", action?.data?.updateResultUser);
+  // console.log("checking update user result", action?.data?.updateResultUser);
   const data = action?.data?.updateResultUser;
   return {
     ...state,
@@ -47,7 +47,7 @@ const updateUser = (state, action) => {
   };
 };
 const deleteUser = (state, action) => {
-  console.log(action?.data, state, "action?.data");
+  // console.log(action?.data, state, "action?.data");
   return {
     ...state,
     users: state.users.filter((user) => user.id !== action.data.userId),

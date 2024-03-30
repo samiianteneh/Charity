@@ -31,7 +31,7 @@ const getSingleSetting = (state, action) => ({
   error: null,
 });
 const updateSetting = (state, action) => {
-  console.log("action.updatedFeedback", action.data?.data?.updatedFeedback);
+  // console.log("action.updatedFeedback", action.data?.data?.updatedFeedback);
   const data = action.data?.data?.updatedFeedback;
   return {
     ...state,

@@ -72,7 +72,7 @@ function EventTable({ charity, type }) {
   const closeModal = () => {
     setIsOpen(false);
   };
-  console.log(data, "dataxdata");
+  // console.log(data, "dataxdata");
   return (
     <div>
       <div className="container mx-auto mt-8">

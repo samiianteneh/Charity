@@ -43,7 +43,7 @@ const userFail = (error) => ({
 // ===========> USER CRUD <=============
 
 export const userRegistration = (data, role) => {
-  console.log(data, role, "data sent for registration");
+  // console.log(data, role, "data sent for registration");
   // return;
   return (dispatch) => {
     dispatch(registerStart());
@@ -58,12 +58,12 @@ export const userRegistration = (data, role) => {
       .then((response) => {
         dispatch(registerSuccess(response?.data?.user));
         dispatch(successMessage("User Created Successfully!"));
-        console.log("create Volunteer response", response);
+        // console.log("create Volunteer response", response);
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage(error));
-        console.log("create Volunteer response err", error);
+        // console.log("create Volunteer response err", error);
       });
   };
 };
@@ -88,7 +88,7 @@ export const getUsers = () => {
       .get(`${API_BASE_URL}/users`)
       .then((response) => {
         dispatch(getUsersSuccess(response?.data));
-        console.log(response, "responsettt");
+        // console.log(response, "responsettt");
       })
       .catch((error) => {
         dispatch(userFail(error));
@@ -116,7 +116,7 @@ export const getAdmin = () => {
       .get(`${API_BASE_URL}/users/new`, config)
       .then((response) => {
         dispatch(getAdminSuccess(response?.data));
-        console.log(response, "responsettt");
+        // console.log(response, "responsettt");
       })
       .catch((error) => {
         dispatch(userFail(error));
@@ -141,7 +141,7 @@ export const getUserById = (userId) => {
 };
 
 export const updateUser = (userId, newData) => {
-  console.log("firstfirstfirst", userId, newData);
+  // console.log("firstfirstfirst", userId, newData);
 
   return (dispatch) => {
     dispatch(registerStart());
@@ -150,7 +150,7 @@ export const updateUser = (userId, newData) => {
       .then((response) => {
         dispatch(updateUserSuccess(response?.data));
         dispatch(successMessage("User updated successfully!"));
-        console.log("firresponsest", response);
+        // console.log("firresponsest", response);
       })
       .catch((error) => {
         dispatch(userFail(error));
@@ -160,7 +160,7 @@ export const updateUser = (userId, newData) => {
 };
 
 export const userDelete = (userId, data) => {
-  console.log(userId, data, "userId");
+  // console.log(userId, data, "userId");
 
   return (dispatch) => {
     dispatch(registerStart());
@@ -169,12 +169,12 @@ export const userDelete = (userId, data) => {
       .then((response) => {
         dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId))); // Pass the userId instead of filtered data
         dispatch(successMessage("User deleted successfully!"));
-        console.log("User deleted successfully!", response?.data);
+        // console.log("User deleted successfully!", response?.data);
       })
       .catch((error) => {
         dispatch(registerFail(error));
         dispatch(errorMessage("Failed to delete user."));
-        console.log(error, "response for delete user err");
+        // console.log(error, "response for delete user err");
       });
   };
 };

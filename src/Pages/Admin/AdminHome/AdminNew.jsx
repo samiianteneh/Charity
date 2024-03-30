@@ -10,7 +10,7 @@ import { getBalances, getEvent, getUsers } from "../../../Store";
 function AdminNew() {
   const dispatch = useDispatch();
   const personalInfos = useSelector((state) => state.userReducer.users);
-  console.log(personalInfos, "userssssar");
+  // console.log(personalInfos, "userssssar");
 
   useEffect(() => {
     dispatch(getUsers());
@@ -27,7 +27,7 @@ function AdminNew() {
     setCounts(countryCounts);
   }, [personalInfos]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
-  console.log(balance, "balancebalance");
+  // console.log(balance, "balancebalance");
 
   const events = useSelector((state) => state.eventReducer.events);
 

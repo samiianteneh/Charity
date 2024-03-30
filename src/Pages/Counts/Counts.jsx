@@ -11,7 +11,7 @@ const Counts = () => {
   }, [dispatch]);
   const balance = useSelector((state) => state.BalanceReducer.balance);
 
-  console.log(balance, "userssssar");
+  // console.log(balance, "userssssar");
 
   useEffect(() => {
     dispatch(getBalances());
@@ -44,7 +44,7 @@ const Counts = () => {
     return createdAtDate >= oneYearAgo && createdAtDate <= currentDate;
   });
 
-  console.log(filteredItems, "filteredItems");
+  // console.log(filteredItems, "filteredItems");
   return (
     <section className="text-gray-600 body-font bg-green-600 font-poppins">
       <div className="container px-5 py-24 mx-auto">

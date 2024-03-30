@@ -34,8 +34,8 @@ export const loginUser = (data) => {
         const { token, user } = response?.data;
 
         dispatch(loginSuccess(token, user));
-        console.log("token", token);
-        console.log("user", user);
+        // console.log("token", token);
+        // console.log("user", user);
         // When setting the items in localStorage
         // localStorage.setItem("token", JSON.stringify(tokenObject));
         // localStorage.setItem("user", JSON.stringify(userObject));

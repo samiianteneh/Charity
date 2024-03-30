@@ -5,7 +5,7 @@ import { userDelete, getUsers } from "../../../Store";
 function MemberList() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
-  console.log(users, "users member");
+  // console.log(users, "users member");
 
   useEffect(() => {
     dispatch(getUsers());

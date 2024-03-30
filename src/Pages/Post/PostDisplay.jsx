@@ -4,14 +4,14 @@ import { getPost } from "../../Store";
 
 function PostDisplay() {
   const [lengths, setLengths] = useState(false);
-  console.log(lengths, "lengths");
+  // console.log(lengths, "lengths");
   const lengthButton = () => {
     setLengths(!lengths);
   };
   const dispatch = useDispatch();
 
   const Posts = useSelector((state) => state.postReducer.posts);
-  console.log(Posts, "Postus");
+  // console.log(Posts, "Postus");
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);

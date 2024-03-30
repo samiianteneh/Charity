@@ -31,7 +31,7 @@ export const getBalances = () => {
     })
       .then((response) => {
         dispatch(getBalance(response?.data?.allBalance));
-        console.log(response, "response from server for balance");
+        // console.log(response, "response from server for balance");
       })
       .catch((error) => {
         dispatch(balanceFail(error));

@@ -12,7 +12,7 @@ const CreatePost = ({ closeModal }) => {
   const [imageUrl, setImageUrl] = useState(null);
   const [image, setFile] = useState(null);
 
-  console.log(imageUrl, "imageUrl");
+  // console.log(imageUrl, "imageUrl");
 
   const {
     register,

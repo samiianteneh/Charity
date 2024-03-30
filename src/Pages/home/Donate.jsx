@@ -38,7 +38,7 @@ function Donate({ closeModal }) {
         donation_ammount: amounts,
       })
       .then((response) => {
-        console.log(response, "response from backend for donation");
+        // console.log(response, "response from backend for donation");
         if (response?.data?.success === true) {
           window.location.href = response?.data?.clientSecret?.url;
         }
@@ -53,7 +53,7 @@ function Donate({ closeModal }) {
         subscription_ammount: amounts,
       })
       .then((response) => {
-        console.log(response?.data, "response from backend for donation");
+        // console.log(response?.data, "response from backend for donation");
         if (response?.data?.Success === true) {
           window.location.href = response?.data?.clientSecret?.url;
         }
@@ -62,7 +62,7 @@ function Donate({ closeModal }) {
         console.error(err, "response from backend for donation err");
       });
   };
-  console.log(amounts, "amountsss");
+  // console.log(amounts, "amountsss");
   return (
     <div className="font-poppins fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-80 flex justify-center items-center z-50 ">
       <div className="bg-white rounded-lg max-w-[70%] min-w-[25%] modal-content p-10">

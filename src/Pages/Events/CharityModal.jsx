@@ -3,7 +3,7 @@ import closeIcon from "../../assets/icons/system-solid-29-cross.gif";
 import logo from "../../assets/logo.png";
 
 function CharityModal({ closeModal, data }) {
-  console.log(data, "data modal");
+  // console.log(data, "data modal");
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".modal-content")) {

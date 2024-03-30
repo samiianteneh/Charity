@@ -14,8 +14,8 @@ const Settings = () => {
   const user = JSON.parse(userjson);
   const roles = user?.role;
   const adminId = user?.id;
-  console.log(adminId, "tokenstokens");
-  console.log(roles, "tokenstokens");
+  // console.log(adminId, "tokenstokens");
+  // console.log(roles, "tokenstokens");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
 
@@ -26,9 +26,9 @@ const Settings = () => {
   const [editUserData, setEditUserData] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
-  console.log(selectedUser, "selectedUser");
-  console.log(editUserData, "editUserData");
-  console.log(users, "users");
+  // console.log(selectedUser, "selectedUser");
+  // console.log(editUserData, "editUserData");
+  // console.log(users, "users");
   useEffect(() => {
     dispatch(getAdmin());
   }, [dispatch]);
@@ -71,16 +71,16 @@ const Settings = () => {
     }
   };
   const [image, setFile] = useState(null);
-  console.log(image, "imageUrl");
+  // console.log(image, "imageUrl");
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
   };
-  console.log(roles, "rolesroles");
+  // console.log(roles, "rolesroles");
   const filterdUser =
     roles == "admin" ? users?.filter((items) => items?.id == adminId) : users;
-  console.log(filterdUser, "filterdUserfilterdUser");
+  // console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <div>
       {roles == "superadmin" ? (

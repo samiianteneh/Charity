@@ -13,7 +13,7 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);
   const userArray = [];
   userArray.push(JSON.parse(localUser));
-  console.log(userArray, "userArray");
+  // console.log(userArray, "userArray");
 
   return (
     <div className="hidden sm:flex flex-col col-span-1 md:col-span-2 md:px-4 font-poppins overflow-hidden scrollbar-hide">
@@ -40,7 +40,7 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
               {" "}
               {/* Assuming user.id is a unique identifier */}
               <img
-                src={`http://172.16.32.156:3000/v1/public/${user.image}`}
+                src={`https://ngh1.org/back/v1/public/${user.image}`}
                 alt="female avatar"
                 className="w-[40px] h-[40px]"
               />

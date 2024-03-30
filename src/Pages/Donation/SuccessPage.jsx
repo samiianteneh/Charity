@@ -36,7 +36,7 @@ function SuccessPage() {
           name: user?.donationName,
         })
         .then((response) => {
-          console.log(response, "response from backend for register");
+          // console.log(response, "response from backend for register");
           localStorage.removeItem("donationName");
           localStorage.removeItem("donationAmount");
           localStorage.removeItem("donationEmail");

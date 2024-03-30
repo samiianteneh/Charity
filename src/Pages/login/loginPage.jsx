@@ -15,7 +15,7 @@ const LoginPage = () => {
   //   (token) => token
   // );
   const token = useSelector((state) => state.authReducer.token);
-  console.log(token, "tokenenewf");
+  // console.log(token, "tokenenewf");
 
   const {
     register,

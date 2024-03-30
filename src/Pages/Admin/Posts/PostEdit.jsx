@@ -6,10 +6,10 @@ import { useDispatch } from "react-redux";
 import { updatePost } from "../../../Store";
 
 function PostEdit({ closeModal, data }) {
-  console.log(data, "datadatapost");
+  // console.log(data, "datadatapost");
   const dispatch = useDispatch();
   const [image, setFile] = useState(null);
-  console.log(image, "imageUrl");
+  // console.log(image, "imageUrl");
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];

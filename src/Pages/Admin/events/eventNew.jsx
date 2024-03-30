@@ -16,7 +16,7 @@ const EventNew = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventReducer.events);
 
-  console.log(events, "eventsss");
+  // console.log(events, "eventsss");
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 1");
@@ -35,7 +35,7 @@ const EventNew = () => {
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
-  console.log(activeEvents, inActiveEvents, "activeEvents");
+  // console.log(activeEvents, inActiveEvents, "activeEvents");
 
   return (
     <Layout>

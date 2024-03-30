@@ -48,7 +48,7 @@ function Donation() {
         localStorage.setItem("donationEmail", email);
         localStorage.setItem("donationAmount", amounts);
 
-        console.log(response, "response from backend for donation");
+        // console.log(response, "response from backend for donation");
         if (response?.data?.success === true) {
           window.location.href = response?.data?.clientSecret?.url;
         }
@@ -67,7 +67,7 @@ function Donation() {
         localStorage.setItem("donationPhone", Phone);
         localStorage.setItem("donationEmail", email);
         localStorage.setItem("donationAmount", amounts);
-        console.log(response?.data, "response from backend for donation");
+        // console.log(response?.data, "response from backend for donation");
         if (response?.data?.Success === true) {
           window.location.href = response?.data?.clientSecret?.url;
         }

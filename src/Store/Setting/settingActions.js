@@ -39,12 +39,12 @@ export const createVolunteerType = (data) => {
       data,
     })
       .then((response) => {
-        console.log(response, "response for create volunteer type");
+        // console.log(response, "response for create volunteer type");
         dispatch(createSettingSuccess(response?.data));
         dispatch(successMessage("Setting Created Successfully!"));
       })
       .catch((error) => {
-        console.log(error, "response for create volunteer type err");
+        // console.log(error, "response for create volunteer type err");
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
       });
@@ -59,12 +59,12 @@ export const getVolunteerType = () => {
     })
       .then((response) => {
         dispatch(getSettingSuccess(response?.data));
-        console.log(response, "response for get voluntery type");
+        // console.log(response, "response for get voluntery type");
       })
       .catch((error) => {
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
-        console.log(error, "response for get voluntery type err");
+        // console.log(error, "response for get voluntery type err");
       });
   };
 };
@@ -100,7 +100,7 @@ export const updateSetting = (SettingID, data) => {
     description: data?.description,
     name: data?.name,
   };
-  console.log(SettingID, updatedData, "object");
+  // console.log(SettingID, updatedData, "object");
   return (dispatch) => {
     dispatch(settingStart());
     const headers = {
@@ -113,19 +113,19 @@ export const updateSetting = (SettingID, data) => {
       data: updatedData, // Pass updatedData as the request payload
     })
       .then((response) => {
-        console.log(response, "response for update voluntery type");
+        // console.log(response, "response for update voluntery type");
         dispatch(updateSettingSuccess(response));
         dispatch(successMessage("Volentery type updated Successfully!"));
       })
       .catch((error) => {
-        console.log(error, "response for update voluntery type error");
+        // console.log(error, "response for update voluntery type error");
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
       });
   };
 };
 export const deleteSetting = (SettingID, data) => {
-  console.log("testing id", SettingID, data);
+  // console.log("testing id", SettingID, data);
   return (dispatch) => {
     dispatch(settingStart());
     axios({
@@ -138,12 +138,12 @@ export const deleteSetting = (SettingID, data) => {
         );
         // dispatch(deleteSettingSuccess(response?.data));
         dispatch(successMessage("Setting deleted successfully!"));
-        console.log(response, "response for delete voluntery");
+        // console.log(response, "response for delete voluntery");
       })
       .catch((error) => {
         dispatch(SettingFail(error));
         dispatch(errorMessage(error));
-        console.log(error, " response for delete voluntery err");
+        // console.log(error, " response for delete voluntery err");
       });
   };
 };

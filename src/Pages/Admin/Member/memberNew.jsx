@@ -34,7 +34,7 @@ const columns = [
 const MemberNew = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
-  console.log(users, "userssss");
+  // console.log(users, "userssss");
 
   useEffect(() => {
     dispatch(getUsers());

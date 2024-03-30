@@ -13,7 +13,7 @@ const postStart = (state) => ({
   error: null,
 });
 const createPostSuccess = (state, action) => {
-  console.log("object", state, action);
+  // console.log("object", state, action);
   return {
     ...state,
     posts: [...state.posts, action.data],
@@ -35,7 +35,7 @@ const getSinglePost = (state, action) => ({
   error: null,
 });
 const updatePost = (state, action) => {
-  console.log("object", state, action);
+  // console.log("object", state, action);
   return {
     ...state,
     posts: state.posts.map((post) =>

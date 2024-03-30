@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateEvent } from "../../../../Store";
 
 function EventEdit({ closeModal, data }) {
-  console.log(data, "datadata");
+  // console.log(data, "datadata");
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(data?.isActive);
   // const [image, setFile] = useState(null);

@@ -16,14 +16,14 @@ const VolunteerType = () => {
   const user = JSON.parse(userjson);
   const dispatch = useDispatch();
   const volunteer_type = useSelector((state) => state.settingReducer.settings);
-  console.log(volunteer_type, "volunteer_typessssssss");
+  // console.log(volunteer_type, "volunteer_typessssssss");
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [editVolunteerData, setEditVolunteerData] = useState(null);
-  console.log(editVolunteerData, selectedVolunteer, "editVolunteerData");
+  // console.log(editVolunteerData, selectedVolunteer, "editVolunteerData");
 
   useEffect(() => {
     dispatch(getVolunteerType());

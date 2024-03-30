@@ -14,7 +14,7 @@ const CreateVolunteer = ({ closeModal }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data, "datadatadata");
+    // console.log(data, "datadatadata");
     dispatch(createVolunteerType(data));
     closeModal();
   };

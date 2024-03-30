@@ -26,7 +26,7 @@ const columns = [
 const Donators = () => {
   const dispatch = useDispatch();
   const personalInfos = useSelector((state) => state.BalanceReducer.balance);
-  console.log(personalInfos, "donaters");
+  // console.log(personalInfos, "donaters");
   useEffect(() => {
     dispatch(getBalances());
   }, [dispatch]);

@@ -12,7 +12,7 @@ import PostEdit from "./PostEdit";
 const Post = () => {
   const dispatch = useDispatch();
   const Posts = useSelector((state) => state.postReducer.posts);
-  console.log(Posts, "Postad");
+  // console.log(Posts, "Postad");
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
