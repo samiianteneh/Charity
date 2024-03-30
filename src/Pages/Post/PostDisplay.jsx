@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../Store";
 
 function PostDisplay() {
+  const [lengths, setLengths] = useState(false);
+  console.log(lengths, "lengths");
+  const lengthButton = () => {
+    setLengths(!lengths);
+  };
   const dispatch = useDispatch();
 
   const Posts = useSelector((state) => state.postReducer.posts);
@@ -41,9 +46,28 @@ function PostDisplay() {
                 <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                   {post?.name}
                 </h1>
-                <p className="leading-relaxed mb-3 text-[11px]">
-                  {post?.description}
-                </p>
+                <div
+                  className={
+                    lengths ? "overflow-y-auto h-full" : "overflow-y-auto h-34"
+                  }
+                >
+                  <p className="leading-relaxed mb-3 text-[11px]">
+                    <div>
+                      {lengths == false && post?.description.length > 200
+                        ? post?.description?.slice(0, 200) + " ..."
+                        : post?.description}
+                    </div>
+                    <div>
+                      {post?.description.length > 100 ? (
+                        <button onClick={lengthButton}>
+                          {lengths ? "Read Less" : "Read more"}
+                        </button>
+                      ) : (
+                        ""
+                      )}{" "}
+                    </div>
+                  </p>
+                </div>
               </div>
               <div className="m-2 "></div>
             </div>

@@ -70,19 +70,48 @@ export const getPost = () => {
       });
   };
 };
+// export const updatePost = (postID, updatedData) => {
+//   console.log(updatedData, "data for update post");
+//   return (dispatch) => {
+//     dispatch(postStart());
+//     axios({
+//       method: "PATCH",
+//       url: `${API_BASE_URL}/post/${postID}`,
+//       header: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//       updatedData,
+//     })
+//       .then((response) => {
+//         dispatch(updatePostSuccess(response?.data));
+//         console.log(response, "response from server for update post success");
+//       })
+//       .catch((error) => {
+//         console.log(
+//           error,
+//           "response from server for update post success error"
+//         );
+
+//         dispatch(postFail(error));
+//         dispatch(errorMessage(error));
+//       });
+//   };
+// };
 export const updatePost = (postID, updatedData) => {
   console.log(updatedData, "data for update post");
   return (dispatch) => {
     dispatch(postStart());
     axios({
-      method: "patch",
+      method: "PATCH",
       url: `${API_BASE_URL}/post/${postID}`,
-      header: {
+      headers: {
         "Content-Type": "multipart/form-data",
       },
-      updatedData,
+      data: updatedData, // Corrected property name
     })
       .then((response) => {
+        dispatch(successMessage("Post Update Successfully!"));
+
         dispatch(updatePostSuccess(response?.data));
         console.log(response, "response from server for update post success");
       })
@@ -97,6 +126,7 @@ export const updatePost = (postID, updatedData) => {
       });
   };
 };
+
 export const deletePost = (postID, data) => {
   console.log("checking if post delete working", postID, data);
   return (dispatch) => {

@@ -8,10 +8,9 @@ function EventTable({ charity, type }) {
     {
       title: "",
       dataIndex: "imageUrl",
-      className: "font-poppins font-normal text-[13px] text-center",
-      render: (imageUrl) => (
-        <img src={imageUrl} alt="Event" className="w-[100px] h-[100px]" />
-      ),
+      className:
+        "font-poppins font-normal text-[13px] text-center w-[200px] h-[150px]",
+      render: (imageUrl) => <img src={imageUrl} alt="Event" className="" />,
     },
     {
       title: "Name",

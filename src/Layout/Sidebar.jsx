@@ -13,6 +13,7 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);
   const userArray = [];
   userArray.push(JSON.parse(localUser));
+  console.log(userArray, "userArray");
 
   return (
     <div className="hidden sm:flex flex-col col-span-1 md:col-span-2 md:px-4 font-poppins overflow-hidden scrollbar-hide">
@@ -34,14 +35,20 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
       </div>
       <div className="flex flex-col col-span-2 justify-start items-center mt-auto border-gray-300 bg-white p-3 my-3 rounded-[5px] border-[1px]">
         <div className="flex items-center gap-2">
-          <img src={avatar} alt="female avatar" className="w-[40px] h-[40px]" />
           {userArray?.map((user, index) => (
-            <div key={index} className="flex flex-col">
+            <div key={user.id} className="flex flex-col">
+              {" "}
+              {/* Assuming user.id is a unique identifier */}
+              <img
+                src={`http://172.16.32.156:3000/v1/public/${user.image}`}
+                alt="female avatar"
+                className="w-[40px] h-[40px]"
+              />
               <p className="text-gray-800 text-[13px] font-semibold">
-                {user?.fullName}
+                {user.fullName}
               </p>
               <p className="text-gray-800 text-[11px] font-normal">
-                {user?.email}
+                {user.email}
               </p>
             </div>
           ))}

@@ -85,13 +85,16 @@ function CreateAdmin({ closeModal }) {
                 Phone Number
               </label>
               <input
-                type="tel"
+                type="text"
                 placeholder="Type your phone number"
                 id="phone"
                 {...register("phone", {
                   required: "Phone Number is required",
                   pattern: {
-                    value: /^[+]?[0-9]{1,4}[-\s.]?[0-9]{1,12}$/,
+                    // value: /^[+]?[0-9]{1,4}[-\s.]?[0-9]{1,12}$/,
+                    value:
+                      /^(?:\+\d{1,3}\s?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/,
+
                     message:
                       "Please enter a valid phone number with country code.",
                   },

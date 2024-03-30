@@ -4,6 +4,7 @@ import { FiInstagram, FiTwitter } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandLinkedin } from "react-icons/tb";
 import logo from "../../assets/logo.png";
+import { FaPhone } from "react-icons/fa";
 
 function Footer() {
   const currentDate = new Date().getFullYear();
@@ -15,13 +16,17 @@ function Footer() {
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <img src={logo} alt="logo" className="w-20 md:w-40" />
           </a>
-
           {/* <p className="mt-2 text-sm text-white">
             Giving help to those who need it
           </p> */}
           <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
             &copy; {currentDate} Noah Giving Hands. All rights reserved.
-          </p>
+          </p>{" "}
+          <div className="items-center justify-center">
+            <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+              <FaPhone /> : +1 (832) 866-8497
+            </p>
+          </div>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
             <a
               href="https://www.facebook.com/profile.php?id=61553704089800"

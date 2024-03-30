@@ -77,6 +77,7 @@ const Settings = () => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
   };
+  console.log(roles, "rolesroles");
   const filterdUser =
     roles == "admin" ? users?.filter((items) => items?.id == adminId) : users;
   console.log(filterdUser, "filterdUserfilterdUser");
@@ -103,8 +104,14 @@ const Settings = () => {
               <div key={index} className="p-4 lg:w-1/2 md:w-full">
                 <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                   <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0">
-                    <img src={user?.imageUrl} alt="User profile image" />
+                    <img
+                      className="w-12 h-12 sm:w-16 sm:h-16 sm:mr-8 sm:mb-0 inline-flex items-center justify-center rounded-full flex-shrink-0"
+                      src={user?.imageUrl}
+                      alt="User profile image"
+                      style={{ margin: "auto" }} // Center the image horizontally within its container
+                    />
                   </div>
+
                   <div className="flex-grow">
                     <h2 className="text-gray-900 text-[13px] title-font font-medium mb-1">
                       {user?.fullName}
@@ -228,24 +235,13 @@ const Settings = () => {
               }
             >
               <option value="Admin">Admin</option>
-              {roles === "superadmin " ? (
-                <option value="Super Admin">Super Admin</option>
+              {roles === "superadmin" ? (
+                <option value="superadmin">Super Admin</option>
               ) : (
                 ""
               )}
             </select>
           </Form.Item>
-          <div className="mb-4">
-            <label htmlFor="file" className="block text-sm font-medium">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              id="image"
-              onChange={handleFileChange}
-              className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
-            />
-          </div>
         </Form>
       </Modal>
       <Modal

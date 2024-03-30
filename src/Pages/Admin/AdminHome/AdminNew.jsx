@@ -65,7 +65,7 @@ function AdminNew() {
             <div className="col-span-1 border-navyBlue border-[1px] rounded-[10px]">
               <div className="container mx-auto mt-8 ml-10">
                 <h2 className="text-xl font-semibold mb-4 text-[#43a440]">
-                  Country
+                  Volunteers From
                 </h2>
                 <div className="flex ml-2">
                   <ul className="list-disc pl-4">
@@ -73,7 +73,7 @@ function AdminNew() {
                       <ul>
                         {Object.keys(counts).map((country) => (
                           <li key={country} className="text-gray-800">
-                            <span className="font-semibold">{country}</span>{" "}
+                            <span className="font-semibold">{country}</span>:{" "}
                             {counts[country]}
                           </li>
                         ))}

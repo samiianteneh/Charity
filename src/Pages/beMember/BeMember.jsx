@@ -52,9 +52,9 @@ function BeMember() {
                 {...register("fullName", {
                   required: "Full name is required",
                   pattern: {
-                    value: /^[A-Za-z]+ [A-Za-z]+$/,
-                    message:
-                      "Please enter your first and last name separated by a space.",
+                    // value: /^[A-Za-z]+$/,
+                    // message:
+                    //   "Please enter your first and last name separated by a space.",
                   },
                 })}
                 className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"

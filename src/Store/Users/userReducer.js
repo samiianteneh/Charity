@@ -47,7 +47,7 @@ const updateUser = (state, action) => {
   };
 };
 const deleteUser = (state, action) => {
-  console.log(action?.data, users, "action?.data");
+  console.log(action?.data, state, "action?.data");
   return {
     ...state,
     users: state.users.filter((user) => user.id !== action.data.userId),

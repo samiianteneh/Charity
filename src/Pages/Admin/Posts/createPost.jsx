@@ -56,7 +56,7 @@ const CreatePost = ({ closeModal }) => {
                 {...register("name", {
                   required: "Post Name is required",
                 })}
-                pattern="^[a-zA-Z\s]+$"
+                // pattern="^[a-zA-Z\s]+$"
                 className="font-light text-[12px] w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
               {errors.name && (
