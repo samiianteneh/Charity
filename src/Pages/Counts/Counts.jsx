@@ -27,7 +27,7 @@ const Counts = () => {
     setCounts(countryCounts);
   }, [Volentery]);
   const totalCountries = Object.keys(counts).length;
-  const balanceFilter = balance?.allBalance;
+  const balanceFilter = balance;
 
   const currentDate = new Date();
 
