@@ -3,6 +3,7 @@ import Dropdown from "../dropDown/DropDown";
 import logo from "../../assets/logo.png";
 import Donate from "../../Pages/home/Donate";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 function Navig() {
   const dropdownItems = ["Who We Are", "What We Do", "Testimonials"];
@@ -60,12 +61,12 @@ function Navig() {
             >
               Contact Us
             </a>
-            <a
-              href="/donation"
+            <NavLink
+              to="/donation"
               className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
             >
               Donate
-            </a>
+            </NavLink>
 
             {/* <button
               onClick={() => handleClick()}
@@ -88,7 +89,7 @@ function Navig() {
             href="#member"
             className="mr-5 inline-flex items-center bg-green-600 border-0 text-white py-1 px-2 focus:outline-none shadow-md  hover:bg-green-900 rounded text-base mt-4 md:mt-0"
           >
-            Become a volenteer
+            Become a volunteer
             <svg
               fill="none"
               stroke="currentColor"

@@ -53,7 +53,7 @@ const Counts = () => {
             <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
               {Volentery?.length}{" "}
             </h2>
-            <p className="leading-relaxed text-gray-200">Active Volenteers</p>
+            <p className="leading-relaxed text-gray-200">Active volunteer</p>
           </div>
 
           <div className="p-4  w-1/3">

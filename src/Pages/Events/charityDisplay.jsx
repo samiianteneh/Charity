@@ -29,7 +29,7 @@ function CharityDisplay() {
     dispatch(getEvent());
   }, [dispatch]);
   const filerdCharity = events?.filter((item) => {
-    return item?.isActive == 1;
+    return item?.isActive == true;
   });
   // console.log(filerdCharity, "filerdCharity");
 

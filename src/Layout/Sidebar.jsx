@@ -40,7 +40,7 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
               {" "}
               {/* Assuming user.id is a unique identifier */}
               <img
-                src={`https://ngh1.org/back/v1/public/${user.image}`}
+                src={`https://charity-project.onrender.com/v1/public/${user.image}`}
                 alt="female avatar"
                 className="w-[40px] h-[40px]"
               />

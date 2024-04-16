@@ -10,7 +10,7 @@ function BeMember() {
   const dispatch = useDispatch();
 
   const volunteer_type = useSelector((state) => state.settingReducer.settings);
-  const role = "volenteer";
+  const role = "volunteer";
 
   useEffect(() => {
     dispatch(getVolunteerType());

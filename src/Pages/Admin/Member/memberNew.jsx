@@ -25,7 +25,7 @@ const columns = [
     dataIndex: "country",
   },
   {
-    title: "Volentery type",
+    title: "volunteer type",
     // dataIndex: "role",
     render: (record) => (record.volunteer ? record.volunteer.name : ""),
   },

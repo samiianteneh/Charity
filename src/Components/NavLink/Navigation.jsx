@@ -134,7 +134,7 @@ function Navigation() {
                       }
                       className="text-gre hover:text-2xlm  px-3 font-bold text-xl"
                     >
-                      be a volenteer
+                      be a volunteer
                     </a>
                   </li>
                   <li className="mb-2 text-left">

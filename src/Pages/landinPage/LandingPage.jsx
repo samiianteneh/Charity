@@ -21,7 +21,7 @@ export default function LandingPage() {
           <div className="h-5/6 bg-gray-500"></div>
         </div>
       </div> */}
-      <div className="md:block">
+      <div className="md:hidden">
         {" "}
         <Navigation />
       </div>

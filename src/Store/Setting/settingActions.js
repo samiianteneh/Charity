@@ -115,7 +115,7 @@ export const updateSetting = (SettingID, data) => {
       .then((response) => {
         // console.log(response, "response for update voluntery type");
         dispatch(updateSettingSuccess(response));
-        dispatch(successMessage("Volentery type updated Successfully!"));
+        dispatch(successMessage("volunteery type updated Successfully!"));
       })
       .catch((error) => {
         // console.log(error, "response for update voluntery type error");

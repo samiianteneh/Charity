@@ -29,7 +29,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/success" element={<SuccessPage />} />
-            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/cancel" element={<ErrorPage />} />
             {tokens ? (
               <>
                 <Route path="/adminHome" element={<AdminNew />} />
