@@ -44,12 +44,16 @@ function CharityModal({ closeModal, data }) {
                 className="w-20 md:w-64"
               />
             </p>
-            <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
-              <span className="text-green-600 font-extrabold">
-                Ticket Price:{" "}
-              </span>
-              {data?.event_price}
-            </p>
+            {data?.event_price > 0 ? (
+              <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
+                <span className="text-green-600 font-extrabold">
+                  Ticket Price:{" "}
+                </span>
+                {data?.event_price}
+              </p>
+            ) : (
+              ""
+            )}
 
             <p className="text-gray-600 mb-2 font-normal grid ">
               <span className="gap-2 ">
@@ -58,12 +62,16 @@ function CharityModal({ closeModal, data }) {
                 </span>
                 {data?.eventAddress}
               </span>
-              <span>
-                <span className="text-green-600 font-extrabold">
-                  Date:{""}{" "}
+              {data?.date ? (
+                <span>
+                  <span className="text-green-600 font-extrabold">
+                    Date:{""}{" "}
+                  </span>
+                  {data?.date?.slice(0, 10)}
                 </span>
-                {data?.date?.slice(0, 10)}
-              </span>
+              ) : (
+                ""
+              )}
               <span>
                 <span className="text-green-600 font-extrabold">
                   Time:{""}{" "}

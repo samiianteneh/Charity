@@ -47,6 +47,7 @@ function Donate({ closeModal }) {
         console.error(err, "response from backend for donation err");
       });
   };
+  
   const submitMonthly = () => {
     axios
       .post(`${API_BASE_URL}/payment/subscriptions`, {
