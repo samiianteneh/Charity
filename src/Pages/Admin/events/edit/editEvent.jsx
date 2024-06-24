@@ -18,7 +18,7 @@ function EventEdit({ closeModal, data }) {
   //   setFile(selectedFile);
   // };
   const toggleIsActive = () => {
-    setIsActive(!isActive);
+    isActive == 1 ? setIsActive(0) : isActive == 0 ? setIsActive(1) : "";
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -41,7 +41,7 @@ function EventEdit({ closeModal, data }) {
   } = useForm();
 
   const onSubmit = (e) => {
-    e.isActive = isActive ? 1 : 0;
+    e.isActive = isActive;
     dispatch(updateEvent(data?.id, e));
     closeModal();
   };
@@ -115,7 +115,7 @@ function EventEdit({ closeModal, data }) {
               <input
                 type="time"
                 id="event_time"
-                defaultValue={data.event_time}
+                defaultValue={data?.event_time}
                 {...register("event_time", {
                   required: "Time is required",
                 })}

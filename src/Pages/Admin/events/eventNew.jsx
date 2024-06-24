@@ -30,8 +30,8 @@ const EventNew = () => {
     setIsOpen(false);
   };
 
-  const activeEvents = events?.filter((items) => items?.isActive == true);
-  const inActiveEvents = events?.filter((items) => items?.isActive == false);
+  const activeEvents = events?.filter((items) => items?.isActive == 1);
+  const inActiveEvents = events?.filter((items) => items?.isActive == 0);
   useEffect(() => {
     dispatch(getEvent());
   }, [dispatch]);
