@@ -20,30 +20,67 @@ const logout = () => ({
 
 // =========> LOGIN CRUD <==========
 
+// export const loginUser = (data) => {
+//   return (dispatch) => {
+//     dispatch(loginStart());
+//     axios({
+//       url: `${API_BASE_URL}/login`,
+//       method: "post",
+//       data,
+//     })
+//       .then((response) => {
+//         console.log("firstresponse", response);
+
+//         const { token, user } = response?.data;
+
+//         dispatch(loginSuccess(token, user));
+//         // console.log("token", token);
+//         // console.log("user", user);
+//         // When setting the items in localStorage
+//         // localStorage.setItem("token", JSON.stringify(tokenObject));
+//         // localStorage.setItem("user", JSON.stringify(userObject));
+
+//         localStorage.setItem("token", token);
+//         localStorage.setItem("user", JSON.stringify(user));
+//       })
+//       .catch((error) => {
+//         dispatch(loginFail(error.message));
+//       });
+//   };
+// };
 export const loginUser = (data) => {
   return (dispatch) => {
     dispatch(loginStart());
     axios({
-      url: `${API_BASE_URL}/users/login`,
+      url: `${API_BASE_URL}/login`,
       method: "post",
       data,
     })
       .then((response) => {
-        // console.log("firstresponse", response);
+        console.log("Token or user", response);
 
-        const { token, user } = response?.data;
+        const { token, user } = response?.data ?? {};
+        const newToken = response?.data?.token;
+        const newUser = response?.data?.user;
+        console.log(newToken, "object_object", newUser);
 
-        dispatch(loginSuccess(token, user));
-        // console.log("token", token);
-        // console.log("user", user);
-        // When setting the items in localStorage
-        // localStorage.setItem("token", JSON.stringify(tokenObject));
-        // localStorage.setItem("user", JSON.stringify(userObject));
+        console.log("token", token);
+        console.log("user", user);
 
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        if (token && user) {
+          dispatch(loginSuccess(token, user));
+
+          // When setting the items in localStorage
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+
+          console.log("Token or user saved to localStorage");
+        } else {
+          console.error("Token or user data missing in response");
+        }
       })
       .catch((error) => {
+        console.error("Login failed", error);
         dispatch(loginFail(error.message));
       });
   };

@@ -14,7 +14,7 @@ const settingStart = (state) => ({
 });
 const createSetting = (state, action) => ({
   ...state,
-  settings: [...state.settings, action.data],
+  settings: [...state.settings, action.data.data],
   is_loading: false,
   error: null,
 });
@@ -32,7 +32,7 @@ const getSingleSetting = (state, action) => ({
 });
 const updateSetting = (state, action) => {
   // console.log("action.updatedFeedback", action.data?.data?.updatedFeedback);
-  const data = action.data?.data?.updatedFeedback;
+  const data = action.data?.data;
   return {
     ...state,
     settings: state.settings.map((setting) =>
