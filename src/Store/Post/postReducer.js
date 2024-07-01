@@ -13,10 +13,9 @@ const postStart = (state) => ({
   error: null,
 });
 const createPostSuccess = (state, action) => {
-  // console.log("object", state, action);
   return {
     ...state,
-    posts: [...state.posts, action.data],
+    posts: [...state.posts, action.data.data],
     is_loading: false,
     error: null,
   };
@@ -24,7 +23,7 @@ const createPostSuccess = (state, action) => {
 const getPost = (state, action) => ({
   ...state,
   // posts: Array.isArray(action.data) ? action.data : [], // Ensure action.data is an array
-  posts: action.data.posts,
+  posts: action.data,
   is_loading: false,
   error: null,
 });
@@ -39,18 +38,22 @@ const updatePost = (state, action) => {
   return {
     ...state,
     posts: state.posts.map((post) =>
-      post.id === action.data.update.id ? action.data.update : post
+      post.id === action.data.data.id ? action.data.data : post
     ),
     is_loading: false,
     error: null,
   };
 };
-const deletePost = (state, action) => ({
-  ...state,
-  posts: action.data,
-  is_loading: false,
-  error: null,
-});
+const deletePost = (state, action) => {
+  console.log(state, action, "state and action");
+
+  return {
+    ...state,
+    posts: action.data,
+    is_loading: false,
+    error: null,
+  };
+};
 const postFail = (state, action) => ({
   ...state,
   is_loading: false,

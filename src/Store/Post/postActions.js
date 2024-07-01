@@ -41,7 +41,7 @@ export const createPost = (data) => {
       data: data,
     })
       .then((response) => {
-        dispatch(createPostSuccess(response?.data?.post));
+        dispatch(createPostSuccess(response?.data));
         dispatch(successMessage("Post Created Successfully!"));
         // console.log("just cheking the post response", response?.data);
       })
@@ -62,7 +62,7 @@ export const getPost = () => {
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
-        // console.log("firstrety", response);
+        console.log("firstrety", response);
       })
       .catch((error) => {
         dispatch(postFail(error));
@@ -102,8 +102,8 @@ export const updatePost = (postID, updatedData) => {
   return (dispatch) => {
     dispatch(postStart());
     axios({
-      method: "PATCH",
-      url: `${API_BASE_URL}/post/${postID}`,
+      method: "post",
+      url: `${API_BASE_URL}/postEdit/${postID}`,
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -113,7 +113,7 @@ export const updatePost = (postID, updatedData) => {
         dispatch(successMessage("Post Update Successfully!"));
 
         dispatch(updatePostSuccess(response?.data));
-        // console.log(response, "response from server for update post success");
+        console.log(response, "response from server for update post success");
       })
       .catch((error) => {
         // console.log(
@@ -134,6 +134,7 @@ export const deletePost = (postID, data) => {
     axios
       .delete(`${API_BASE_URL}/post/${postID}`)
       .then((response) => {
+        console.log(response, "state and action");
         dispatch(deletePostSuccess(data?.filter((item) => item.id !== postID)));
         dispatch(successMessage("Post deleted successfully!"));
         // console.log(response?.data, "checking post delete");
