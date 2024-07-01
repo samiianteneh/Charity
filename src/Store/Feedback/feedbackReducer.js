@@ -20,12 +20,16 @@ const createFeedback = (state, action) => {
     error: null,
   };
 };
-const getFeedback = (state, action) => ({
-  ...state,
-  feedbacks: action.data,
-  is_loading: false,
-  error: null,
-});
+const getFeedback = (state, action) => {
+  console.log("object", state, action);
+
+  return {
+    ...state,
+    feedbacks: action.data,
+    is_loading: false,
+    error: null,
+  };
+};
 // const getSingleFeedback = (state, action) => ({
 //   ...state,
 //   single_feedback: action.data,

@@ -38,7 +38,7 @@ export const createFeedback = (data) => {
       .then((response) => {
         dispatch(feedbackCreate(response?.data));
         dispatch(successMessage("Feedback Created Successfully!"));
-        // console.log("response for craete feedback", response);
+        console.log("response for craete feedback", response);
       })
       .catch((error) => {
         // console.log(error, "response for craete feedback error");
@@ -69,7 +69,7 @@ export const updateFeedback = (userId, newData) => {
     axios
       .patch(`${API_BASE_URL}/feedback/${userId}`, newData)
       .then((response) => {
-        dispatch(feedbackUpdate(response?.data?.updatedFeedback));
+        dispatch(feedbackUpdate(response?.data));
         dispatch(successMessage("Feedback Readed successfully!"));
         // console.log(response, " feedback updated successfully");
       })
