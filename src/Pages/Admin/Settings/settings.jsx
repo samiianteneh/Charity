@@ -8,14 +8,16 @@ import CreateAdmin from "./createAdmin";
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Pencil, Trash2 } from "lucide-react";
+import { IMG_BASE_URL } from "../../../config/endpoint";
 
 const Settings = () => {
   const userjson = localStorage.getItem("user");
   const user = JSON.parse(userjson);
+  console.log(user, "user_json_user_json");
   const roles = user?.role;
   const adminId = user?.id;
   // console.log(adminId, "tokenstokens");
-  // console.log(roles, "tokenstokens");
+  console.log(roles, "tokenstokens");
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
 
@@ -106,7 +108,8 @@ const Settings = () => {
                   <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 flex-shrink-0">
                     <img
                       className="w-12 h-12 sm:w-16 sm:h-16 sm:mr-8 sm:mb-0 inline-flex items-center justify-center rounded-full flex-shrink-0"
-                      src={user?.imageUrl}
+                      // src={user?.imageUrl}
+                      src={`${IMG_BASE_URL}/${user?.image}`}
                       alt="User profile image"
                       style={{ margin: "auto" }} // Center the image horizontally within its container
                     />
@@ -138,7 +141,7 @@ const Settings = () => {
                             strokeWidth={1.75}
                           />
                         </button>
-                        {roles === "superadmin" ? (
+                        {roles === "superAdmin" ? (
                           <button onClick={() => handleDeleteClick(user)}>
                             <Trash2
                               size={20}
@@ -235,7 +238,7 @@ const Settings = () => {
               }
             >
               <option value="Admin">Admin</option>
-              {roles === "superadmin" ? (
+              {roles === "superAdmin" ? (
                 <option value="superadmin">Super Admin</option>
               ) : (
                 ""

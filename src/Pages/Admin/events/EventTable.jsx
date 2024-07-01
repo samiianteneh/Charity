@@ -2,15 +2,18 @@ import { Space, Table } from "antd";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import EventEdit from "./edit/EditEvent";
+import { IMG_BASE_URL } from "../../../Config/endpoint";
 
 function EventTable({ charity, type }) {
   const columns = [
     {
       title: "",
-      dataIndex: "imageUrl",
+      dataIndex: "image",
       className:
         "font-poppins font-normal text-[13px] text-center w-[200px] h-[150px]",
-      render: (imageUrl) => <img src={imageUrl} alt="Event" className="" />,
+      render: (image) => (
+        <img src={`${IMG_BASE_URL}/${image}`} alt="Event" className="" />
+      ),
     },
     {
       title: "Name",

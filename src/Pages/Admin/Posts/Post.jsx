@@ -8,6 +8,7 @@ import { Modal, Pagination } from "antd";
 import { Trash2, Pencil } from "lucide-react";
 import CreatePost from "./createPost";
 import PostEdit from "./PostEdit";
+import { IMG_BASE_URL } from "../../../Config/endpoint";
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -83,13 +84,16 @@ const Post = () => {
                     <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                       <img
                         className="h-36 md:h-48 min-w-full object-cover object-center"
-                        src={post?.imageUrl}
+                        // src={post?.imageUrl}
+                        src={`${IMG_BASE_URL}/${post?.image}`}
                         alt="blog"
                       />
                       <div className="p-6 pb-1">
                         <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
                           POST DATE -{" "}
-                          {post?.createdAt ? post?.createdAt.slice(0, 10) : ""}
+                          {post?.created_at
+                            ? post?.created_at.slice(0, 10)
+                            : ""}
                         </h2>
                         <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                           {post?.name}

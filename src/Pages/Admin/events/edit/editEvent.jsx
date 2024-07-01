@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateEvent } from "../../../../Store";
 
 function EventEdit({ closeModal, data }) {
-  // console.log(data, "datadata");
+  console.log(data, "datadata");
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(data?.isActive);
   // const [image, setFile] = useState(null);
@@ -96,7 +96,9 @@ function EventEdit({ closeModal, data }) {
               <input
                 type="date"
                 id="date"
-                defaultValue={data?.date ? data.date.slice(0, 10) : ""}
+                defaultValue={
+                  data?.eventDate ? data.eventDate.slice(0, 10) : ""
+                }
                 {...register("date", {
                   required: "Date is required",
                 })}
@@ -109,22 +111,22 @@ function EventEdit({ closeModal, data }) {
               )}
             </div>
             <div className="mb-4">
-              <label htmlFor="event_time" className="block text-sm font-medium">
+              <label htmlFor="eventTime" className="block text-sm font-medium">
                 Event Time
               </label>
               <input
                 type="time"
-                id="event_time"
-                defaultValue={data?.event_time}
-                {...register("event_time", {
+                id="eventTime"
+                defaultValue={data?.eventTime}
+                {...register("eventTime", {
                   required: "Time is required",
                 })}
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
 
-              {errors.event_time && (
+              {errors.eventTime && (
                 <p className="text-red-500 text-sm">
-                  {errors.event_time.message}
+                  {errors.eventTime.message}
                 </p>
               )}
             </div>
@@ -154,30 +156,27 @@ function EventEdit({ closeModal, data }) {
               )}
             </div>
             <div className="mb-4">
-              <label
-                htmlFor="event_price"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="eventPrice" className="block text-sm font-medium">
                 Ticket Price
               </label>
               <input
                 type="number"
                 placeholder="Enter ticket price"
-                id="event_price"
-                defaultValue={data?.event_price}
-                {...register("event_price", {
+                id="eventPrice"
+                defaultValue={data?.eventPrice}
+                {...register("eventPrice", {
                   required: "Ticket Price is required",
                   pattern: {
-                    value: /^[0-9]+$/,
+                    value: /^[0-9]+(\.[0-9]{2})?$/,
                     message: "Please enter a valid ticket price (numbers only)",
                   },
                 })}
                 min="0" // Optional: specify minimum value if necessary
                 className="font-light text-sm w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
               />
-              {errors.event_price && (
+              {errors.eventPrice && (
                 <p className="text-red-500 text-sm">
-                  {errors.event_price.message}
+                  {errors.eventPrice.message}
                 </p>
               )}
             </div>

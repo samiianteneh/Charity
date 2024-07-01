@@ -13,7 +13,7 @@ const Feedback = () => {
   const dispatch = useDispatch();
   const feedbacks = useSelector((state) => state.feedbackReducer.feedbacks);
 
-  console.log("feedbacks", Comments);
+  console.log("feedbacks", feedbacks);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Tab 2");
   const handleTabClick = (tab) => {
@@ -26,10 +26,8 @@ const Feedback = () => {
     setIsOpen(false);
   };
 
-  const activeComments = feedbacks.filter((items) => items?.is_seen === true);
-  const inActiveComments = feedbacks.filter(
-    (items) => items?.is_seen === false
-  );
+  const activeComments = feedbacks.filter((items) => items?.is_seen === 1);
+  const inActiveComments = feedbacks.filter((items) => items?.is_seen === 0);
   // console.log(Comments, "CommentsComments");
   // console.log(activeComments, "activeComments");
   // console.log(inActiveComments, "inActiveComments");
