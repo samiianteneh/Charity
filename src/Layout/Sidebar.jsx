@@ -5,14 +5,17 @@ import LOGO from "../assets/logo.png";
 import avatar from "../assets/woman.png";
 import { DASHBOARD_SIDEBAR_LINKS } from "../Constant/sidebarData";
 import { useSelector } from "react-redux";
+import { IMG_BASE_URL } from "../Config/endpoint";
 
 const linkClasses =
   "flex items-center gap-2 px-3 font-medium hover:no-underline h-10 text-[12px]";
 
 const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);
+
+  console.log("localUser", localUser);
   const userArray = [];
-  userArray.push(JSON.parse(localUser));
+  userArray.push(JSON?.parse(localUser));
   // console.log(userArray, "userArray");
 
   return (
@@ -40,7 +43,8 @@ const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
               {" "}
               {/* Assuming user.id is a unique identifier */}
               <img
-                src={`https://charity-project.onrender.com/v1/public/${user.image}`}
+                src={`${IMG_BASE_URL}/${user?.image}`}
+                // src={`https://charity-project.onrender.com/v1/public/${user.image}`}
                 alt="female avatar"
                 className="w-[40px] h-[40px]"
               />
