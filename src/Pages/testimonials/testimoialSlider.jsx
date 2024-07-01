@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { Testimonials } from "../../Constant/testimonial";
 
 function TestimonialSlider() {
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  const testimonialsLength = Testimonials.length;
+  // const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  // const testimonialsLength = Testimonials.length;
 
-  useEffect(() => {
-    const intervalId = setInterval(goToNextTestimonial, 5000);
-    return () => clearInterval(intervalId);
-  }, [currentTestimonialIndex]);
+  // useEffect(() => {
+  //   const intervalId = setInterval(goToNextTestimonial, 5000);
+  //   return () => clearInterval(intervalId);
+  // }, [currentTestimonialIndex]);
 
-  const goToNextTestimonial = () => {
-    setCurrentTestimonialIndex((prevIndex) =>
-      prevIndex === testimonialsLength - 1 ? 0 : prevIndex + 1
-    );
-  };
+  // const goToNextTestimonial = () => {
+  //   setCurrentTestimonialIndex((prevIndex) =>
+  //     prevIndex === testimonialsLength - 1 ? 0 : prevIndex + 1
+  //   );
+  // };
 
-  const goToTestimonial = (index) => {
-    setCurrentTestimonialIndex(index);
-  };
   // console.log(Testimonials, "Testimonials");
 
   return (

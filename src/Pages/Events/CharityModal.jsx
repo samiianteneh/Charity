@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import closeIcon from "../../assets/icons/system-solid-29-cross.gif";
 import logo from "../../assets/logo.png";
+import { IMG_BASE_URL } from "../../Config/endpoint";
 
 function CharityModal({ closeModal, data }) {
   // console.log(data, "data modal");
@@ -39,17 +40,18 @@ function CharityModal({ closeModal, data }) {
             </p>
             <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
               <img
-                src={data?.imageUrl}
+                // src={data?.imageUrl}
+                src={`${IMG_BASE_URL}/${data?.image}`}
                 alt="event image"
                 className="w-20 md:w-64"
               />
             </p>
-            {data?.event_price > 0 ? (
+            {data?.eventPrice > 0 ? (
               <p className="flex justify-center text-gray-600 mb-2 font-normal  ">
                 <span className="text-green-600 font-extrabold">
                   Ticket Price:{" "}
                 </span>
-                {data?.event_price}
+                {data?.eventPrice}
               </p>
             ) : (
               ""
@@ -62,12 +64,12 @@ function CharityModal({ closeModal, data }) {
                 </span>
                 {data?.eventAddress}
               </span>
-              {data?.date ? (
+              {data?.eventDate ? (
                 <span>
                   <span className="text-green-600 font-extrabold">
                     Date:{""}{" "}
                   </span>
-                  {data?.date?.slice(0, 10)}
+                  {data?.eventDate?.slice(0, 10)}
                 </span>
               ) : (
                 ""
@@ -76,7 +78,7 @@ function CharityModal({ closeModal, data }) {
                 <span className="text-green-600 font-extrabold">
                   Time:{""}{" "}
                 </span>
-                {data?.event_time}
+                {data?.eventTime?.slice(0, 5)}
               </span>
             </p>
             <p className="flex justify-center text-gray-600 mb-2 font-normal  ">

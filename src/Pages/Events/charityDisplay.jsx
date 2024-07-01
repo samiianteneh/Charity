@@ -61,7 +61,7 @@ function CharityDisplay() {
                   <span className="text-green-600 font-extrabold ">
                     Date:{""}{" "}
                   </span>
-                  {item?.date?.slice(0, 10)}
+                  {item?.eventDate?.slice(0, 10)}
                 </span>
                 <span className="gap-2 mb-3 w-full">
                   <span className="text-green-600 font-extrabold">

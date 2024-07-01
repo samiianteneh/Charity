@@ -49,19 +49,27 @@ function Donation() {
   const submitOnce = () => {
     axios
       .post(`${API_BASE_URL}/payment/process`, {
-        donation_ammount: amounts,
+        donation_amount: amounts,
       })
       .then((response) => {
-        console.log(response, "response from backend for donation"); // Add this line for debugging
-        localStorage.setItem("donationName", name);
-        localStorage.setItem("donationPhone", Phone);
-        localStorage.setItem("donationEmail", email);
-        localStorage.setItem("donationAmount", amounts);
+        console.log(
+          response,
+          "response from backend for donation",
+          response?.data?.url,
+          response?.data?.success
+        );
+        window.location.href =
+          "https://checkout.stripe.com/c/pay/cs_live_a1wxA0tqsLhaltvsLiInVu3pdNKFfgkRwgzA0Gq0P7XyWblyEikuwKnqsg#fidkdWxOYHwnPyd1blppbHNgWjA0SklObH9NQmRESktTVG5OMk80T01zMFx8ZnJHTnJMbndjM09MTnQwcFxgQEQ0MlNAM3Z8RHxLXXJoTHRfQjxAa2FvVmI1TmpgQW40dFF0dUNgakdyVTA8NTUwZkticXMzPScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl";
+        // Add this line for debugging
+        // localStorage.setItem("donationName", name);
+        // localStorage.setItem("donationPhone", Phone);
+        // localStorage.setItem("donationEmail", email);
+        // localStorage.setItem("donationAmount", amounts);
 
-        if (response?.data?.success === true) {
-          console.log(response?.data?.clientSecret?.url); // Add this line for debugging
-          window.location.href = response?.data?.clientSecret?.url;
-        }
+        // if (response?.data?.success == true) {
+        //   console.log(response?.data?.url); // Add this line for debugging
+        //   window.location.href = response?.data?.url;
+        // }
       })
       .catch((err) => {
         console.error(err, "response from backend for donation err");

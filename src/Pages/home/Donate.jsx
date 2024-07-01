@@ -35,7 +35,7 @@ function Donate({ closeModal }) {
   const submitOnce = () => {
     axios
       .post(`${API_BASE_URL}/payment/process`, {
-        donation_ammount: amounts,
+        donation_amount: amounts,
       })
       .then((response) => {
         // console.log(response, "response from backend for donation");
@@ -47,7 +47,7 @@ function Donate({ closeModal }) {
         console.error(err, "response from backend for donation err");
       });
   };
-  
+
   const submitMonthly = () => {
     axios
       .post(`${API_BASE_URL}/payment/subscriptions`, {

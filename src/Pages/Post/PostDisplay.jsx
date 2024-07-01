@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../Store";
+import { IMG_BASE_URL } from "../../Config/endpoint";
 
 function PostDisplay() {
   const [lengths, setLengths] = useState(false);
@@ -11,7 +12,7 @@ function PostDisplay() {
   const dispatch = useDispatch();
 
   const Posts = useSelector((state) => state.postReducer.posts);
-  // console.log(Posts, "Postus");
+  console.log(Posts, "Postus");
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
@@ -36,12 +37,13 @@ function PostDisplay() {
             <div className="h-fit border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <img
                 className="h-48 md:h-60 w-full object-cover object-center"
-                src={post?.imageUrl}
+                // src={post?.imageUrl}
+                src={`${IMG_BASE_URL}/${post?.image}`}
                 alt="blog"
               />
               <div className="p-6 pb-1">
                 <h2 className="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-1">
-                  POST DATE - {post?.createdAt.slice(0, 10)}
+                  POST DATE - {post?.created_at.slice(0, 10)}
                 </h2>
                 <h1 className="title-font text-[13px] font-medium text-gray-900 mb-3">
                   {post?.name}
