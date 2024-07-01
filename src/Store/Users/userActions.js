@@ -56,6 +56,7 @@ export const userRegistration = (data, role) => {
       data: { ...data, role },
     })
       .then((response) => {
+        console.log(response, "response from backend for user registration");
         dispatch(registerSuccess(response?.data?.user));
         dispatch(successMessage("User Created Successfully!"));
         // console.log("create Volunteer response", response);
@@ -113,7 +114,7 @@ export const getAdmin = () => {
       },
     };
     axios
-      .get(`${API_BASE_URL}/users/new`, config)
+      .get(`${API_BASE_URL}/admin`, config)
       .then((response) => {
         dispatch(getAdminSuccess(response?.data));
         // console.log(response, "responsettt");
@@ -146,7 +147,7 @@ export const updateUser = (userId, newData) => {
   return (dispatch) => {
     dispatch(registerStart());
     axios
-      .patch(`${API_BASE_URL}/users/${userId}`, newData)
+      .patch(`${API_BASE_URL}/admin/${userId}`, newData)
       .then((response) => {
         dispatch(updateUserSuccess(response?.data));
         dispatch(successMessage("User updated successfully!"));
@@ -160,15 +161,15 @@ export const updateUser = (userId, newData) => {
 };
 
 export const userDelete = (userId, data) => {
-  // console.log(userId, data, "userId");
+  console.log(userId, data, "userId");
 
   return (dispatch) => {
     dispatch(registerStart());
     axios
-      .delete(`${API_BASE_URL}/users/${userId}`)
+      .delete(`${API_BASE_URL}/admin/${userId}`)
       .then((response) => {
         dispatch(deleteUserSuccess(data?.filter((item) => item.id !== userId))); // Pass the userId instead of filtered data
-        dispatch(successMessage("User deleted successfully!"));
+        dispatch(successMessage("Admin deleted successfully!"));
         // console.log("User deleted successfully!", response?.data);
       })
       .catch((error) => {
