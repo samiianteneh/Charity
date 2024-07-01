@@ -63,7 +63,7 @@ export const createEvent = (data) => {
       data: data,
     })
       .then((response) => {
-        dispatch(eventCreateSuccess(response?.data?.Event));
+        dispatch(eventCreateSuccess(response?.data));
         dispatch(successMessage("Event Created Successfully!"));
         // console.log("response from backend for charity ", response);
       })
@@ -82,6 +82,7 @@ export const getEvent = () => {
       url: `${API_BASE_URL}/event`,
     })
       .then((response) => {
+        console.log("response for event", response?.data);
         dispatch(eventGetSuccess(response?.data));
       })
       .catch((error) => {
@@ -113,13 +114,12 @@ export const updateEvent = (id, data) => {
   return (dispatch) => {
     dispatch(eventStart());
     axios({
-      method: "patch",
-      url: `${API_BASE_URL}/event/${id}`,
+      method: "post",
+      url: `${API_BASE_URL}/eventEdit/${id}`,
       data: data,
     })
       .then((response) => {
-        // console.log(response, "response from backend for charity update");
-        dispatch(updateEventSuccess(response?.data));
+        dispatch(updateEventSuccess(response?.data?.data));
         dispatch(successMessage("Event Updated Successfully!"));
       })
       .catch((error) => {

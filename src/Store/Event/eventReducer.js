@@ -18,7 +18,7 @@ const eventStart = (state) => {
 const eventCreateSuccess = (state, action) => {
   return {
     ...state,
-    events: [...state.events, action.data], // Ensure action.data is an iterable (e.g., array)
+    events: [...state.events, action.data.data], // Ensure action.data is an iterable (e.g., array)
     loading: false,
     error: null,
   };
@@ -26,7 +26,7 @@ const eventCreateSuccess = (state, action) => {
 const eventGetSuccess = (state, action) => {
   return {
     ...state,
-    events: action.data.posts,
+    events: action.data,
     loading: false,
     error: null,
   };
@@ -40,6 +40,7 @@ const singleEventGetSuccess = (state, action) => {
   };
 };
 const updateEventSuccess = (state, action) => {
+  console.log(state, action, "state and action");
   return {
     ...state,
     events: state.events.map((event) =>
