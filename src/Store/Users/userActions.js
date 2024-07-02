@@ -56,9 +56,9 @@ export const userRegistration = (data, role) => {
       data: { ...data, role },
     })
       .then((response) => {
-        console.log(response, "response from backend for user registration");
+        // console.log(response, "response from backend for user registration");
         dispatch(registerSuccess(response?.data?.user));
-        dispatch(successMessage("User Created Successfully!"));
+        dispatch(successMessage("You Register Successfully!"));
         // console.log("create Volunteer response", response);
       })
       .catch((error) => {
