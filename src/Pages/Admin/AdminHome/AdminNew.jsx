@@ -42,12 +42,12 @@ function AdminNew() {
   useEffect(() => {
     dispatch(getBalances());
   }, [dispatch]);
-
   const calculateYearlyTotal = (data) => {
     const yearlyTotal = {};
-    data?.forEach(({ createdAt, amount }) => {
-      const year = new Date(createdAt).getFullYear();
-      yearlyTotal[year] = (yearlyTotal[year] || 0) + amount;
+    data?.forEach(({ created_at, amount }) => {
+      const year = new Date(created_at).getFullYear();
+      const numericAmount = parseFloat(amount);
+      yearlyTotal[year] = (yearlyTotal[year] || 0) + numericAmount;
     });
     return yearlyTotal;
   };

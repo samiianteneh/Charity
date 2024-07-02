@@ -21,7 +21,7 @@ const Counts = () => {
   useEffect(() => {
     const countryCounts = {};
     Volentery?.forEach((entry) => {
-      const country = entry.country;
+      const country = entry?.country;
       countryCounts[country] = (countryCounts[country] || 0) + 1;
     });
     setCounts(countryCounts);
@@ -38,11 +38,12 @@ const Counts = () => {
   // Filter items based on the createdAt field within the last 365 days
   const filteredItems = balanceFilter?.filter((item) => {
     // Convert the createdAt string to a Date object
-    const createdAtDate = new Date(item.createdAt);
+    const createdAtDate = new Date(item.created_at);
 
     // Check if the createdAtDate is within the last 365 days
     return createdAtDate >= oneYearAgo && createdAtDate <= currentDate;
   });
+  // console.log(counts, "##$$%%^^", filteredItems, balance);
 
   // console.log(filteredItems, "filteredItems");
   return (
