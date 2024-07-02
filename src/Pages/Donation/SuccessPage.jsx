@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { API_BASE_URL } from "../../config/endpoint";
+import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../Config/endpoint";
 
 function SuccessPage() {
   const [user, setUser] = useState({
@@ -29,14 +29,14 @@ function SuccessPage() {
     if (user?.donationAmount) {
       // console.log(user);
       axios
-        .post(`${API_BASE_URL}/payment/webhook`, {
-          amount1: user?.donationAmount,
+        .post(`${API_BASE_URL}/payment/donation`, {
+          amount: user?.donationAmount,
           email: user?.donationEmail,
           phone: user?.donationPhone,
           name: user?.donationName,
         })
         .then((response) => {
-          // console.log(response, "response from backend for register");
+          console.log(response, "response from backend for register");
           localStorage.removeItem("donationName");
           localStorage.removeItem("donationAmount");
           localStorage.removeItem("donationEmail");
@@ -51,7 +51,11 @@ function SuccessPage() {
 
   return (
     <div className="">
-      <></>
+      {/* <>hello</>
+      {user?.donationAmount}
+      {user?.donationEmail}
+      {user?.donationPhone}
+      {user?.donationName}{" "} */}
     </div>
   );
 }
