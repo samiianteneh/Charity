@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import closeIcon from "../../../assets/icons/system-solid-29-cross.gif";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { userRegistration } from "../../../Store";
-
-import { Button, Form, Input, Modal, Upload } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { adminRegistration } from "../../../Store";
 
 function CreateAdmin({ closeModal }) {
   const [image, setFile] = useState(null);
@@ -21,7 +18,7 @@ function CreateAdmin({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(userRegistration({ ...data, image }, role));
+    dispatch(adminRegistration({ ...data, image }, role));
     reset();
     setFile(null);
     closeModal();
@@ -64,7 +61,7 @@ function CreateAdmin({ closeModal }) {
                 type="text"
                 placeholder="Type here"
                 id="name"
-                {...register("fullName", {
+                {...register("fullname", {
                   required: "Full name is required",
                   pattern: {
                     value: /^[A-Za-z]+ [A-Za-z]+$/,
@@ -74,9 +71,9 @@ function CreateAdmin({ closeModal }) {
                 })}
                 className="font-light text-sm w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-green-500"
               />
-              {errors.fullName && (
+              {errors.fullname && (
                 <p className="text-red-500 text-sm">
-                  {errors.fullName.message}
+                  {errors.fullname.message}
                 </p>
               )}
             </div>

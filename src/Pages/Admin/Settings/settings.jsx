@@ -85,7 +85,7 @@ const Settings = () => {
   // console.log(filterdUser, "filterdUserfilterdUser");
   return (
     <div>
-      {roles == "superadmin" ? (
+      {roles == "superAdmin" ? (
         <div className="px-5 py-4 m-2 ">
           <button
             className="flex bg-white items-center justify-center gap-2 rounded-[5px] border-[1px] py-2 px-3 border-green-500 text-[11px]"
@@ -239,7 +239,7 @@ const Settings = () => {
             >
               <option value="Admin">Admin</option>
               {roles === "superAdmin" ? (
-                <option value="superadmin">Super Admin</option>
+                <option value="superAdmin">Super Admin</option>
               ) : (
                 ""
               )}
