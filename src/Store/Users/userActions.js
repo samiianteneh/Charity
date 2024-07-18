@@ -97,6 +97,32 @@ export const getUsers = () => {
       });
   };
 };
+export const adminRegistration = (data, role) => {
+  // console.log(data, role, "data sent for registration");
+  // return;
+  return (dispatch) => {
+    dispatch(registerStart());
+    axios({
+      method: "post",
+      url: `${API_BASE_URL}/admin`,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: { ...data, role },
+    })
+      .then((response) => {
+        // console.log(response, "response from backend for user registration");
+        dispatch(registerSuccess(response?.data?.user));
+        dispatch(successMessage("You Register Successfully!"));
+        // console.log("create Volunteer response", response);
+      })
+      .catch((error) => {
+        dispatch(registerFail(error));
+        dispatch(errorMessage(error));
+        // console.log("create Volunteer response err", error);
+      });
+  };
+};
 export const getAdmin = () => {
   return (dispatch) => {
     dispatch(registerStart());
