@@ -62,7 +62,7 @@ export const getPost = () => {
     })
       .then((response) => {
         dispatch(getPostSuccess(response?.data));
-        console.log("firstrety", response);
+        // console.log("firstrety", response);
       })
       .catch((error) => {
         dispatch(postFail(error));
@@ -113,7 +113,7 @@ export const updatePost = (postID, updatedData) => {
         dispatch(successMessage("Post Update Successfully!"));
 
         dispatch(updatePostSuccess(response?.data));
-        console.log(response, "response from server for update post success");
+        // console.log(response, "response from server for update post success");
       })
       .catch((error) => {
         // console.log(
@@ -134,7 +134,7 @@ export const deletePost = (postID, data) => {
     axios
       .delete(`${API_BASE_URL}/post/${postID}`)
       .then((response) => {
-        console.log(response, "state and action");
+        // console.log(response, "state and action");
         dispatch(deletePostSuccess(data?.filter((item) => item.id !== postID)));
         dispatch(successMessage("Post deleted successfully!"));
         // console.log(response?.data, "checking post delete");

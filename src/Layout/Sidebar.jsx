@@ -13,7 +13,7 @@ const linkClasses =
 const Sidebar = ({ handleSidebarItemClick, selectedSidebarKey }) => {
   const localUser = useSelector((state) => state.authReducer.user);
 
-  console.log("localUser", localUser);
+  // console.log("localUser", localUser);
   const userArray = [];
   userArray.push(JSON?.parse(localUser));
   // console.log(userArray, "userArray");

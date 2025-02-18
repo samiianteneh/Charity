@@ -82,7 +82,7 @@ export const getEvent = () => {
       url: `${API_BASE_URL}/event`,
     })
       .then((response) => {
-        console.log("response for event", response?.data);
+        // console.log("response for event", response?.data);
         dispatch(eventGetSuccess(response?.data));
       })
       .catch((error) => {

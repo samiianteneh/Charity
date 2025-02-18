@@ -28,6 +28,7 @@ export const getBalances = () => {
     axios({
       method: "get",
       url: `${API_BASE_URL}/payment/balance`,
+      // url: `${API_BASE_URL}/payment/balance`,
       // url: `https://charity-project.onrender.com/v1/payment/balance`,
     })
       .then((response) => {

@@ -12,7 +12,7 @@ function PostDisplay() {
   const dispatch = useDispatch();
 
   const Posts = useSelector((state) => state.postReducer.posts);
-  console.log(Posts, "Postus");
+  // console.log(Posts, "Postus");
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);

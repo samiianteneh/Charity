@@ -26,7 +26,7 @@ const ContactUs = () => {
           <img src={contactUs} alt="Contact Us Image" />
         </div>
 
-        <div class="lg:w-2/6 md:w-1/2 bg-[#f0f0f0] rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <div className="lg:w-2/6 md:w-1/2 bg-[#f0f0f0] rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <div className="inline-block relative mb-5">
             <span className="text-green-600 text-3xl font-bold ">Feedback</span>
           </div>
